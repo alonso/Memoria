@@ -1,0 +1,252 @@
+\documentclass[12pt,spanish,letterpaper,color]{uchile}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[spanish]{babel}
+\PrerenderUnicode{áéíóúÁÉÍÓÚüÜ}
+%%%%%%%%%%%%%%%%%%%%%%
+%% Para macros propias
+\usepackage{xspace}
+
+%move to class?
+%%usa punto en vez de coma en las ecuaciones con decimales, tiene que ir despues de babel
+\decimalpoint
+%%%%%%%%%%%%%%%%%%%%%%
+%% Mathematical packages
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+%move to class?
+%%  paquete para setear los margenes, verificar
+\usepackage[right=2cm,left=3cm,top=2cm,bottom=2cm,headsep=0cm,footskip=1cm]{geometry}
+%\usepackage{anysize}
+%\papersize{27.94cm}{21.59cm}
+%\marginsize{3.0cm}{2.0cm}{2.0cm}{2.0cm}
+
+
+%move to class?
+%% paquete para insertar links en pdf
+%colorlinks=true, resalta los links con colores
+\usepackage[pdftex,pdfborderstyle={/S/U/W 0}, 
+pdftitle={Memoria}, 
+pdfauthor={Felipe Lema}, 
+pdfsubject={Emulación}, pdfkeywords={p2p, kaillera, emulación},
+pdfcreator={Felipe Lema}]{hyperref}
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% Cite Package
+%% must go after hyperref
+%% debe ir depues de hyperref
+\usepackage{cite}
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% Numprint Pacakge
+%% allows to print number with automatic thousand separator and decimal separator
+%% Ejxamples: \numprint{2006.3}-> 2.006,3 \numprint{20009}-> 20.009
+%% permite escribir numeros con separador de miles y con separador decimal. 
+%% Ejemplos: \numprint{2006.3}-> 2.006,3 \numprint{20009}-> 20.009
+\usepackage[autolanguage]{numprint}
+\npthousandsep{.}\npdecimalsign{,}
+
+\newtheorem{lemma}{Lema}%we can specify the counter in brackets
+\newtheorem{corollary}{Corolario}
+\newtheorem{theorem}{Teorema}
+%\renewcommand{\bibliographyname}{Bibliografía u otro nombre}
+%%%%%%%%%%%%%%%%%%%%%%
+%% Listings Package
+%% Printing program/source code (C++ code)
+%% Imprime código fuente/ de programa (código C++)
+\usepackage{listings}
+\usepackage{color}
+\definecolor{gray97}{gray}{.97}
+\definecolor{gray75}{gray}{.75}
+\definecolor{gray45}{gray}{.45}
+
+\lstset{ frame=Ltb,
+     framerule=0pt,
+     aboveskip=0.5cm,
+     framextopmargin=3pt,
+     framexbottommargin=3pt,
+     framexleftmargin=0.4cm,
+     framesep=0pt,
+     rulesep=.4pt,
+     backgroundcolor=\color{gray97},
+     rulesepcolor=\color{black},
+     %
+     stringstyle=\ttfamily,
+     showstringspaces = false,
+     basicstyle={\ttfamily\small},
+     commentstyle=\color{gray45},
+     keywordstyle=\bfseries,
+     %
+     numbers=left,
+     numbersep=15pt,
+     numberstyle=\tiny,
+     numberfirstline = false,
+     breaklines=true,
+     %
+     float,
+     language=C++,
+     columns=fixed,
+     escapeinside={//*}{\^^M}, %labels
+     tabsize=2
+   }
+\renewcommand{\lstlistlistingname}{Códigos}
+\renewcommand{\lstlistingname}{Código}
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% Algorithms Package
+%% Printing pseudocode
+%% Imprime pseudo-código
+\usepackage{algorithmic}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% clrscode3e Package
+%% Typeset pseudo-code "Intro to Algorithms" style
+%% Formatea pseudo-código al estilo de "Introducción a Algoritmos"
+\usepackage{clrscode3e}
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% subfig Package
+%% to have subfigures within figures, or subtables within table floats
+\usepackage{subfig}
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%
+%macros
+%%%%%%%%%%%%%%%%%%%%
+\newcommand{\kai}{\textit{Kaillera}\xspace}
+\newcommand{\fba}{\texttt{fba}\xspace}
+
+
+%%%%%%%%%%%%%%%%%%%%
+%Definicion de variables de la portada
+%%%%%%%%%%%%%%%%%%%%
+%%Logo
+%\grafica{escudocolor.png}{Logo de la Universidad de Chile}{logo}{0.6}
+%% B. Nombre Institucion
+\universidad{Universidad de Chile}
+\facultad{Facultad de Ciencias Físicas y Matemáticas}
+\departamento{Departamento de Ciencias de la Computación}
+%% C. Titulo
+\title{Autenticación Desmentible en Canales Anónimos}
+%% D. Proposito titulacion
+\trabajoygrado{Presentación del Tema de Memoria para optar al título de Ingeniero Civil en Computación}
+%% E. Autor
+\author{Alonso Emilio González Ulloa}
+%% F. Profesores guia, co-guia e integrantes, los 3 primeros son obligatorios
+\profguia{Alejandro Hevia Angulo} %profesor guia
+\profcoguia{Gonzalo Navarro Badino} %profesor co-guia
+\profint{Rodrigo Paredes Moradela} %profesor integrante
+%\profinta{Sr. ZZ ZZ ZZ} %profesor integrante 2, generalemente no es necesario
+%\profintb{Sr. ZZZ ZZZ ZZZ} %profesor integrante 3, generalmente no es necesario
+%% G. Lugar y fecha
+\ciudad{Santiago}
+\pais{Chile}
+\monthpub{Marzo}
+\yearpub{2011}
+%por ahora hay que poner el proyecto en mayusculas y si los saltos de linea deben ir a mano
+%\proyecto{ESTE TRABAJO HA SIDO FINANCIADO EN PARTE POR EL PROYECTO \\ FONDECYT 12345678 Y POR EL PROYECTO CORFO 2009/8956-4}
+
+%%%%%%%%%%%%%%%%%%%%%
+%% Lista de TODOS y FIXMEnS, no aparece si es que no hay nada que hacer
+\listoftodos
+\newpage
+%% Portada
+\maketitle
+
+%% Pagina optativa, ahora creo que ya no va
+%\section{Calificaciones}
+%\makeeval
+% Necesita revision en caso de uso
+\begin{preface} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Resumen
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Dedicatoria: Pagina Optativa
+%\dedicatoria{A mi Sol}
+%% Pagina optativa
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Agradecimientos: Pagina Optativa
+\section{Agradecimientos}
+Agradezco a mi profesor guía Jo por su apoyo y orientación a lo largo de este trabajo. Nahid
+Akbar (a.k.a. Killer Civilian) por sus opiniones y conociemientos con \kai \textit{p2p}.
+\texttt{iq\_132} y los usuarios de los foros de FinalBurn Alpha por su ayuda con el código del
+emulador. A Joaquín, Sebastián y Haníbal por sus \textit{feedbacks}.\\
+
+%Finalmente, al buscador Google por responderme tan rápido las dudas técnicas para esta memoria.\\
+\begin{flushright}
+Felipe Lema S.
+\end{flushright}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Indices varios
+%% Indice General
+\tableofcontents
+%% Indice de Tablas : Pagina Optativa
+%\listoftables
+%% Indice de Figuras : Pagina Optativa
+\listoffigures
+
+\end{preface}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{./capitulos/introduccion.tex}
+\input{./capitulos/marco_teorico.tex}
+\input{./capitulos/protocolo.tex}
+\input{./capitulos/conclusiones.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{abbrv}
+\bibliography{biblio}{}
+%\begin{additional}
+%\section{Ambiente de desarrollo}
+
+%\section{Glosario}
+%\section{Material Complementario}
+%\end{additional}
+
+\begin{appendix}
+\lstset{ frame=Ltb,
+     framerule=0pt,
+     aboveskip=0.5cm,
+     framextopmargin=3pt,
+     framexbottommargin=3pt,
+     framexleftmargin=0.4cm,
+     framesep=0pt,
+     rulesep=.4pt,
+     backgroundcolor=\color{gray97},
+     rulesepcolor=\color{black},
+     %
+     stringstyle=\ttfamily,
+     showstringspaces = false,
+     basicstyle={\ttfamily\footnotesize},
+     commentstyle=\color{gray45},
+     keywordstyle=\bfseries,
+     %
+     numbers=left,
+     numbersep=15pt,
+     numberstyle=\tiny,
+     numberfirstline = false,
+     breaklines=true,
+     %
+     float,
+     language=C++,
+     columns=fixed,
+     escapeinside={//*}{\^^M}, %labels
+     tabsize=2
+   }
+\section{Código clase \texttt{p2pSync}}
+\label{apend:codigo:p2pS}
+%\lstinputlisting{../../../fbasrc029704/src/libs/p2pSync/p2pSync.cpp}
+\section{Código clase \texttt{MessageManager}}
+\label{apend:codigo:MM}
+%\lstinputlisting{../../../fbasrc029704/src/libs/p2pSync/MessageManager.cpp}
+\section{Código clase \texttt{P2pPlayer}}
+\label{apend:codigo:PP}
+%\lstinputlisting{../../../fbasrc029704/src/libs/p2pSync/P2pPlayer.cpp}
+
+\end{appendix}
+\end{document}

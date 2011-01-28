@@ -1,0 +1,21 @@
+\begin{thebibliography}{1}
+
+\bibitem{conf/focs/Canetti01}
+R.~Canetti.
+\newblock Universally composable security: {A} new paradigm for cryptographic
+  protocols.
+\newblock In {\em FOCS}, pages 136--145, 2001.
+
+\bibitem{DwoNaoSah04}
+Dwork, Naor, and Sahai.
+\newblock Concurrent zero-knowledge.
+\newblock {\em JACM: Journal of the ACM}, 51, 2004.
+
+\bibitem{conf/pet/HeviaM08}
+A.~Hevia and D.~Micciancio.
+\newblock An indistinguishability-based characterization of anonymous channels.
+\newblock In N.~Borisov and I.~Goldberg, editors, {\em Privacy Enhancing
+  Technologies}, volume 5134 of {\em Lecture Notes in Computer Science}, pages
+  24--43. Springer, 2008.
+
+\end{thebibliography}

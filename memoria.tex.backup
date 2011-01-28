@@ -1,0 +1,533 @@
+\documentclass[12pt,spanish,letterpaper,color]{uchile}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[spanish]{babel}
+\PrerenderUnicode{áéíóúÁÉÍÓÚüÜ}
+%%%%%%%%%%%%%%%%%%%%%%
+%% Para macros propias
+\usepackage{xspace}
+
+%move to class?
+%%usa punto en vez de coma en las ecuaciones con decimales, tiene que ir despues de babel
+\decimalpoint
+%%%%%%%%%%%%%%%%%%%%%%
+%% Mathematical packages
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+%move to class?
+%%  paquete para setear los margenes, verificar
+\usepackage[right=2cm,left=3cm,top=2cm,bottom=2cm,headsep=0cm,footskip=1cm]{geometry}
+%\usepackage{anysize}
+%\papersize{27.94cm}{21.59cm}
+%\marginsize{3.0cm}{2.0cm}{2.0cm}{2.0cm}
+
+
+%move to class?
+%% paquete para insertar links en pdf
+%colorlinks=true, resalta los links con colores
+\usepackage[pdftex,pdfborderstyle={/S/U/W 0}, 
+pdftitle={Memoria}, 
+pdfauthor={Felipe Lema}, 
+pdfsubject={Emulación}, pdfkeywords={p2p, kaillera, emulación},
+pdfcreator={Felipe Lema}]{hyperref}
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% Cite Package
+%% must go after hyperref
+%% debe ir depues de hyperref
+\usepackage{cite}
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% Numprint Pacakge
+%% allows to print number with automatic thousand separator and decimal separator
+%% Ejxamples: \numprint{2006.3}-> 2.006,3 \numprint{20009}-> 20.009
+%% permite escribir numeros con separador de miles y con separador decimal. 
+%% Ejemplos: \numprint{2006.3}-> 2.006,3 \numprint{20009}-> 20.009
+\usepackage[autolanguage]{numprint}
+\npthousandsep{.}\npdecimalsign{,}
+
+\newtheorem{lemma}{Lema}%we can specify the counter in brackets
+\newtheorem{corollary}{Corolario}
+\newtheorem{theorem}{Teorema}
+%\renewcommand{\bibliographyname}{Bibliografía u otro nombre}
+%%%%%%%%%%%%%%%%%%%%%%
+%% Listings Package
+%% Printing program/source code (C++ code)
+%% Imprime código fuente/ de programa (código C++)
+\usepackage{listings}
+\usepackage{color}
+\definecolor{gray97}{gray}{.97}
+\definecolor{gray75}{gray}{.75}
+\definecolor{gray45}{gray}{.45}
+
+\lstset{ frame=Ltb,
+     framerule=0pt,
+     aboveskip=0.5cm,
+     framextopmargin=3pt,
+     framexbottommargin=3pt,
+     framexleftmargin=0.4cm,
+     framesep=0pt,
+     rulesep=.4pt,
+     backgroundcolor=\color{gray97},
+     rulesepcolor=\color{black},
+     %
+     stringstyle=\ttfamily,
+     showstringspaces = false,
+     basicstyle={\ttfamily\small},
+     commentstyle=\color{gray45},
+     keywordstyle=\bfseries,
+     %
+     numbers=left,
+     numbersep=15pt,
+     numberstyle=\tiny,
+     numberfirstline = false,
+     breaklines=true,
+     %
+     float,
+     language=C++,
+     columns=fixed,
+     escapeinside={//*}{\^^M}, %labels
+     tabsize=2
+   }
+\renewcommand{\lstlistlistingname}{Códigos}
+\renewcommand{\lstlistingname}{Código}
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% Algorithms Package
+%% Printing pseudocode
+%% Imprime pseudo-código
+\usepackage{algorithmic}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% clrscode3e Package
+%% Typeset pseudo-code "Intro to Algorithms" style
+%% Formatea pseudo-código al estilo de "Introducción a Algoritmos"
+\usepackage{clrscode3e}
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% subfig Package
+%% to have subfigures within figures, or subtables within table floats
+\usepackage{subfig}
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%
+%macros
+%%%%%%%%%%%%%%%%%%%%
+\newcommand{\kai}{\textit{Kaillera}\xspace}
+\newcommand{\fba}{\texttt{fba}\xspace}
+
+
+%%%%%%%%%%%%%%%%%%%%
+%Definicion de variables de la portada
+%%%%%%%%%%%%%%%%%%%%
+%%Logo
+%\grafica{escudocolor.png}{Logo de la Universidad de Chile}{logo}{0.6}
+%% B. Nombre Institucion
+\universidad{Universidad de Chile}
+\facultad{Facultad de Ciencias Físicas y Matemáticas}
+\departamento{Departamento de Ciencias de la Computación}
+%% C. Titulo
+\title{Autenticación Desmentible y Canales Anónimos}
+%% D. Proposito titulacion
+\trabajoygrado{Presentación del Tema de Memoria para optar al título de Ingeniero Civil en Computación}
+%% E. Autor
+\author{Alonso Emilio González Ulloa}
+%% F. Profesores guia, co-guia e integrantes, los 3 primeros son obligatorios
+\profguia{Sr. Alejandro Hevia Angulo} %profesor guia
+%\profcoguia{?} %profesor co-guia
+%\profint{?} %profesor integrante
+%\profinta{Sr. ZZ ZZ ZZ} %profesor integrante 2, generalemente no es necesario
+%\profintb{Sr. ZZZ ZZZ ZZZ} %profesor integrante 3, generalmente no es necesario
+%% G. Lugar y fecha
+\ciudad{Santiago}
+\pais{Chile}
+\monthpub{Mayo}
+\yearpub{2010}
+%por ahora hay que poner el proyecto en mayusculas y si los saltos de linea deben ir a mano
+%\proyecto{ESTE TRABAJO HA SIDO FINANCIADO EN PARTE POR EL PROYECTO \\ FONDECYT 12345678 Y POR EL PROYECTO CORFO 2009/8956-4}
+
+%%%%%%%%%%%%%%%%%%%%%
+%% Lista de TODOS y FIXMEnS, no aparece si es que no hay nada que hacer
+\listoftodos
+\newpage
+%% Portada
+\maketitle
+
+%% Pagina optativa, ahora creo que ya no va
+%\section{Calificaciones}
+%\makeeval
+% Necesita revision en caso de uso
+\begin{preface} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Resumen
+\section{Introducción}
+
+La criptografía trata de resolver los problemas que aparecen cuando
+se necesita ocultar información en un mensaje. La necesidad de ocultar
+la información nace cuando un individuo desea comunicar dicha información
+a un tercero, enviando un mensaje a travez de un medio en el cual
+hay escuchas. ¿Por qué queremos ocultar información? la respuesta
+debe ser muy interesante, pero es claro que escapa un poco a las Ciencias
+de la Computación y se adentra más en la sicología y esos parajes.
+
+En general se modela el fenómeno anterior con tres pesonajes, Alice,
+Bob y Eva. Alice desea transmitir información a Bob, para lo cual
+envía un mensaje. Bob a su vez desea recuperar la información enviada
+por Alice a partir del mensaje. La tercera participante, Eva, puede
+leer y/o manipular el mensaje, y por lo tanto podría obtener o manipular
+la información que Alice intenta comunicar a Bob.
+
+La situación anterior inspira a estudiar la forma en que se transmite
+el mensaje, pues no se considera factible aislar el medio de comunicación
+de los posibles escuchas. Esta última consideración nace de situaciones
+reales en donde se aplican las técnicas criptográficas. Como las redes
+de computadoras (aka internet), en las cuales los canales son públicos
+y todos pueden ver y hasta manipular los mensajes que viajan por la
+red.
+
+Debemos entonces estudiar la forma en que se trasmite el mensaje.
+Como Eva puede hacer practicamente lo que quiere debemos restringirla
+un poco para así no tener que lidiar con un monstruo que probablemente
+escapará de nuestras manos%
+\footnote{Para ver que pasa, ver la noción de {}``Seguridad Perfecta'' propuesta
+por Shannon cuando por primera vez intento abordar estos problemas.
+En ella la comunicación se hace imposible a menos que los secretos
+que comparten Alice y Bob sean tan grandes como el mensaje. Algo fútil. %
+}. Limitamos entonces a Eva a un algoritmo, pero no cualquiera, a uno
+en BPP. Es decir puede tirar monedas para tomar decisiones aleatorias,
+llegará a un resultado con probabilidad de error acotada y en promedio
+tomara tiempo polinomial en su ejecución. Obtenemos así un adversario
+realista, que podríaa aparecersenos cuando nos conectamos a nuestro
+banco para robarnos nuestro preciado dinero, o cuando chateamos con
+un amigo y le contamos nuestras alegrias y miserias. Del mismo modo
+debemos modelar a Alice y Bob, pues tomemos en cuenta también que
+las técnicas que se desean obtener deben corresponderan a un proceso
+bién definido, y que se exprese con una secuencia finita de pasos.
+
+En la literatura se podran encontrar diversas cuestiones que no se
+desea que Eva pueda hacer, y quizás algunas escaparan al esbozo de
+definición que acá se intenta hacer. Por lo que debe haber sido necesario
+hacer un poco de taxonomía de las diversas técnicas que se han ido
+descubriendo/creando.
+
+La primera categoría engloba las técnicas en las cuales se desea preservar
+la privacidad de la información transmitida. Por lo tanto Eva no debe
+ser capaz de deducir la (o parte de) información. Una segunda categoria
+que podemos encontrar es la autenticación. En la cual Alice es capaz
+de imprimir autoría en sus mensajes de modo que Bob puede verificarla.
+Acá Eva no debe ser capaz de Engañar a Bob, enviando nuevos mensajes
+a nombre de Alice o modificando mensajes que ha enviado.
+
+Una clasificación transversal a la anterior es la distinción entre
+Criptografía de Clave Privada o Criptografía Simétrica y la Criptografía
+de clave Pública o Criptografía Asimétrica. En la primera Alice y
+Bob parten en el inicio de los tiempos compartiendo un clave que Eva
+desconoce. Y con ello buscan tener ventajas sobre Eva que les permitiran
+lograr su cometido. Cómo compartieron la clave, no es parte del modelo,
+pero puede haber sido pasándosela frente a frente sin escuchas. En
+el caso de la la Criptografía de Clave Pública Alice genera una clave
+privada, que tanto Bob como Eva desconocen, y publica una clave pública
+a la cual todos tienen acceso. En este caso la información privada
+de Alice y su vinculación cuidadosa a la información pública permiten
+despreocuparse de Eva.
+
+En esta memoria se trata la capacidad de desmentir o \textit{denyability}
+, transversal también pues se da tanto en la Criptografía de clave
+pública/privada como en la privacidad y la autenticación. Cuando queremos
+obtener capacidad de desmentir queremos que Alice y/o Bob sean capaces
+de negar que transmitieron cierta información. Exigimos por lo tanto
+que Eva no sea capaz de probar ciertas afirmaciones o que Alice o
+Bob sean capaces de mentir mostrando escenarios ficticios que s� parecen
+veros�miles a Eva.
+
+Siguiendo la primera clasificaci�n, y dentro de �sta la segunda, obtenemos
+los siguientes escenarios:
+
+
+\subsubsection*{Encriptaci�n desmentible (Deniable encryption)}
+
+Alice desea transmitir a Bob a bob un mensaje $M$, para lo cual envia
+otro mensaje $C$. A $M$ se le denomina {}``texto plano'' (plaintext
+en ingl�s) y a $C$ {}``texto cifrado'' (ciphertext). En primer
+lugar debemos garantizar que efectivamente se comunica $M$, por lo
+tanto Bob debe ser capaz de obtener $M$ a partir de $C$. Deseamos
+adem�s que $M$ sea transmitido privadamente de Alice a Bob, es decir
+Eva no es capaz de calcular una cantidad informaci�n no despreciable
+de $M$ a partir de $C$. La capacidad de desmentir aparece cuando
+nos ponemos en la siguiente situaci�n: despu�s de terminada la comunicaci�n
+en que Alice envi� $C$ a Bob, Eva encara a Alice o Bob inclusive
+y lo(s) obliga a entregar el mensaje $M$. Entoces la �nica forma
+que tienen Alice o Bob de no revelar su secreto es convencer a Eva
+de que un segundo mensaje $M'$ pudo haber sido transmitido. Por lo
+tanto Eva no debe ser capaz de distinguir claramente entre estos dos
+escenarios, el primero donde Alice comnica$M$ a Bob enviando $C$
+y el segundo donde comunica $M'$ enviando $C$. Este noci�n fu� introducida
+por Canetti, Dwork, Naor y Ostrovsky en \cite{key-6}.
+
+La t�cnica usada en \cite{key-6} para un escenario de clave p�blica
+se basa en la construcci�n de conjuntos particulares llamados conjuntos
+translucidos. Para los cuales se conjetura que es computacionalmente
+infactible diferenciar un elemento elegido a al azar de entre sus
+elementos ($\mathcal{S}$-elementos), de un elemento elejido al azar
+de un superconjunto del conjunto transl�cido ($\mathcal{R}-elementos$)
+(en general $\{0,1\}^{n}$ para alg�n $n$ suficientemente grande)%
+\footnote{En realidad se logra reducir a supuestos m�s ampliamente aceptados,
+como la existencia de funciones unidireccionales.%
+}. A menos que se conozca cierta informaci�n de puerta secreta o \textit{trapdoor}
+a la cual Eva nunca tiene acceso. Para esconder el valor 0 Alice escoje
+un n�mero par al azar $k$ de $\mathcal{S}$-elemntos y $m-k$ $\mathcal{R}$-elementos
+al azar. Para esconder 1 hace lo mismo, salvo que ahora $k$ es impar.
+Al conocer Bob la informaci�n secreta, puede calcular la paridad de
+$k$, que correspondera al mensaje original que Alice quer�a transmitir.
+En caso de que Eva enfrente a Alice o a Bob, exigiendoles el mensaje
+original (0 o 1) y el n�mero $k$ con que obtuvieron el mensaje enviado.
+Tanto alice como Bob podr�n responder $k-1$, frente a lo cual Eva
+no le quedar� m�s que creer pues no conoce la informaci�n secreta.
+Las primitivas usadas
+
+En un escenario de clave privada Alicia y Bob comparten un secreto
+a priori al cual Eva no tiene acceso. En tal caso Alice y Bob podr�an
+mentir tambien sobre el secreto o clave que compart�an y Eva no se
+dar�a cuenta. Es por ello que hay que considerar a la clave como otra
+posible parte falseable.
+
+
+\subsubsection*{Autenticaci�n Desmentible (Deniable Authentication)}
+
+Alice desea transmitir a Bob un mensaje $M$ de modo tal que Bob puede
+estar completamente seguro de que exactamente $M$ fu� el mensaje
+enviado por Alice. Para lograr lo anterior Alice calcula un segundo
+mensaje $t$, que adiciona al original entregando $(M,t)$ a Bob.
+A $M$ se le denomina {}``texto plano'' (\textit{plaintext} en ingl�s)
+y a $t$ {}``etiqueta'' (\textit{tag}). Para garantizar que es $M$
+el mensaje que originalmente escribi� Alice, y que efectivamente fu�
+ella quien lo escribio, damos la oportunidad a Eva de generar mensajes
+falsos. Frente a esto Bob debe ser capaz de distinguir los mensajes
+de de Eva de los de Alice, por lo que exigimos que Eva no sea capaz
+de crear un par $(M,t)$ veros�mil.
+
+La capacidad de desmentir surge cuando adem�s queremos que Bob no
+sea capaz de probar a un tercero que efectivamente Alice le autentic�
+$M$. Imponer esa restricci�n es bastante trivial en un escenario
+de clave privada, pues lo �nico que diferencia a Alice del resto (la
+clave $k$) tambi�n es conocida por Bob. Entonces este escenario se
+puede desmentir la autoridad de un mensaje, pues si Bob o Alice intentan
+probar que Alice fue quien gener� $(M,t)$, nos daremos cuenta de
+que sus argumentos ser�n nefastos partiendo del hecho de que Bob conoce
+todo lo necesario para generar $(M,t)$ (la clave $k$).
+
+Resulta entonces interesante preguntarse si es factible obtener deniability
+en un escenario de clave p�blica. La primera respuesta afirmativa
+fue dada por Dwork, Nahor y Sahai en \cite{key-9}. Tambi�n podemos
+encontrar esquemas de autenticaci�n desmentible en \cite{key-3}.
+Las t�cnicas utilizadas en ambos son las conocidas como pruebas sin
+divulgaci�n (en \textit{{}``zero knowledge proofs''} y desde ahora
+ZKP\cite{key-1}). Y en \cite{key-3} adicionalmente usan como bloque
+de construcci�n una primitiva criptogr�fica conocida como compromiso
+o \textit{{}``commitment''}\cite{key-1}.
+
+La necesidad usar ZKP nace de que lo �nico que {}``hace especial''
+a Alice es su clave privada (es lo �nico que permitir�a distinguirla
+de otra persona). Es menester entonces que para autenticarse pruebe
+a Bob que efectivamente posee dicha llave. Esta prueba debe ser tal
+que le parezca a Eva que pudo haber sido generada por cualquier persona
+distinta de Alice, es decir, que no conoc�a la clave privada. Si se
+examina m�s detenidamente esta situaci�n es posible notar que esto
+es efectivamente una ZKP. En efecto, una ZKP es una conversaci�n entre
+dos algoritmos $P$ (que vendr�a a ser Alice) y $V$ (que es Bob).
+$P$, el provador, posee un secreto o algo que le permite tomar ventaja
+de $V$; $V$, el verificador, es un algoritmo en BPP que distingue
+si $P$ efectivamente conoce el secreto o intenta enga�arlo. La conversacion
+de estos algoritmos, que consideraremos su salida, deber� ser tal
+que es indistinguible de la salida de un tercer algoritmo , $S$ o
+el simulador, que reproduce la conversaci�n anterior sin conocimiento
+del secreto.%
+\footnote{La definici�n anterior correponde a ZKP para verificadores honestos.
+Si desea verificadores no honestos, tome cualquier verificador no
+honesto $V^{*}$ y obtenga para �l un simulador $S_{V^{*}}$ cuya
+salida es indistinguible de la conversaci�n de $P$ con $V^{*}$.%
+} Notemos entonces que no existira ninguna prueba con que Eva pueda
+acusar a Alice o Bob de ser autores de la conversaci�n. Por tanto
+Alice ha probado a Bob que efectivamente conoce la clave privada,
+pero Bob ni Eva han aprendido nada adicional en la conversaci�n. Lo
+que les impedir�a probar la partipaci�n de Alice en la conversaci�n.
+Existe una noci�n a�n m�s fuerte en la cual si Alice intenta probar
+que si particip� en la conversaci�n, no podr� hacerlo pues su �nica
+prueba es su estado y puede ser reproducido por un simulador.
+
+Tomando en cuenta la definici�n de deniability supongamos que Alice
+capaz de, dado que conoce $m$, $t$ y $c$ poder encontrar un $r$
+talque se cumpla $f(m,r,t)=c$, pero le es computacionalmente infactible
+si no conoce $t$. Por esta raz�n se conoce a $t$ como la puerta
+secreta de $f$ (en ingl�s \textit{trapdoor}). Si $t$ fuese la clave
+de Alice una prueba de que puede resolver la ecuaci�n anterior conociendo
+$m$, ser�a una prueba de que Alice conoce $t$. Por lo tanto �es
+Alice! (Alice es la �nica persona que conoce $t$). Una forma de instanciar
+el problema anterior es con commitments.
+
+Un commitment es una funci�n \texttt{Com} que dado la tripleta $m,r,pk$
+retorna retorna $c=\mathtt{Com}_{pk}(m,r)$, y presenta las siguientes
+propiedades:
+\begin{itemize}
+\item $\mathtt{Com}_{pk}(m,r)$ se puede calcular eficientemente.
+\item \textit{Ligamiento (binding}): Dado $c=\mathtt{Com}_{pk}(m,r)$ es
+dif�cil encontrar un segundo par $m',r'$ talque $\mathtt{Com}(m',r')=c$,
+con $m\neq m'$.
+\item \textit{Ocultamiento (hiding)}: Dado $c=\mathtt{Com}_{pk}(m,r)$ es
+dif�cl encontrar $m$.
+\end{itemize}
+Una clase especial de commitments son los llamdos trapdoor commitments,
+los cuales adicionalmente cumplen la siguiente propiedad:
+\begin{itemize}
+\item Dado $c=\mathtt{Com}_{pk}(m,r)$ y el conocimiento de una puerta secreta
+$t$ es f�cil encontrar un segundo par $m',r'$ talque $c=\mathtt{Com}_{pk}(m',r')$.
+\end{itemize}
+Llamemos \texttt{TCom} al trapdoor commitment que Alice usa de modo
+que dado el conocimiento de $r'$, $t$ $c=\mathtt{Com}_{pk}(m,r)$,
+$\mathtt{TCom}_{pk}(m',r',t)=\mathtt{Com}_{pk}(m',r')=c$%
+\footnote{Se puede pensar en esta ecuaci�n como en una en la que hay que despejar
+$r'$%
+} encuentra un $m'$ que satisface lo anterior. Notemos que usando
+la propiedad de hiding y que \texttt{TCom} es un commitment con puerta
+secreta, entonces es una funci�n con la misma propiedad que $f$.
+
+
+\subsubsection*{El modelo cuando hay muchos participantes}
+
+Una preocupaci�n que surge de lo anterior es si estas propiedades
+escalan. Es decir, se siguen teniendo las mismas garant�as de seguridad
+si en vez de considerar a Alice y Bob consideramos tambi�n tambi�n
+a Pepe, Juantito, etc. Los nuevos participantes invitan no solo a
+considerar muchas ejecuciones de los protocolos anteriores, sino tambi�n
+ejecuciones en paralelo. Es decir, mientras Alice habla con Bob tambien
+esta hablando con Pepe y otros m�s. Para el caso de deniable authentication
+en \cite{key-3}, usando el modelo descrito en \cite{key-5}, muestran
+que su protocolo es capaz de ejecutar simultaneamente un n�mero logaritmico
+de veces sin perder seguridad.
+
+Otro aspecto importante que surge en este escenario es que, si vemos
+en la realidad, cuando muchos participantes interact�an se d� generalmente
+en una red. Donde para que Alice env�e un mensaje a Bob, primero tiene
+que enviar un mensaje a Pepe, este a Diego, etc. Y finalmente Rosa
+le env�a el mensaje a Bob, claro que podr�a ser otra secuencia dependiendo
+de la {}``topolog�a de la red''. La topolog�a de la red viene dada
+por las distintas conexiones punto a punto entre los participantes
+de una red y podr�amos representarla por un grafo. �Qu� problemas
+de seguridad pueden aparecer en este escenario? la pregunta es bastante
+amplia, pero si la restringimos a que los problemas esten relacionados
+con deniability, en particular deniable authentication, podemos darnos
+cuenta de lo siguiente. Recordemos que en un escenario de autenticaci�n
+lo �nico hace a Alice reconocible es su clave secreta. Respecto a
+eso el hecho de que ahora Alice sea parte de una red hace que haya
+una nueva forma de identificarla. En efecto, podemos decir que Alice
+es la vecina de Juan y de Diego, o que en alg�n momento hablaron los
+participantes m�s alejados, etc. Como vemos la topolog�a de la red
+nos d� una nueva forma de identificar a los participantes. Al respecto
+Chaum en \cite{key-7} propuso redes en las cuales es posible ocultar
+estas propiedades (Anonimous Channels), conocidas como {}``Mixing
+Networks'' y. Claro que Chaum no consider� un escenario en que los
+participante quieren obtener deniable authentication, por lo que no
+es claro que se puedan combinar ambas t�cnicas.
+
+Esta memoria intentar� entonces responder la pregunta anterior, �es
+posible obtener deniable authentication y canales an�nimos a la vez?.
+La respuesta probablemente sea positiva %
+\marginpar{Supongo que esto es lo que piensas t�. Crees que vale la pena que
+lo deje? porque para hacerlo se me hace que deber�a poner una referencia
+para hacer tal afirmaci�n%
+} pero posiblemente el protocolo resultante no sea eficiente y puede
+ser que haya algun tipo de redundancia dado que las primitivas usadas
+son similares y podr�an {}``traslaparse''. 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Dedicatoria: Pagina Optativa
+\dedicatoria{A mi Sol}
+%% Pagina optativa
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Agradecimientos: Pagina Optativa
+\section{Agradecimientos}
+Agradezco a mi profesor guía Jo por su apoyo y orientación a lo largo de este trabajo. Nahid
+Akbar (a.k.a. Killer Civilian) por sus opiniones y conociemientos con \kai \textit{p2p}.
+\texttt{iq\_132} y los usuarios de los foros de FinalBurn Alpha por su ayuda con el código del
+emulador. A Joaquín, Sebastián y Haníbal por sus \textit{feedbacks}.\\
+
+%Finalmente, al buscador Google por responderme tan rápido las dudas técnicas para esta memoria.\\
+\begin{flushright}
+Felipe Lema S.
+\end{flushright}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Indices varios
+%% Indice General
+\tableofcontents
+%% Indice de Tablas : Pagina Optativa
+%\listoftables
+%% Indice de Figuras : Pagina Optativa
+\listoffigures
+
+\end{preface}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\input{../escritura/introduccion.tex}
+%\input{../escritura/antecedentes.tex}
+%\input{../escritura/desarrollo_inicial.tex}
+%\input{../escritura/sinc_perdidas.tex}
+%\input{../escritura/implementacion.tex}
+%\input{../escritura/conclusiones.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{abbrv}
+\bibliography{biblio}{}
+%\begin{additional}
+%\section{Ambiente de desarrollo}
+
+%\section{Glosario}
+%\section{Material Complementario}
+%\end{additional}
+
+\begin{appendix}
+\lstset{ frame=Ltb,
+     framerule=0pt,
+     aboveskip=0.5cm,
+     framextopmargin=3pt,
+     framexbottommargin=3pt,
+     framexleftmargin=0.4cm,
+     framesep=0pt,
+     rulesep=.4pt,
+     backgroundcolor=\color{gray97},
+     rulesepcolor=\color{black},
+     %
+     stringstyle=\ttfamily,
+     showstringspaces = false,
+     basicstyle={\ttfamily\footnotesize},
+     commentstyle=\color{gray45},
+     keywordstyle=\bfseries,
+     %
+     numbers=left,
+     numbersep=15pt,
+     numberstyle=\tiny,
+     numberfirstline = false,
+     breaklines=true,
+     %
+     float,
+     language=C++,
+     columns=fixed,
+     escapeinside={//*}{\^^M}, %labels
+     tabsize=2
+   }
+\section{Código clase \texttt{p2pSync}}
+\label{apend:codigo:p2pS}
+%\lstinputlisting{../../../fbasrc029704/src/libs/p2pSync/p2pSync.cpp}
+\section{Código clase \texttt{MessageManager}}
+\label{apend:codigo:MM}
+%\lstinputlisting{../../../fbasrc029704/src/libs/p2pSync/MessageManager.cpp}
+\section{Código clase \texttt{P2pPlayer}}
+\label{apend:codigo:PP}
+%\lstinputlisting{../../../fbasrc029704/src/libs/p2pSync/P2pPlayer.cpp}
+
+\end{appendix}
+\end{document}

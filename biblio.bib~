@@ -1,0 +1,62 @@
+@MISC{
+        Kr09,
+        AUTHOR    = "Sebastian Kreft C.",
+        TITLE     = "Escribiendo un Template de Memoria para LaTeX"
+}
+@MISC{
+        mmog,
+        AUTHOR    = "Morgan Roberts",
+        TITLE     = "A Study of the Massively Multiplayer Online Business Model within the Interactive Entertainment Industry",
+        YEAR      = "2005",
+		month	  = "december"
+}
+@MISC{
+        kaishouldpeer2peer,
+        AUTHOR    = "Kaillera Forums",
+        TITLE     = "``Kaillera should go peer to peer''",
+		HOWPUBLISHED = "\url{http://www.kaillera.com/forums/viewtopic.php?f=2&t=3444}",
+        NOTE    = "Retrieved on September 1st, 2008."	
+}
+@inproceedings{
+        fairsync,
+        AUTHOR    = "Bei Di Chen and Muthucumaru Maheswaran",
+        TITLE     = "A Fair Synchronization Protocol with Cheat Proofing for Decentralized Online Multiplayer Games",
+	booktitle = "Proceedings of the Network Computing and Applications, Third IEEE International
+Symposium",
+	year	  = "2004",
+	pages 	  = "372--375"
+}
+@InProceedings{
+	lowbw,
+	author = "Jeffrey Pang and Frank Uyeda and Jacob R. Lorch",
+	title =  "6th International Workshop on Peer-to-Peer Systems",
+	booktitle = "Scaling Peer-to-Peer Games in Low-Bandwidth Environments",
+	year = "2007",
+	month = "february"
+}
+
+@InProceedings{
+  colyseus,
+  title =	"Colyseus: {A} Distributed Architecture for Online
+		 Multiplayer Games",
+  author =	"Ashwin R. Bharambe and Jeffrey Pang and Srinivasan
+		 Seshan",
+  publisher =	"USENIX",
+  year = 	"2006",
+  bibdate =	"2007-08-28",
+  bibsource =	"DBLP,
+		 http://dblp.uni-trier.de/db/conf/nsdi/nsdi2006.html#BharambePS06",
+  booktitle =	"NSDI",
+  crossref =	"conf/nsdi/2006",
+  URL =  	"http://www.usenix.org/events/nsdi06/tech/bharambe.html"
+}
+
+@Book{
+  tanenbaum,
+  author =	"Andrew S. Tanenbaum and Maarten van Steen",
+  booktitle =	"Distributed systems: principles and paradigms",
+  year = 	"2002",
+  publisher =	"Prentice Hall",
+  ISBN = 	"0-13088893-1",
+}
+
