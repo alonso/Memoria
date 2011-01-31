@@ -1,0 +1,51 @@
+\chapter{Modelo Criptográfico}
+
+Demostraremos las garantías de seguridad de nuestro protocolo en el
+\textit{framework Generalized Universal Composability} (GUC). GUC \cite{conf/tcc/CanettiDPW07}
+es una generalizacion del \textit{framework Universal Composability}
+\cite{conf/focs/Canetti01}. Ambos sirven para modelar protocolos criptgráficos concurrentes,
+pero GUC adicionalmente modela protocolos concurrentes que comparten estado entre si.
+Primero revisaremos el framework UC pues GUC se construye a partir de UC con pequeñas,
+pero muy significativas, modificaciones.\\
+
+\subsection{The Universal Composability framework (UC)}
+UC es una metodología para modelar modularizadamente protocolos criptograficos que son ejecutados en redes
+del ``mundo real" (por ejemplo internet). El espiritu de UC es diseñar un protocolo y luego abstraer la
+seguridad que uno espera de él en un protocolo ideal, ejecutado en condiciones especiales que garantizan
+su seguridad. Luego se debe demostrar que ejecutar el protcolo real y ejecutar el protocolo ideal es
+escencialmente lo mismo, por lo tanto el protocolo real es tan seguro como el protocolo ideal.\\
+Los protocolos reales son pueden ser ejecutados concurrentemente con muchos otros protocolos,
+y tambien pueden ser ejecutados distribuidos entre varios participantes.
+Como en el mundo real el protocolo puede ser monitoreado por terceros y algunos participantes pueden salirse
+arbitrareamente del protocolo atentando con la seguridad. Todo el posible mal comoportamiento es ejecutado por una sola
+máquina, el Adversario (real) $\mathcal{A}$. En una ejecución del protocolo el adversario puede espíar y
+manipular todos los mensajes intercambiados, también puede manejar la distribución de mensajes a su antojo,
+y además puede \textit{corromper} participantes del protocolo y ejecutar codigo arbitrario en ellos.\\
+Por otro lado estan los protocolos ideales, llamados \textit{funcionalidades ideales} denotadas por 
+$\mathcal{F}$. Las funcionlidades ideales son ejecutadas en un mundo ideal, donde es una entidad confiable
+la encargada de ejecutar su código. En el mundo ideal existe un adversario ideal o \textit{simulador}
+$\mathcal{S}$, pero este no puede espíar ni controlar la comunicación más de lo que la funcionalidad ideal
+permite.\\
+La configuración en la que el protocolo real es ejecutado con el adversario real es conocida como \textit{mundo
+real}, y la configuración en que la funcionalidad ideal es ejecutada con el adversario ideal es conocida como
+\textit{mundo ideal}. En ambos mundos la ejecución del protocolo concurrentemente con otros protocolos esta a cargo
+de una máquina especial conocida como el ambiente y denotado por $\mathcal{Z}$. De este modo en UC los protocolos
+pueden ser analizados aislados de resto del mundo. Para asegurarse que el protcolo real alcanza la seguridad deseada
+se debe tener que para cualquier ejecución del protocolo en el mundo real y para cualquier estrategia adversarial
+(esto es para todo ambiente y para todo adversario) existe una estrategia adversarial con recursos limitados (un
+adversario ideal) que tiene el mismo efecto que la estrategia adversarial real (el ambiento no es capaz de percatarse
+de ninguna diferencia entre la ejecución del protocolo real y el protocolo ideal).\\
+Para definir formalmente las nocienes intuitivas descritas anteriormente es necesario introducir un modelo de
+cálculo conocido como Máquinda de Turing Interactiva , más precisamente sitemas de ITM.
+
+\subsection{Sistemas de Máquinas de Turing Interactivas}
+Las Máquinas de Turing Interactivas corresponden a Máquinas de Turing multicinta que poseen cintas que pueden ser
+escritas externamente. D
+
+\section{Generalized Universal Composabillity}
+
+Before the GUC framework were proposed an alternative way
+to model protocols sharing state in the UC framework was the use of JUC theorem, but this is not as general as
+it only allows protocols sharing state among themselves. Instead the GUC framework models protocols sharing state with
+unpredictable other protocols.\\
+
