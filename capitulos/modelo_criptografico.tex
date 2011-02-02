@@ -8,7 +8,7 @@ pero GUC adicionalmente modela protocolos concurrentes que comparten estado entr
 Primero revisaremos el framework UC pues GUC se construye a partir de UC con pequeñas,
 pero muy significativas, modificaciones.\\
 
-\subsection{The Universal Composability framework (UC)}
+\section{The Universal Composability framework (UC)}
 UC es una metodología para modelar modularizadamente protocolos criptograficos que son ejecutados en redes
 del ``mundo real" (por ejemplo internet). El espiritu de UC es diseñar un protocolo y luego abstraer la
 seguridad que uno espera de él en un protocolo ideal, ejecutado en condiciones especiales que garantizan
@@ -39,8 +39,97 @@ Para definir formalmente las nocienes intuitivas descritas anteriormente es nece
 cálculo conocido como Máquinda de Turing Interactiva , más precisamente sitemas de ITM.
 
 \subsection{Sistemas de Máquinas de Turing Interactivas}
-Las Máquinas de Turing Interactivas corresponden a Máquinas de Turing multicinta que poseen cintas que pueden ser
-escritas externamente. D
+
+Las Máquinas de Turing Interactivas corresponden a Máquinas de Turing con cintas especiales que pueden ser
+escritas externamente. A dichas cintas las llamamos escribibles externamente (EW), y son de escritura única,
+es decir, el cabezal siempre se mueve a la derecha.
+
+\newtheorem{definicion}{Definición}
+
+\begin{definicion}
+Una Máquina de Turing Interactiva $M$ es una Máquina de Turing con las siguientes cintas:
+\begin{enumerate}
+    \item Una cinta EW de identidad.
+    \item Una cinta EW del parámetro de seguridad.
+    \item Una cinta EW de entrada.
+    \item Una cinta EW de comunicación entrante.
+    \item Una cinta EW de salidas de subrutinas.
+    \item Una cinta de salida.
+    \item Una cinta de bits aleatorios.
+    \item Una cinta de activación, de lectura y escritura y de 1 bit de tamaño.
+    \item Una cinta de lectura y escritura para trabajo. 
+\end{enumerate}
+\end{definicion}
+
+La cinta de identidad contiene un string que representa la identidad de $M$, que se interpreta
+como si estuviera compuesto por dos substrings: el identificadod de sesión (SID) y el identificador
+de participante (PID). Identificamos a cada instancia de una ITM (ITI) por el par
+$\mu = (\langle M \rangle, id)$, con $\langle M \rangle$ el código de $M$ y $id$ el contenido de la cinta
+de identidad. En general omitimos los $\langle \rangle$ y con $M$ nos referimos tanto a la máquina como
+al código.\\
+La cinta del parámetro de seguridad contiene un string de la forma $1^k$, con $k$ el parámetro de seguridad 
+\footnote{El parámetro de seguridad indica el nivel de seguridad en el cual se esta ejecutando
+la máquina, y en general mientras crece se debería tener que la seguridad del protocolo ejecutado
+con la máquina también crece.}.\\
+La cinta de salida contendrá la salida de $M$ una vez que haya terminado.\\
+La cinta de bits aleatorios contiene suficientes bits aleatorios para que $M$ pueda realizar sus cálculos.\\
+La cinta de trabajo es la usual cinta de trabajo de las Máquinas de Turing.\\
+La cinta de activación tiene el valor 0 si la $M$ no esta activada y 1 si lo esta. La secuencia de
+configuraciones de una ejecución de $M$
+\footnote{Una configuración corresponde a un objeto que determina completamente un instante
+en la computación de una MT. Podemos ver la ejecuciónde una MT como una secuencía de configuraciones, donde la
+primera configuración corresponde a la MT en su estado inicial y la(s) cinta(s) con la(s) entrada(s), y la
+configuración final corresponde a la MT en un estado final.}
+esta compuesta por subsecuencias en las
+que en cada configuración la $M$ esta activada. A dichas subsecuencias se les conoce como \textit{secuencias
+de activación}.\\
+Las otras cintas toman importancia cuando $M$ es ejecutada ``conectada" con otras máquina
+en un Sistema de ITMs.\\
+
+\begin{definicion}
+Un Sistema de ITMs $S$ viene dado por $S = (I, C)$, donde $I$ es la ITM inicial y $C$ es la función
+de control $C:\{0,1\}^* \to \{0,1\}$.
+\end{definicion}
+Inicialmente la ITI $\mu_0 = (I, 0)$ es activada, el sITM terminará cuando $I$ termine y su
+salida sera la salida lo que $I$ deje en su cinta de salida.\\
+Una ITI $\mu = (M, id)$ puede escribir en una de las cintas de otra ITI $\mu' = (M', id')$, 
+para ello es necesario que $\mu$ ejecute una instrucción
+especial llamada \texttt{escritura-externa} y debe especificar la cinta en de $\mu'$ en la que quiere
+escribir y los datos a escribir en esa cinta
+\footnote{Formalmente podríamos decir que $M$ entra en un estado especial y en su cinta de
+trabajo se encuentra un string $x$ que determina $\mu'$, la cinta objetivo y los datos a escribir
+en la cinta objetivo}.
+La semántica de la instrucción de \texttt{escritura-externa} es como sigue:\\
+
+\begin{enumerate}
+    \item Si la funciónde control $C$ aplicada a toda la secuencia de intrucciones \texttt{escritura-externa}
+          que se han realizado hasta ahora retorna 0, entonces la instrucción es ignorada.
+    \item Si $C$ retorna 1 pero no existe una ITI en el sITM $\mu'' = (M'', id'')$ talque $id''=id'$, se
+          crea una nueva ITI con código $M'$ y con identidad $id'$. Para ello se crea una nueva ITM
+          que en la cinta de identidad contiene $id'$, el la cinta del parámetro de sugirdad contiene $1^k$
+          y en la cinta de bits aleatorios contiene suficientes bits aleatorios. A continuación se evalúa
+          el punto siguiente.
+    \item Si $C$ retorna 1 y existe una ITI en el sITM $\mu'' = (M'', id'')$ talque $id''=id'$:
+    \begin{enumerate}
+        \item Si la cinta objetivo de la intrucción era la cinta de comunicación entrante de $\mu'$, entonces
+              los datos especificados son escritos en la cinta de comunicación entrante de $\mu''$ y $\mu''$
+              es activada. Notemos que esto es hecho independiente de si el código de $\mu''$ es el mismo
+              código especificado por $\mu$, con el fin de rescatar que una ITI no conoce el código de la
+              ITI con que se comunica a través de escrituras en la cinta de comunicación entrante.
+        \item Si la cinta objetivo era la cinta de entrada de $\mu'$ y $M' = M''$, entonces los datos
+              especificados son escritos en la cinta de entrada de $\mu''$ y $\mu''$ es activada. En este caso
+              la instrucción modela llamados a otras ITIs como subrutina, dentro de un entorno seguro ($\mu$
+              conoce el código que esta ejecutando $\mu''$).
+        \item Si la cinta objetivo es la cinta de salida de subrutina de $\mu'$, entonces los datos
+              especificados son escritos en la cinta de salida de subrutina de $\mu''$. En este caso la
+              instrucción modela el retorno de una llamada a subrutina, en que la subrutina no conoce
+              el código de la ITI que la llamó.
+    \end{enumerate}
+\end{enumerate}
+
+Ahora estamos listos para definir la ejecución de un protocolo en UC
+
+\subsection{Ejecución de un protocolo}
 
 \section{Generalized Universal Composabillity}
 
