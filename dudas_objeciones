@@ -1,0 +1,4 @@
+Función de Control (modelo_criptografico.tex:195):
+Si un participante P_i manda un mensaje a un participante P_j
+(P_i ejecutra instruccion de escritura externa en la cinta de comunicacion entrante de P_j)
+el mensaje siempre llegará a P_j. No veo como A puede botar mensajes.
