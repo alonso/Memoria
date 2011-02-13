@@ -1,45 +1,11 @@
-\chapter{Modelo Criptográfico}
+%TODO Habrá un nombre mejor?
+\chapter{Marco Teórico}
 
-Demostraremos las garantías de seguridad de nuestro protocolo en el
-\textit{framework Generalized Universal Composability} (GUC). GUC \cite{conf/tcc/CanettiDPW07}
-es una generalizacion del \textit{framework Universal Composability}
-\cite{conf/focs/Canetti01}. Ambos sirven para modelar protocolos criptgráficos concurrentes,
-pero GUC adicionalmente modela protocolos concurrentes que comparten estado entre si.
-Primero revisaremos el framework UC pues GUC se construye a partir de UC con pequeñas,
-pero muy significativas, modificaciones.\\
+\begin{definicion}[Largo de un string]
+\end{definicion}
 
-\subsection{The Universal Composability framework (UC)}
-The UC framework is a methodology for a modularized designing and modularized proving the security of
-\textit{real world} cryptographics protocols. The spirit of UC is to create a protocol and then abstract the
-security one  want the protocol have into a idealized secure protocol. Then it must be shown that
-executing the real or the idealized protocol is essentially the same, and then real protocol is as
-secure as the idealized protocol.\\
-Real world protocols are modeled as protocols running in a complete concurrent setting with many other protocols and
-possibly distributed among many parties. As in the real world the protocol can be monitored and some participants
-can have ``undesired" behavior, attempting with the desired security of the protocol. All the possible undesired behavior
-executed by one machine, the real adversary $\mathcal{A}$. In an execution of the protocol the adversary can eavesdrop and
-manipulate all the data sent from one  party to another, can corrupt some parties and then execute
-arbitrary code on them. On the other hand the ideal protocol, called the ideal functionality usually denoted by
-$\mathcal{F}$, runs in an ideal setting,
-that is executed by a secure party and the monitoring is restricted. In the ideal world there exists an ideal adversary
-$\mathcal{S}$ but it cannot
-eavesdrop and is only allowed to stop or drop exchanged data. The setting where the ideal protocol is executed with the
-real adversary is known as the \textit{real world}, and the setting where the ideal protocol is executed with the ideal
-adversary is known as the \textit{ideal world}. In both worlds concurrent execution with arbitrary other protocols is
-given by a special machine known as environment. In UC both the real an ideal protocol are analyzed isolated from other
-possibly concurrent protocols. It is considered that all the externals protocols and the outside calls to the protocol
-are are executed by the environment.
-To ensure that the real protocol achieves
-the desired security it must hold that that for any execution of the protocol in real world and for any adversarial
-strategy (that is for all environments and all real adversaries) there exists an adversarial strategy with limited
-resources (an ideal adversary) that has the same effect (the environment is not aware of any difference between the
-two strategies).\\
+\section{Indistinguibilidad}
 
-
-\section{Generalized Universal Composabillity}
-
-Before the GUC framework were proposed an alternative way
-to model protocols sharing state in the UC framework was the use of JUC theorem, but this is not as general as
-it only allows protocols sharing state among themselves. Instead the GUC framework models protocols sharing state with
-unpredictable other protocols.\\
-
+\subsection{Algunas \textit{Setup assumptions} comunes}
+\subsubsection{String público aleatorio CRS}
+\subsubsection{Interfaz de clave pública PKI}

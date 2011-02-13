@@ -1,0 +1,26 @@
+\chapter{Desmentibilidad}
+Deniable authentication was first defined, outside the (G)UC framework, by Dwork, Nahor and Sahai in
+\cite{DwoNaoSah04}. Several modifications and generalizations have been made since then, and here we consider
+the definition given by Dodis, Katz, Smith and Walfish in \cite{conf/tcc/DodisKSW09}, since that is the one who
+applies to a concurrent and distributed setting\\
+Roughly speaking a protocol is deniable if nobody can prove that a particular session of
+the protocol is taking place or have ever took place. In \cite{conf/tcc/DodisKSW09} is shown that such property
+can be achieved considering an on line judge who must decide who is he talking to: an informant who is observing
+a real session of the authentication protocol, or a mis informant who do not have access to the real session of
+the protocol but still try to convince the judge that the session is taking place. The protocol is said to be
+an on-line deniable authentication protocol if for all judge and all informants there exist a mis informant such that
+the judge can't distinguish from the informant and the mis informant with overwhelming probability. In the
+full version of \cite{conf/tcc/DodisKSW09} is demonstrated that this notion is equivalent to GUC-realize the
+functionality $\mathcal{F}_{auth}$. They pointed out that in the GUC framework a protocol GUC-realizing
+a functionality $\mathcal{F}$ is as deniable as $\mathcal{F}$. The ideal functionality $\mathcal{F}_{auth}$ is
+``fully simulatable'', that means that the protocol can be completely simulated without the participation
+% Tengo una duda. En conf/tcc/DodisKSW09 nunca definen a los protocolos on-line deniable, solo definen
+% los on-line deniable authentication. No se como definir los on-line deniable sin que paresca que los
+% defini yo, porque salvo la definicion con titulo definition hablan siempre en terminos generales
+of any party, then the functionality $\mathcal{F}_{auth}$ is deniable. Because a judge can distinguish
+from the real protocol, the ideal functionality and the simulated ideal functionality.\\
+Then we can define deniable protocols in a very similar way that a deniable authentication protocol is defined,
+in terms of a judge, an informant and a misinformant.
+Using the same arguments of \cite{conf/tcc/DodisKSW09} we can show  that a protocol is deniable if it
+GUC-realize a fully simulatable functionality.
+

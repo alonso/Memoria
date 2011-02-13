@@ -1,0 +1,56 @@
+\chapter{Anonimato} \label{sect:AC}
+% Para que quede mejor podria poner tu definicion de anonimato, pero consecuentemente deberia probar
+% que la funcionalidad ideal F_aac cumple con una de las defs. Cosa que no he hecho
+Anonymous channels allow users to exchange messages without revealing their identities. Several protocols
+have been proposed in the literature for anonymous channels. The modern study of anonymous channels was
+started in \cite{journals/cacm/Chaum81} with \textit{mix-nets}. In a mix-net protocol the vector of all
+parties encrypted messages are sent trough a set of \textit{mixers}. Each mixer perform an operation on cyphertexts
+(usually partial decryption or reencryption) and send a random permutation to the next mixer. Finally the
+last mixer publish a permutation of the vector of parties messages. Several modifications have been proposed
+to mix-nets since Chaum's seminal paper, increasing tolerance to dishonest parties, robustness and many other
+desirable properties.\\
+To realize our protocol we use the universal composable mix net proposed by Wikstr\"om in \cite{Wikstrom04a}.
+Basically Wikstr\"om's mix net proceeds as follows:
+
+\begin{enumerate}
+
+\item Each sender $P_i$ waits for mixers public keys and computes the product public key.
+      Then each encrypt his message under the product public key, publish the cyphertext
+      to a bulletin board an prove in zero knowledge that it is a valid cyphertext.
+\item Each mix net $M_j$ $j\in{1, \ldots, k}$ discards all the published cyphertexts that
+      are not valid. Then, for $l = 1, \ldots, k$ if $l = j$ the mixer partially decrypt
+      the list of cyphertexts obtained from the bulletin board, perform a randomly chosen
+      permutation on the list of cyphertext, publish on the bulletin board and prove in
+      zero knowledge that the published list is a random permutation of the previous list.
+      If $l \neq j$ the mixer must check that the permutation published by the mixer $M_l$
+      is a valid one. Finally lexicographically sort the final published list and output it.
+
+\end{enumerate}
+
+In \cite{Wikstrom04a} is shown that this protocol UC-realize the ideal functionality $\mathcal{F}_{MN}$,
+defined in figure \ref{func:F_MN}, in the $\mathcal{F}_{KG}-hybrid$ model. 
+% Podria ser bueno In the apendix we show that this protocol also GUC-realize con F_KG share
+
+
+\begin{figure}
+\begin{centering}
+\framebox{\begin{minipage}[t]{1\columnwidth}
+\center{The Ideal functionality $\mathcal{F}_{MN}$ running with mixers $M_{1}, \ldots, M_{k}$, senders
+        $P_{1}, \ldots, P_{N}$, and ideal adversary $\mathcal{S}$}
+\begin{enumerate}
+    \item Initialize a list $L = \emptyset$, and sets $J_P = \emptyset$ and $J_M = \emptyset$.
+    \item Suppose $(P_{i}, \mathtt{Send}, m_{i})$  $m_{i} \in G_q$ is received from $\mathcal{C_I}$.
+          If $i\notin J_P$, set $J_P \leftarrow J_P \cup \{i\}$, and append $m_i$ to the list $L$. Then
+          hand $(\mathcal{S}, P_i, \mathtt{Send})$ to $\mathcal{C_I}$.
+    \item Suppose $(M_{j}, \mathtt{Run})$ is received from $\mathcal{C_I}$. Set
+          $J_M \leftarrow J_M \cup \{j\}$. If $|J_M | \geq k/2$, then sort the list $L$ lexicographically
+          to form a list $L'$, and hand
+          $((\mathcal{S}, M_{j}, \mathtt{Output}, L'), \{M_l , \mathtt{Output}, L'\}_{l=1}^{k})$ to
+          to $\mathcal{C_I}$. Otherwise, hand $\mathcal{C_I}$ the list $(\mathcal{S}, M_{j}, \mathtt{Run})$
+\end{enumerate}
+\end{minipage}}
+\end{centering}
+\caption{The functionality $\mathcal{F}_{MN}$}
+\label{func:F_MN}
+\end{figure}
+
