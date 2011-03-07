@@ -243,39 +243,39 @@ $\mathrm{EXEC}_{\mathcal{Z}, \mathcal{A}, \pi} = \mathrm{OUT}_{(\mathcal{Z}, C^{
 
 \subsection{Teorema de composición}
 
-La noción principal que entrega UC es la emulación de protocolos, que viene dada por la inhabilidad de
+La noción principal que entrega UC es la emulación de protocolos, que viene dada por la inabilidad de
 $\mathcal{Z}$ de distinguir entre la ejecución de dos protocolos.
 
 \begin{definicion}
-Decimos que un protocolo $\pi$ UC-emula a otro protocolo $\phi$ si y solo si para cualquier ambiente
+Decimos que un protocolo $\pi$ UC-emula a otro procotolo $\phi$ si y solo si para cualquier ambiente
 $\mathcal{Z}$ y para cualquier adversario $\mathcal{A}$ existe un adversario $\mathcal{S}$ talque
 $$\mathrm{EXEC}_{\mathcal{Z}, \mathcal{A}, \pi} \approx \mathrm{EXEC}_{\mathcal{Z}, \mathcal{S}, \phi}$$
 \end{definicion}
 
-Supongamos que tenemos un protocolo $\pi$, que llama como subrutina a $\rho$. Si ningún ambiente puede
+Supongamos que tenemos un protocolo $\pi$, que llama como subrutina a $\rho$. Si ningun ambiente puede
 distinguir entre la ejecución del protocolo $\rho$ de otro protocolo $\phi$, es útil preguntarse si se pueden
-cambiar todas las llamadas de $\pi$ a $\rho$ por llamadas a $\phi$ sin cambiar el funcionamiento de
+cambir todas las llamadas de $\pi$ a $\rho$ por llamadas a $\phi$ sin cambiar el funcionamiento de
 $\pi$. La conjetura anterior es corroborada por el teorema \ref{teo:composicion}, el teorema de composición.
 Definamos primero que es ``cambiar todas las llamadas a $\rho$ por llamadas a $\phi$".
 
-\begin{definicion}[Operador Composición]
+\begin{definicion}[Operador Composicion]
 Sea $\pi$ un protocolo que (posiblemente) hace llamadas a $\rho$. Definimos el operador composición $/$ de forma tal
-que $\pi^{\rho/\phi}$ es idéntico que el protocolo $\pi$ salvo que cada instrucción \texttt{escritura-externa}
+que $\pi^{\rho/\phi}$ es identico que el protocolo $\pi$ salvo que cada instrucción \texttt{escritura-externa}
 con código $\rho$, es cambiada por la misma instrucción \texttt{escritura-externa} con código $\phi$.
 \end{definicion}
 
-Una propiedad adicional que necesitan cumplir los protocolos es que sean \textit{subroutine respecting}, que
-básicamente significa que no comparten estado.
+Una propiedad adicional que necesitan cumplir los protocolos es que sean \textit{soubroutine respecting}, que
+basicamente significa que no comparten estado.
 
-\begin{definicion}[Protocolo subroutine respecting]
-Decimos que un protocolo $\rho$ es subroutine respecting si ningún participante o sub-participante de $\rho$
-pasa input o recibe output de una ITI que es participante o sub-participante de otra instancia de algún
+\begin{definicion}[Protocolo soubroutine respecting]
+Decimos que un protocolo $\rho$ es soubroutine respecting si ningún participante o sub-participante de $\rho$
+pasa input o recibe output de una ITI que es participante o sub-participante de otra instancia de algun
 protocolo.
 \end{definicion}
 
 \begin{teorema}[Composición]
 Sean $\pi, \rho, \phi$ protocolos tales que $\rho$ UC-emula a $\phi$ y $\rho$ y $\phi$ son protocolos
-subroutine respecting. Entonces el protocolo $\pi^{\rho/\phi}$ UC-emula al protocolo $\pi$.
+soubroutine respecting. Entonces el protocolo $\pi^{\rho/\phi}$ UC-emula al protoclo $\pi$.
 \label{teo:composicion}
 \end{teorema}
 
@@ -286,16 +286,16 @@ que se pueden ejecutar concurrentemente
 con con $\rho$. Es precisamente por eso que $\pi^{\rho/\phi}$ podría no UC-emular a $\pi$, pues en la configuración
 en la cual es ejecutado $\phi$, donde ningún ambiente puede distinguirlo de $\rho$, se ejecuta solamente una
 instancia de $\phi$ y de ningún otro protocolo más. Lo que permite concluir acerca de $\pi^{\phi/\rho}$ es la
-cuantificación sobre todos los ambientes y que tanto $\rho$ como $\phi$ son protocolos \textit{subroutine
+cuantificación sobre todos los ambientes y que tanto $\rho$ como $\phi$ son protocolos \textit{soubroutine
 respecting}. Al cuantificar sobre todos los ambientes estamos diciendo que, en particular, la UC-emulación
 también se tiene para ambientes que simulan internamente ejecuciones de otros protocolos como las que podría
-hacer $\pi$. El único problema podría ser que las ejecuciones en paralelo de otros protocolos estén
-``correlacionadas'' de alguna forma con $\rho$, pero esto no es posible pues al ser $\rho$ \textit{subroutine respecting}
+hacer $\pi$. El único problema podría ser que las ejecuciones en paralelo de otros protocolos esten
+``correlacionadas'' de alguna forma con $\rho$, pero esto no es posible pues al ser $\rho$ \textit{soubroutine respecting}
 su ejecución es independiente de cualquier otro protocolo. Dicho de otra forma, para que un protocolo
 este ``correlacionado'' con $\rho$ es necesario que $\rho$ lo llame directamente, o que ambos llamen a un protocolo
 en común. El primer caso no es problemático, pues el protocolo correlacionado seria un subprotocolo de $\rho$
-y sería parte de una ejecución de $\rho$. El segundo caso no es posible, pues el protocolo que $\rho$ compartiría
-sería una instancia externa y contradeciría que $\rho$ es \textit{subroutine respecting}.\\
+y sería parte de una ejecucion de $\rho$. El segundo caso no es posible, pues el protocolo que $\rho$ compartiría
+sería una instancia externa y contradeciría que $\rho$ es \textit{soubroutine respecting}.\\
 
 Otra forma de interpretar el teorema de composición es que nos permite asumir que el protocolo $\pi$ hace llamadas
 a $\phi$ y no a $\rho$, lo cual puede ser útil cuando no sabemos si $\rho$ es seguro pero asumimos que $\phi$
@@ -316,21 +316,21 @@ Una instancia del participante tontito, denotado por $\tilde P$, es una ITI cuyo
 \end{enumerate}
 \end{definicion}
 
-La funcionalidad ideal recibirá entradas de los participantes tontitos y escribirá en su cinta de salida de
-subrutina los resultados del cómputo que corresponden a cada participante. Por lo tanto su funcionamiento
+La funcionalidad ideal recibirá entradas de los participantes tontitos y escribira en su cinta de salida de
+subrutina los resultados del cómputo que corresponden a cada particpante. Por lo tanto su funcionamiento
 entrada/salida debe ser el deseado, esto es la funcionalidad debe ser \textit{correcta}. Adicionalmente
 debe rebelar solo la información necesaria, de modo tal que la consideremos \textit{segura}. Una ITI
 que ejecuta el código de una funcionalidad ideal sera creada igual que cualquier otra ITI, a excepción
-que su cinta de identidad tendrá como contenido un string de la forma $sid||\perp$, de modo tal que $\perp$
+que su cinta de identiadad tendrá como contenido un string de la forma $sid||\perp$, de modo tal que $\perp$
 es un símbolo especial distinto a cualquier otro PID.\\
 Como en una instancia del protocolo $\mathrm{IDEAL}_\mathcal{F}$ la comunicación entre participantes y
 funcionalidades (y de este modo entre participantes) es por la cinta de entrada y la cinta de salida
-de subrutina, el adversario del protocolo ideal $\mathcal{S}$ se ve limitado en su capacidad de
+de subrutina, el adversario del protocolo ideal $\mathcal{S}$ se vé límitado en su capacidad de
 espiar o modificar la comunicación. En primera instancia $\mathcal{S}$  no tiene ninguna injerencia en
 la comunicación, pero en general para que $\mathrm{IDEAL}_\mathcal{F}$ sea un protocolo ``implementable''
 por un protocolo real es necesario que $\mathcal{F}$ de cierta injerencia a $\mathcal{S}$ en la comunicación.
-En general se asume que las respuestas de $\mathcal{F}$ a los participantes tontitos pueden ser retardadas tanto
-como $\mathcal{S}$ lo desee, incluso por un tiempo infinito. El filtraje de información dependerá del propósito
+En general se asume que las respuestas de $\mathcal{F}$ a los participantes tontitos pueden ser retradas tanto
+como $\mathcal{S}$ lo desee, incluso por un tiempo infinito. El filtraje de información dependera del propósito
 de $\mathcal{F}$.\\
 De forma simular a la UC-emulación definimos la UC-realización de una funcionalidad ideal.
 
@@ -354,7 +354,7 @@ Como corolario del teorema \ref{teo:composicion} tenemos el siguiente resultado.
 
 \begin{corolario}
 Sean $\pi, \rho$ protocolos y $\mathcal{F}$ una funcionalidad ideal tales que $\rho$ UC-realiza
-$\mathcal{F}$ y $\rho$ es un protocolo subroutine respecting. Entonces el protocolo
+$\mathcal{F}$ y $\rho$ es un protocolo soubroutine respecting. Entonces el protocolo
 $\pi^{\rho/\mathrm{IDEAL}_\mathcal{F}}$ UC-emula a $\pi$.
 \label{corolario:uc-realizacion}
 \end{corolario}
@@ -373,17 +373,17 @@ híbridos}.
 
 \begin{definicion}[Modelo Híbrido]
 Decimos que un protocolo $\pi$ es ejecutado en el modelo $\mathcal{F}$-híbrido si cada participante puede
-hacer llamados a una instancia local al protocolo $\pi$ función ideal $\mathcal{F}$. 
+hacer llamados a una instania local al protocolo $\pi$ función ideal $\mathcal{F}$. 
 \end{definicion}
 
 De forma similar se puede definir el modelo $\mathcal{F}_1, \ldots, \mathcal{F}_n$-híbrido para
 funcionalidades ideales $\mathcal{F}_1, \ldots, \mathcal{F}_n$.\\
 
 En la figura \ref{fig:dolev-yao} se puede apreciar la forma de analizar en UC un protocolo $\pi$
-que llama como subrutina al protocolo $\rho$. Primero se muestra que el protocolo $\pi$ UC-emula a
+que llama como subrutina al protocolo $\rho$. Primero se muestra que el prtocolo $\pi$ UC-emula a
 la funcionalidad ideal $\mathcal{G}$ en el modelo $\mathcal{F}$-híbrido , y luego se muestra que el
-protocolo$\rho$ UC-emula a la funcionalidad ideal $\mathcal{F}$. Finalmente se puede concluir que
-$\pi$ UC-emula $\mathcal{G}$ en el modelo \textit{plano}, esto es, sin acceso a la funcionalidad
+prtocolo$\rho$ UC-emula a la funcionalidad ideal $\mathcal{F}$. Finalmente se puede concluir que
+$\pi$ UC-emula $\mathcal{G}$ en el modelo \textit{plano}, esto es, sin acceso a la funcionlidad
 ideal $\mathcal{F}$.
 
 \begin{figure}[hp]
@@ -403,10 +403,10 @@ A continuación listamos dos modelos de corrupción.
 \subsubsection{Adversarios dinámicos}
 En este caso el conjunto de participantes a los que corrompe el adversario esta fijo a priori, por
 lo tanto no pueden depender de los distintos valores que se van obteniendo en la ejecución del
-protocolo. En este caso se puede asumir que el adversario corrompe a los participantes del
+protocolo. En este caso se puede asúmir que el adversario corrompe a los participates del
 antes de la ejecución del protocolo.\\
 El conjunto de adversarios estáticos esta estrictamente contenido en el conjunto de adversarios
-y corresponde a una simplificación irreal de UC. Sin embargo es útil para comenzar a estudiar
+y corresponde a una simplificación irreal de UC. Sin embargo es útil para comezar a estudiar
 un protocolo en UC.
 
 \subsubsection{Adversarios dinámicos}
@@ -416,26 +416,26 @@ pueden irse haciendo conforme avanza el protocolo.
 
 \section{Generalized Universal Composabillity}
 Como vimos en la sección \ref{sect:uc}, para poder aplicar el teorema de composición (teorema
-\ref{teo:composicion}) es necesario que el protocolo sea \textit{subroutine respecting}.
+\ref{teo:composicion}) es necesario que el protocolo sea \textit{soubroutine respecting}.
 Esto es, el protocolo y todas sus subrutinas no deben intercambiar entradas o salidas con otros
 protocolos externos a la sesión. Así, el protocolo analizado es independiente de de cualquier
 otro protocolo por lo que su comportamiento entrada/salida y los mensajes intercambiados en su
 ejecución también son independientes. Sin embargo puede resultar poco realista en ciertas ocasiones.\\
-Una escenario donde no es realista asumir que un protocolo es subroutine respecting es donde
-es necesario asumir la existencia de funcionalidades ideales sin estar UC-realizadas por algún
-protocolo, lo que se conoce como una \textit{setup assumptions}. Esto es necesario cuando se desea
-desarrollar un protocolo que UC-realice cierta funcionalidad, que se sabe irrealizable sin una setup
+Una escenario donde no es realista asumir que un protocolo es soubroutine respecting es donde
+es necesario asumir la existencia de funcionalidades ideales sin estar UC-realizadas por algun
+protocolo, lo que se conoce como una \textit{setup assumptions}. Esto es neceario cuando se desea
+desarrollar un protocolo que UC-realize cierta funcionalidad, que se sabe irrealizable sin una setup
 assumption. Por ejemplo consideremos el caso de ZKP, es sabido que es imposible UC-realizar
 ZKP (UC-realizar la funcionalidad ideal $\mathcal{F}_{ZK}^\mathcal{R}$ para alguna relación binaria
 $\mathcal{R}$) sin \textit{setup assumptions} como por ejemplo el uso de un ``string público
 aleatorio'' (CRS) (del inglés \textit{common random string}) cuando la mayoría de los participantes
 son corruptos. $\mathcal{F}_{CRS}$ \cite{CanKusLin06}.\\
 En UC, CRS es modelado como una funcionalidad ideal $\mathcal{F}_{CRS}$ que hace público un string
-aleatorio. Ciertamente $\mathcal{F}_{CRS}$ no puede ser UC-realizado por ningún protocolo, pues
+aleatorio. Ciertamente $\mathcal{F}_{CRS}$ no puede ser UC-realizado por ningun protocolo, pues
 en ese caso sería posible UC-realizar $\mathcal{F}_{ZK}^\mathcal{R}$. Para obtener la funcionalidad ideal
 $\mathcal{F}_{CRS}$ en el mundo real es necesario que $\mathcal{F}_{CRS}$ sea ejecutado por un participante
 incorruptible e inimpersonable. Esta suposición es imposible de obtener
-\footnote{Básicamente hay que tener un servidor de CRS que nadie puede \textit{``hackear''}},
+\footnote{Basicamente hay que tener un servidor de CRS que nadie puede \textit{``hackear''}},
 solo es posible usar técnicas para evitar ataques, y no son infalibles.\\
 Suponiendo la existencia de $\mathcal{F}_{CRS}$, la forma de probar que un protocolo $\pi_{ZK}^\mathcal{R}$
 que UC-realiza $\mathcal{F}_{ZK}^\mathcal{R}$ sería probar que $\pi_{ZK}^{R}$ en el modelo
@@ -444,7 +444,7 @@ $\mathcal{F}_{CRS}$ es local al protocolo, por lo tanto para cada instancia de $
 existiría una instancia de $\mathcal{F}_{CRS}$. Más aún, también debería existir una instancia de
 $\mathcal{F}_{CRS}$ para cualquier otro protocolo que lo necesite.\\
 La forma correcta de modelar una setup assumption es considerar que es compartida por cada protocolo
-que hace uso de ella, pero en ese caso los protocolos dejan de ser subroutine respecting.
+que hace uso de ella, pero en ese caso los protcolos dejan de ser soubroutine repecting.
 En \cite{Pass03} se muestra que en el caso de un $\mathcal{F}_{CRS}$ compartido
 usado para UC-realizar ZKP, el protocolo perdería la propiedad de \textit{deniability} que es natural
 de obtener en ZKP. Más aún, en \cite{journals/tcs/YaoYZ09} se muestra que inclusive esto puede llevar
@@ -455,11 +455,11 @@ a la perdida de la correctitud del protocolo.\\
 \subsubsection{Ejecución en GUC}
 
 En GUC se define una ejecución de $\pi$ donde el ambiente no esta limitado a ejecutar solo ITIs con el código del
-protocolo analizado (a excepción del adversario) y SID fijo, ya que un protocolo en GUC es ejecutado con el
+protocolo analizado (a excepción del adverario) y SID fijo, ya que un protocolo en GUC es ejecutado con el
 sITM $(\mathcal{Z}, C_{GEXEC}^{\pi, \mathcal{A}})$, donde $C_{GEXEC}^{\pi, \mathcal{A}}$ es idéntica a
 $C_{EXEC}^{\pi, \mathcal{A}}$, salvo que no limita a $\mathcal{Z}$ como en UC pues permite al ambiente ejecutar
 cualquier protocolo. De este modo un protocolo $\pi$
-ese ejecutado concurrentemente con otros protocolos que comparten estado con $\pi$ y por lo tanto pueden existir
+ese ejecutado cocurrentemente con otros protocolos que comparten estado con $\pi$ y por lo tanto pueden existir
 ataques a un protocolo mediante la ejecución paralela de protocolos
 maliciosamente correlacionados con $\pi$, lo que no es posible de modelar en UC.\\ 
 Denotamos la salida de la ejecución de un protocolo $\pi$ en GUC por
@@ -480,7 +480,7 @@ $\mathrm{GEXEC}_{
 
 Definimos la GUC-emulación como sigue.
 
-\begin{definicion}[GUC-emulación]
+\begin{definicion}[GUC-emulacion]
 Decimos que un protocolo $\pi$ GUC-emula a otro protocolo $\rho$ si para todo ambiente $\mathcal{Z}$
 y para todo adversario real $\mathcal{A}$ existe un adversario ideal $\mathcal{S}$ talque:
 $$\mathrm{GEXEC}_{\mathcal{Z}, \mathcal{A}, \mathcal{\pi}}
@@ -493,22 +493,22 @@ Un ambiente que ejecuta un conjunto arbitrario de protocolos puede resultar comp
 pruebas de seguridad, y resulta más cómodo trabajar con un modelo más simple aunque no menos expresivo.
 En efecto es posible obtener un modelo equivalente a GUC que considera a un  solo un ambiente  con acceso
 al protocolo y las interacciones de este con los demás protocolos. En este modelo, llamado EUC (del inglés
-\textit{Externalized-subroutine UC}), el ambiente solo puede ejecutar una instancia del protocolo más una
+\textit{Externalized-souroutine UC}), el ambiente solo puede ejecutar una instancia del procolo más una
 \textit{funcionalidad compartida}.
 
 Las funcionalidades compartidas permiten al ambiente simular internamente la ejecución concurrente de
-otros protocolos. Denotadas por la barra superior $\bar{}$, son idénticas que una funcionalidad
+otros protocolos. Denotadas por la barra superior $\bar{}$, son identicas que una funcionalidad
 ideal, salvo que aceptan input de cualquier ITI independiente de su SID. Su cinta de identidad contiene
 el string $\#||\perp$, donde $\#$ es un SID distinto a todos los otros SID.\\
 
-En EUC un protocolo $\pi$ puede no ser subroutine respecting, pero sí debe ser
-$\bar{\mathcal{G}}$\textit{subroutine respecting}, donde $\bar{\mathcal{G}}$ es una funcionalidad compartida.
-Al ser $\pi$ $\bar{\mathcal{G}}$-subroutine respecting solo puede comunicarse a través de $\bar{\mathcal{G}}$,
+En EUC un protocolo $\pi$ puede no ser soubroutine respecting, pero sí debe ser
+$\bar{\mathcal{G}}$\textit{souroutibe respecting}, donde $\bar{\mathcal{G}}$ es una funcionalidad compartida.
+Al ser $\pi$ $\bar{\mathcal{G}}$-soubruotine respecting solo puede comunicarse a traves de $\bar{\mathcal{G}}$,
 lo cual no resulta extraño pues en general los protocolos criptográficos comparten estado de forma encapsulable
 en una funcionalidad (por ejemplo CRS o PKI).
 
-\begin{definicion}[Protocolo $\bar{\mathcal{G}}$-subroutine respecting]
-Decimos que un protocolo es $\bar{\mathcal{G}}$-subroutine respecting si es subroutine respecting sin
+\begin{definicion}[Protocolo $\bar{\mathcal{G}}$-soubroutine respecting]
+Decimos que un protocolo es $\bar{\mathcal{G}}$-soubroutine respecting si es soubroutine respecting sin
 tomar en cuenta llamadas a una funcionalidad $\bar{\mathcal{G}}$
 \end{definicion}
 
@@ -527,7 +527,7 @@ $ = \mathrm{OUT}_{(\mathcal{Z}, C_{EEXEC}^{\mathcal{A}, \pi, \bar{\mathcal{G}}})
 
 Definimos la EUC-emulación como sigue.
 
-\begin{definicion}[EUC-emulación]
+\begin{definicion}[EUC-emulacion]
 Decimos que un protocolo $\pi$ EUC-emula con funcionalidad compartida $\bar{\mathcal{G}}$ a otro protocolo
 $\rho$ si para todo ambiente $\mathcal{Z}$ y para todo adversario real $\mathcal{A}$ existe un adversario
 ideal $\mathcal{S}$ talque:
@@ -540,7 +540,7 @@ Se puede demostrar que un protocolo que EUC es solo una transformación sintáct
 de distinción del ambiente es el mismo en ambos.
 
 \begin{teorema}[\cite{conf/tcc/CanettiDPW07}]
-Sean $\pi$ y $\rho$ dos protocolos $\bar{\mathcal{G}}$-subroutine respecting, $\pi$ GUC-emula a
+Sean $\pi$ y $\rho$ dos protocolos $\bar{\mathcal{G}}$-souboutine respecting, $\pi$ GUC-emula a
 $\rho$ si y solo si $\pi$ EUC-emula $\rho$.
 \end{teorema}
 
@@ -560,18 +560,18 @@ ideales.
 
 \begin{teorema}[Teorema de composición generalizado \cite{conf/tcc/CanettiDPW07}]
 Sean $\pi, \rho, \phi$ protocolos tales que $\rho$ GUC-emula a $\phi$ y $\rho$ y $\phi$ son protocolos
-$\bar{\mathcal{G}}$-subroutine respecting. Entonces el protocolo $\pi^{\rho/\phi}$ GUC-emula al protocolo $\pi$.
+$\bar{\mathcal{G}}$-soubroutine respecting. Entonces el protocolo $\pi^{\rho/\phi}$ GUC-emula al protoclo $\pi$.
 \end{teorema}
 
 \begin{corolario}
 Sean $\pi, \rho$ protocolos y $\mathcal{F}$ una funcionalidad ideal tales que $\rho$ GUC-realiza
-$\mathcal{F}$ y $\rho$ es un protocolo $\bar{\mathcal{G}}$-subroutine respecting. Entonces el protocolo
+$\mathcal{F}$ y $\rho$ es un protocolo $\bar{\mathcal{G}}$-soubroutine respecting. Entonces el protocolo
 $\pi^{\rho/\mathrm{IDEAL}_\mathcal{F}}$ GUC-emula a $\pi$.
 \label{corolario:uc-realizacion}
 \end{corolario}
 
 \section{Una notación más simple para (G)UC}
-Revisaremos la notación ocupada en \cite{mnCompleto} pues simplifica el análisis de protocolos en el caso
+Revisaremos la notacion ocupada en \cite{mnCompleto} pues simplifica el análisis de protocolos en el caso
 en que el número de participantes puede estar fijo a priori. En \cite{mnCompleto} Wikstr\"om introduce una
 nueva máquina a UC, llamada el modelo de comunicación. El modelo de comunicación esta a cargo de todos los
 aspectos de la comunicación entre ITIs en UC. Esta notación simplifica la definición de qué puede hacer el
@@ -581,13 +581,13 @@ el uso de SIDs, pues los modelos de comunicación son locales a cada instancia d
 Denotamos por $\textrm{ITM}$ el conjunto de todas las ITMs.
 
 \begin{definicion}[grafo de ITMs]
-Un grafo de ITMs en un conjunto vértices $V = \{P_1, \ldots, P_t\} \subset \textrm{ITM}$ con un conjunto
+Un grafo de ITMs en un conjunto vertices $V = \{P_1, \ldots, P_t\} \subset \textrm{ITM}$ con un conjunto
 de aristas $E$ tales que $(V, E)$ es un grafo conexo, y ningún $P_i$ se puede comunicar con una máquina
 fuera de $V$. Si $(P_i, P_j)\in E$ entonces se dice que $P_i$ tiene un link con $P_j$ y viceversa
 \footnote{Las ITMs de esta formulación tienen tantas cintas de comunicación como vecinos.}.
 Sea ITMG el conjunto de todos los grafos de ITMs.\\
-Durante la ejecución de un grafo de ITMs, a lo más un participante se encuentra activo. Un participante
-activo puede desactivarse y activar a alguno de sus vecinos entregándole cierta entrada $x$, o puede
+Durante la ejecucion de un grafo de ITMs, a lo más un participante se encuentra activo. Un participante
+activo puede desactivarse y activar a alguno de sus vecinos entregandole cierta entrada $x$, o puede
 detenerse en cuyo caso la ejecución de grafo de ITMs se detiene.
 \end{definicion}
 
@@ -606,16 +606,16 @@ Su código se define como sigue.
 \end{enumerate}
 \end{definicion}
 
-Por simplicidad omitimos llamar explícitamente a modelo de comunicación real.
+Por simplicidad omitimos llamar explicitamente a modelo de comunicación real.
 Cuando en un protocolo del mundo real escribimos ``$P_i$ envía $m$ a $P_j$''
 nos referimos a ``$P_i$ envía $(P_j, m)$ a $\mathcal{C}$''.\\
-El modelo de comunicación ideal captura el hecho de que el adversario ideal puede
+El modelo de comunicación ideal captura el hecho de que el adverasio ideal puede
 decidir si y cuando enviar un mensaje desde una funcionalidad ideal a un participante,
 pero no puede leer ni modificar los contenidos de la comunicación entre participantes
 y la funcionalidad ideal.
 
 \begin{definicion}
-Un modelo de compunción ideal $\mathcal{C_I}$ es una ITM con un link $l_{P_i}$ a 
+Un modelo de comunción ideal $\mathcal{C_I}$ es una ITM con un link $l_{P_i}$ a 
 $P_i$ para $i = 1, \ldots, k$,
 y links $l_\mathcal{F}$ y $l_\mathcal{S}$ a una funcionalidad ideal $\mathcal{F}$
 y a un adversario ideal $\mathcal{S}$ respectivamente. Su código se define como sigue.
@@ -626,18 +626,18 @@ y a un adversario ideal $\mathcal{S}$ respectivamente. Su código se define como
         escrito en $l_s$. Si no, cualquier string leído desde $l_\mathcal{F}$ es interpretado
         como una lista $((r_1, m_1), \ldots, (r_t, m_t))$, donde $r_i \in \{\mathcal{S},
         P_1, \ldots, P_k\}$. Por cada $m_i$ un string aleatorio $\tau_i \in \{0, 1\}^n$ es
-        escogido, y $(r_i, m_i)$ es guardado en el registro etiquetado con $(\tau_i)$. Luego
-        $((r_1, |m_1|, \tau_1), \ldots, (r_t, |m_t|, \tau_t))$ es
-        escrito en $l_\mathcal{S}$ y $\mathcal{S}$ es activado.
+        escogdo, y $(r_i, m_i)$ es guardado en el registro etiquetado con $(\tau_i)$. Luego
+        $((r_1, |m_1|, \tau_1), \ldots, (r_t, |m_t|, \tau_t))$ is
+        written on $l_\mathcal{S}$ and $\mathcal{S}$ is activated.
   \item Todo string leído desde $l_\mathcal{S}$ es interpretado como el par $(b, \tau)$, donde
         $b \in \{0, 1\}$ y $\tau$ es un string arbitrario. Si $b = 1$ y $(r_i, m_i)$
         esta guardado en el registro etiquetado con $\tau$, $m_i$ es escrito en $l_{r_i}$
         y $r_i$ es activado. Si $b = 0$ $(\mathcal{S}, \tau)$ es escrito en
-        $l_\mathcal{F}$ y $\mathcal{F}$ es activada.
+        $l_\mathcal{F}$ y $\mathcal{F}$ is activada.
 \end{enumerate}
 \end{definicion}
 
-El modelo ideal es equivalente a una ejecución del protocolo $\textrm{IDELA}_{\mathcal{F}}$
+El modelo ideal es equialente a una ejecución del protocolo $\textrm{IDELA}_{\mathcal{F}}$
 
 \begin{definicion}
 El modelo ideal es definido como la función $\mathcal{I}:\textrm{ITM}^2 \times
@@ -652,8 +652,8 @@ Si $\tilde{\pi} = (\tilde{P}_1, \ldots, \tilde{P}_k)$, escribimos
 $\mathcal{I}(\mathcal{S}, \tilde{\pi}^\mathcal{F})$ en vez de $\mathcal{I}(\mathcal{F},
 \mathcal{S}, \tilde{P}_1, \ldots, \tilde{P}_k)$ para facilitar la notación.\\
 
-El modelo real corresponde a la ejecución de un protocolo ``real'' en UC, es decir
-donde los participantes se comunican a través de la cinta de comunicación entrante.
+El modelo real corresponde a la ejecución de un protcolo ``real'' en UC, es decir
+donde los participantes se comunican a travez de la cinta de comunicación entrante.
 
 \begin{definicion}
 El modelo real es definido como la función$\mathcal{R}:\textrm{ITM}^* \to \textrm{ITMG}$,
@@ -750,7 +750,7 @@ $\pi^{
     \ldots,
     \tilde{\pi}_t^{\mathcal{F}_t}}$
 es un protocolo que UC-realiza a la funcionalidad ideal $\tilde{\pi}^{\mathcal{F}}$. Sea $\rho^\pi$
-un protocolo subroutine respecting. Entonces el protocolo
+un prtocolo subroutine respecting. Entonces el protocolo
 $\rho^{\pi/\mathcal{F}}$ en el modelo $\mathcal{F}$-híbrido UC-emula al protocolo $\rho^\pi$
 \end{teorema}
 
@@ -771,6 +771,6 @@ $\mathcal{H}(
 escribimos $\mathcal{Z}(V, E)$ para denotar el grafo de ITMs $(V'', E'')$ definido por $V'' = V \cup
 \{\mathcal{Z}\}$, y $E'' = E' \cup \{\mathcal{Z}, \mathcal{A}\} \cup \bigcup_{i=1}^k
 \bigcup_{j=r+1}^t \{(\mathcal{Z}, \tilde{P}_{i,j})\} \cup \bigcup_{i=1}^k \{(\mathcal{Z}, P_i)\}$.
-Nótese que los links $\bigcup_{i=1}^k \bigcup_{j=r+1}^t \{(\mathcal{Z}, \tilde{P}_{i,j})\}$ son todo
+Notese que los links $\bigcup_{i=1}^k \bigcup_{j=r+1}^t \{(\mathcal{Z}, \tilde{P}_{i,j})\}$ son todo
 lo necesario para dar acceso al ambiente a las funcionalidades y compartidas y obtener GUC.
 
