@@ -48,9 +48,6 @@ pdfcreator={Felipe Lema}]{hyperref}
 \usepackage[autolanguage]{numprint}
 \npthousandsep{.}\npdecimalsign{,}
 
-\newtheorem{lemma}{Lema}%we can specify the counter in brackets
-\newtheorem{corollary}{Corolario}
-\newtheorem{theorem}{Teorema}
 %\renewcommand{\bibliographyname}{Bibliografía u otro nombre}
 %%%%%%%%%%%%%%%%%%%%%%
 %% Listings Package
@@ -172,14 +169,11 @@ pdfcreator={Felipe Lema}]{hyperref}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Agradecimientos: Pagina Optativa
 \section{Agradecimientos}
-Agradezco a mi profesor guía Jo por su apoyo y orientación a lo largo de este trabajo. Nahid
-Akbar (a.k.a. Killer Civilian) por sus opiniones y conociemientos con \kai \textit{p2p}.
-\texttt{iq\_132} y los usuarios de los foros de FinalBurn Alpha por su ayuda con el código del
-emulador. A Joaquín, Sebastián y Haníbal por sus \textit{feedbacks}.\\
+Agradezco a \ldots.\\
 
 %Finalmente, al buscador Google por responderme tan rápido las dudas técnicas para esta memoria.\\
 \begin{flushright}
-Felipe Lema S.
+Alonso González Ulloa.
 \end{flushright}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Indices varios
@@ -193,8 +187,16 @@ Felipe Lema S.
 \end{preface}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newtheorem{definicion}{Definición}
+\newtheorem{lema}{Lema}
+\newtheorem{teorema}{Teorema}
+\newtheorem{corolario}{Corolario}
+
 \input{./capitulos/introduccion.tex}
 \input{./capitulos/marco_teorico.tex}
+\input{./capitulos/modelo_criptografico.tex}
+\input{./capitulos/desmentibilidad.tex}
+\input{./capitulos/anonimato.tex}
 \input{./capitulos/protocolo.tex}
 \input{./capitulos/conclusiones.tex}
 
@@ -208,45 +210,4 @@ Felipe Lema S.
 %\section{Material Complementario}
 %\end{additional}
 
-\begin{appendix}
-\lstset{ frame=Ltb,
-     framerule=0pt,
-     aboveskip=0.5cm,
-     framextopmargin=3pt,
-     framexbottommargin=3pt,
-     framexleftmargin=0.4cm,
-     framesep=0pt,
-     rulesep=.4pt,
-     backgroundcolor=\color{gray97},
-     rulesepcolor=\color{black},
-     %
-     stringstyle=\ttfamily,
-     showstringspaces = false,
-     basicstyle={\ttfamily\footnotesize},
-     commentstyle=\color{gray45},
-     keywordstyle=\bfseries,
-     %
-     numbers=left,
-     numbersep=15pt,
-     numberstyle=\tiny,
-     numberfirstline = false,
-     breaklines=true,
-     %
-     float,
-     language=C++,
-     columns=fixed,
-     escapeinside={//*}{\^^M}, %labels
-     tabsize=2
-   }
-\section{Código clase \texttt{p2pSync}}
-\label{apend:codigo:p2pS}
-%\lstinputlisting{../../../fbasrc029704/src/libs/p2pSync/p2pSync.cpp}
-\section{Código clase \texttt{MessageManager}}
-\label{apend:codigo:MM}
-%\lstinputlisting{../../../fbasrc029704/src/libs/p2pSync/MessageManager.cpp}
-\section{Código clase \texttt{P2pPlayer}}
-\label{apend:codigo:PP}
-%\lstinputlisting{../../../fbasrc029704/src/libs/p2pSync/P2pPlayer.cpp}
-
-\end{appendix}
 \end{document}

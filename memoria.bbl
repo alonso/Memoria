@@ -1,4 +1,25 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{mnCompleto}
+Paper completo wikstrom.
+
+\bibitem{CanettiEtAl97}
+Canetti, Dwork, Naor, and Ostrovsky.
+\newblock Deniable encryption.
+\newblock In {\em CRYPTO: Proceedings of Crypto}, 1997.
+
+\bibitem{CanKusLin06}
+Canetti, Kushilevitz, and Lindell.
+\newblock On the limitations of universally composable two-party computation
+  without set-up assumptions.
+\newblock {\em JCRYPTOL: Journal of Cryptology}, 19, 2006.
+
+\bibitem{UC:completo}
+R.~Canetti.
+\newblock Universally composable security: A new paradigm for cryptographic
+  protocols.
+\newblock Cryptology ePrint Archive, Report 2000/067, 2000.
+\newblock \url{http://eprint.iacr.org/}.
 
 \bibitem{conf/focs/Canetti01}
 R.~Canetti.
@@ -6,10 +27,45 @@ R.~Canetti.
   protocols.
 \newblock In {\em FOCS}, pages 136--145, 2001.
 
+\bibitem{conf/csfw/Canetti04}
+R.~Canetti.
+\newblock Universally composable signature, certification, and authentication.
+\newblock In {\em CSFW}, page 219. IEEE Computer Society, 2004.
+
+\bibitem{conf/tcc/CanettiDPW07}
+R.~Canetti, Y.~Dodis, R.~Pass, and S.~Walfish.
+\newblock Universally composable security with global setup.
+\newblock In S.~P. Vadhan, editor, {\em TCC}, volume 4392 of {\em Lecture Notes
+  in Computer Science}, pages 61--85. Springer, 2007.
+
+\bibitem{journals/cacm/Chaum81}
+D.~Chaum.
+\newblock Untraceable electronic mail, return addresses, and digital
+  pseudonyms.
+\newblock {\em Commun. ACM}, 24(2):84--88, 1981.
+
+\bibitem{journals/joc/Chaum88}
+D.~Chaum.
+\newblock The dining cryptographers problem: Unconditional sender and recipient
+  untraceability.
+\newblock {\em J. Cryptology}, 1(1):65--75, 1988.
+
+\bibitem{conf/tcc/DodisKSW09}
+Y.~Dodis, J.~Katz, A.~Smith, and S.~Walfish.
+\newblock Composability and on-line deniability of authentication.
+\newblock In O.~Reingold, editor, {\em TCC}, volume 5444 of {\em Lecture Notes
+  in Computer Science}, pages 146--162. Springer, 2009.
+
 \bibitem{DwoNaoSah04}
 Dwork, Naor, and Sahai.
 \newblock Concurrent zero-knowledge.
 \newblock {\em JACM: Journal of the ACM}, 51, 2004.
+
+\bibitem{GolleEtAl04}
+Golle, Jakobsson, Juels, and Syverson.
+\newblock Universal re-encryption for mixnets.
+\newblock In {\em CTRSA: CT-RSA, The Cryptographers' Track at RSA Conference,
+  LNCS}, 2004.
 
 \bibitem{conf/pet/HeviaM08}
 A.~Hevia and D.~Micciancio.
@@ -17,5 +73,34 @@ A.~Hevia and D.~Micciancio.
 \newblock In N.~Borisov and I.~Goldberg, editors, {\em Privacy Enhancing
   Technologies}, volume 5134 of {\em Lecture Notes in Computer Science}, pages
   24--43. Springer, 2008.
+
+\bibitem{Pass03}
+Pass.
+\newblock On deniability in the common reference string and random oracle
+  model.
+\newblock In {\em CRYPTO: Proceedings of Crypto}, 2003.
+
+\bibitem{journals/joc/RaimondoG09}
+M.~D. Raimondo and R.~Gennaro.
+\newblock New approaches for deniable authentication.
+\newblock {\em J. Cryptology}, 22(4):572--615, 2009.
+
+\bibitem{Walfish:2008:ESM:1467461}
+S.~Walfish.
+\newblock {\em Enhanced security models for network protocols}.
+\newblock PhD thesis, New York, NY, USA, 2008.
+\newblock AAI3310580.
+
+\bibitem{Wikstrom04a}
+Wikstrom.
+\newblock A universally composable mix-net.
+\newblock In {\em Theory of Cryptography Conference (TCC), LNCS}, volume~1,
+  2004.
+
+\bibitem{journals/tcs/YaoYZ09}
+A.~C.-C. Yao, F.~F. Yao, and Y.~Zhao.
+\newblock A note on universal composable zero-knowledge in the common reference
+  string model.
+\newblock {\em Theor. Comput. Sci}, 410(11):1099--1108, 2009.
 
 \end{thebibliography}
