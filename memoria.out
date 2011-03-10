@@ -1,4 +1,5 @@
-\BOOKMARK [0][-]{section*.1}{Agradecimientos}{}
+\BOOKMARK [0][-]{section*.1}{Resumen Ejecutivo}{}
+\BOOKMARK [0][-]{section*.3}{Agradecimientos}{}
 \BOOKMARK [0][-]{chapter.1}{Introducci\363n}{}
 \BOOKMARK [1][-]{section.1.1}{Motivaci\363n}{chapter.1}
 \BOOKMARK [1][-]{section.1.2}{Descripci\363n del problema}{chapter.1}
@@ -27,9 +28,10 @@
 \BOOKMARK [1][-]{section.5.1}{Canales An\363nimos}{chapter.5}
 \BOOKMARK [1][-]{section.5.2}{Primitivas para Canales An\363nimos}{chapter.5}
 \BOOKMARK [2][-]{subsection.5.2.1}{Redes de Mezcla o Mix-nets}{section.5.2}
-\BOOKMARK [2][-]{subsection.5.2.2}{Mixnet con desencriptaci\363n}{section.5.2}
-\BOOKMARK [2][-]{subsection.5.2.3}{Broadcast Networks}{section.5.2}
-\BOOKMARK [2][-]{subsection.5.2.4}{Anonimous Broadcast o DC-nets}{section.5.2}
+\BOOKMARK [2][-]{subsection.5.2.2}{Mix-nets reencriptantes}{section.5.2}
+\BOOKMARK [2][-]{subsection.5.2.3}{Mixnet con desencriptaci\363n}{section.5.2}
+\BOOKMARK [2][-]{subsection.5.2.4}{Broadcast Networks}{section.5.2}
+\BOOKMARK [2][-]{subsection.5.2.5}{Anonimous Broadcast o DC-nets}{section.5.2}
 \BOOKMARK [0][-]{chapter.6}{El protocolo}{}
 \BOOKMARK [1][-]{section.6.1}{Canales An\363nimos Autentificados}{chapter.6}
 \BOOKMARK [1][-]{section.6.2}{El protocolo SIGMIX}{chapter.6}
@@ -37,4 +39,4 @@
 \BOOKMARK [1][-]{section.7.1}{Preguntas abiertas}{chapter.7}
 \BOOKMARK [2][-]{subsection.7.1.1}{Mixnet GUC-segura}{section.7.1}
 \BOOKMARK [2][-]{subsection.7.1.2}{Una modelaci\363n m\341s exacta de la componibilidad en GUC}{section.7.1}
-\BOOKMARK [0][-]{section*.33}{Referencias}{}
+\BOOKMARK [0][-]{section*.34}{Referencias}{}

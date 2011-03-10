@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.8.19)  8 MAR 2011 13:01
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.8.19)  10 MAR 2011 09:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -673,7 +673,7 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 155.
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-<escudocolor.pdf, id=163, 264.99pt x 521.95pt>
+<escudocolor.pdf, id=171, 264.99pt x 521.95pt>
 File: escudocolor.pdf Graphic file (type pdf)
  <use escudocolor.pdf>
 Overfull \vbox (25.27463pt too high) detected at line 155
@@ -682,11 +682,15 @@ Overfull \vbox (25.27463pt too high) detected at line 155
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./escudocolor.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 172--173
+(./capitulos/resumen_ejecutivo.tex) [1
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 175--176
 
  []
 
-[1
+[2
 
 
 ] (./memoria.toc
@@ -698,17 +702,21 @@ LaTeX Font Warning: Font shape `OT1/cmr/bx/sc' undefined
 Package spanish Warning: Replacing `OT1/cmr/bx/sc' by 
 (spanish)                faked small caps on input line 3.
 
-[2
+
+Package spanish Warning: Replacing `OT1/cmr/bx/sc' by 
+(spanish)                faked small caps on input line 4.
+
+[3
 
 ])
 \tf@toc=\write5
 \openout5 = `memoria.toc'.
 
- [3] (./memoria.lof)
+ [4] (./memoria.lof)
 \tf@lof=\write6
 \openout6 = `memoria.lof'.
 
- [4
+ [5
 
 ]
 \c@definicion=\count157
@@ -734,11 +742,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 44--52
 
  []
 
-<figs/tcpip_simple.pdf, id=295, 843.15pt x 444.66125pt>
+<figs/tcpip_simple.pdf, id=311, 843.15pt x 444.66125pt>
 File: figs/tcpip_simple.pdf Graphic file (type pdf)
 
 <use figs/tcpip_simple.pdf> [2] [3]
-<figs/sigmix_simple.pdf, id=319, 685.56125pt x 639.38875pt>
+<figs/sigmix_simple.pdf, id=334, 685.56125pt x 639.38875pt>
 File: figs/sigmix_simple.pdf Graphic file (type pdf)
 
 <use figs/sigmix_simple.pdf>) (./capitulos/marco_teorico.tex [4] [5 <./figs/tcp
@@ -799,7 +807,7 @@ Overfull \hbox (11.90318pt too wide) in paragraph at lines 235--237
  $\OML/cmm/m/it/12 ^^Y$ \OT1/cmr/m/n/12 en UC por $[][] = [][]$ 
  []
 
-<figs/mundo_real.pdf, id=406, 746.79pt x 586.19pt>
+<figs/mundo_real.pdf, id=421, 746.79pt x 586.19pt>
 File: figs/mundo_real.pdf Graphic file (type pdf)
  <use figs/mundo_real.pdf>
 [12] [13 <./figs/mundo_real.pdf>]
@@ -807,7 +815,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 283--300
 
  []
 
-[14] [15] <figs/mundo_ideal.pdf, id=450, 824.07875pt x 584.1825pt>
+[14] [15] <figs/mundo_ideal.pdf, id=465, 824.07875pt x 584.1825pt>
 File: figs/mundo_ideal.pdf Graphic file (type pdf)
 
 <use figs/mundo_ideal.pdf>
@@ -815,7 +823,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 380--382
 
  []
 
-<figs/dolev_yao.pdf, id=453, 1139.25626pt x 399.4925pt>
+<figs/dolev_yao.pdf, id=468, 1139.25626pt x 399.4925pt>
 File: figs/dolev_yao.pdf Graphic file (type pdf)
 
 <use figs/dolev_yao.pdf> [16 <./figs/mundo_ideal.pdf>]
@@ -834,7 +842,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 458--474
 
  []
 
-[18] <figs/mundo_real_guc.pdf, id=485, 990.70125pt x 680.5425pt>
+[18] <figs/mundo_real_guc.pdf, id=500, 990.70125pt x 680.5425pt>
 File: figs/mundo_real_guc.pdf Graphic file (type pdf)
 
 <use figs/mundo_real_guc.pdf>
@@ -854,11 +862,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 516--521
 
  []
 
-<figs/mundo_real_euc.pdf, id=486, 990.70125pt x 586.19pt>
+<figs/mundo_real_euc.pdf, id=501, 990.70125pt x 586.19pt>
 File: figs/mundo_real_euc.pdf Graphic file (type pdf)
 
 <use figs/mundo_real_euc.pdf> [19] [20 <./figs/dolev_yao.pdf> <./figs/mundo_rea
-l_guc.pdf>] <figs/mundo_ideal_guc.pdf, id=504, 817.0525pt x 581.17125pt>
+l_guc.pdf>] <figs/mundo_ideal_guc.pdf, id=519, 817.0525pt x 581.17125pt>
 File: figs/mundo_ideal_guc.pdf Graphic file (type pdf)
 
 <use figs/mundo_ideal_guc.pdf>
@@ -923,7 +931,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 129--138
 
  []
 
-<figs/mixnet.pdf, id=607, 968.61874pt x 426.59375pt>
+<figs/mixnet.pdf, id=623, 968.61874pt x 426.59375pt>
 File: figs/mixnet.pdf Graphic file (type pdf)
  <use figs/mixnet.pdf>
 Overfull \hbox (7.73601pt too wide) in paragraph at lines 152--159
@@ -1087,13 +1095,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 10668 strings out of 495061
- 151557 string characters out of 1182621
+ 10676 strings out of 495061
+ 151703 string characters out of 1182621
  275545 words of memory out of 3000000
- 13331 multiletter control sequences out of 15000+50000
+ 13333 multiletter control sequences out of 15000+50000
  17364 words of font info for 68 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 44i,13n,58p,335b,592s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,13n,58p,335b,646s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
 re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texmf-tex
 live/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texmf-texlive/font
@@ -1116,9 +1124,9 @@ sr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/te
 xmf-texlive/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texmf-texlive
 /fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/share/texmf-texlive/fonts/t
 ype1/public/amsfonts/symbols/msbm10.pfb>
-Output written on memoria.pdf (53 pages, 719309 bytes).
+Output written on memoria.pdf (54 pages, 722320 bytes).
 PDF statistics:
- 922 PDF objects out of 1000 (max. 8388607)
- 279 named destinations out of 1000 (max. 500000)
- 371 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 936 PDF objects out of 1000 (max. 8388607)
+ 282 named destinations out of 1000 (max. 500000)
+ 387 words of extra memory for PDF output out of 10000 (max. 10000000)
 
