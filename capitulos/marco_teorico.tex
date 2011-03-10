@@ -1,15 +1,190 @@
 %TODO Habrá un nombre mejor?
 \chapter{Marco Teórico}
 
-\begin{definicion}[Largo de un string]
+En este capítulos hacemos distintas definiciones básicas útiles
+para este trabajo.
+
+\section{Definiciones básicas}
+
+\begin{definicion}[String]
+Decimos que $\omega$ es un string si $\omega \in \{0,1\}^*$.
 \end{definicion}
 
-\section{Indistinguibilidad}
+\begin{definicion}[Largo de un string]
+Para un string $\omega$ denotamos por $|\omega|$ al entero $k$
+talque $k$ es el número de caracteres de $|\omega|$.
+\end{definicion}
+
+\begin{definicion}[Función despreciable]
+Decimos que una función $\eta: \mathbb{N} \to \mathbb{N}$ es despreciables
+si crece más lento que el inverso de cualquier polinomio. Es decir, para
+todo polinomio $p$ existe
+un $n_0$ talque para todo $n > n_0$ se cumple que
+$$\eta(n) < \frac{1}{p(n)}$$
+\end{definicion}
+Las funciones despreciables permiten definir probabilidades ``pequeñas'' cualquier
+variable aleatorias ``algorítmicas'' (es decir corresponden a las salida de un algoritmo).
+La definición busca eliminar el efecto de ejecutar una cantidad polinomial de veces un
+algoritmo (usar el lema de amplificación).
+
+\begin{definicion}[Grupo Abeliano]
+Decimos que el par $(G,+)$, donde $G$ es un conjunto y
+$+:G^2 \to G$, es un grupo abeliano si se cumplen las siguientes propiedades:
+\begin{enumerate}
+\item (Asocioatividad) $\forall a,b,c \in G$ $(a+b)+c=a+(b+c)$.
+\item (Elemento neutro) $\exists 0 \in G$ talque $\forall a \in G$ $a+0 = 0+a = a$.
+\item (Inverso) $\forall a \in G$ $\exists -a \in G$ talque $a+-a = 0$.
+\item (Conmutatividad) $\forall a,b \in G$ $a+b = b+a$.
+\end{enumerate}
+\end{definicion}
+
+En general cuando decimos que $G$ es un grupo nos referimos a que es un grupo abeliano.
+
+\begin{definicion}[Generador]
+Decimos que $g\in G$ es un generador de $G$ si el conjunto generado por $g$ 
+$\langle g \rangle = \{g^n|n\in\mathbb{N}\}$ es igual a $G$
+\end{definicion}
+
+\begin{definicion}[Grupo cíclico]
+Decimos que $G_q$ es un grupo cíclico de orden $q$ si existe un generador
+$g$ de $G$ y $|G| = q$.
+
+\end{definicion}
+
+\section{Probabilidades discretas}
+
+\begin{definicion}[Espacio de probabilidades finito]
+Una espacio de probabilidades finito es un conjunto finito
+$\Omega = \{\omega_1, \ldots, \omega_{|\Omega|}\}$ con un conjunto
+de números $p_1, \ldots, p_{|\Omega|} \in [0,1]$ tales que
+$\sum_{i=1}^{|\Omega|}p_i=1$
+\end{definicion}
+
+A menos que se especifique lo contrario, asumimos que la distribución
+de $\Omega$ es uniforme, es decir $p_i = \frac{1}{|\Omega|}$. Al experimento
+de escoger un $\omega$ en $\Omega$ al azar denotamos por $\omega \in_R \Omega$.
+
+\begin{definicion}[Evento]
+Decimos que $A$ es un evento de $\Omega$ si $A \subseteq \Omega$. Denotamos
+por $\Pr[A] = \sum_{\omega_i \in A}p_i$  a la probabilidad de $A$
+\end{definicion}
+
+\begin{definicion}[Variable aleatoria]
+Una variable aleatoria es una función $X:\Omega \to \mathbb{R}$ que asigna a
+cada $\omega \in \Omega$ un número real $x \in \mathbb{R}$.
+\end{definicion}
+
+\begin{definicion}[Distribución]
+Dada una varibale aleatoria, definimos su distribución como la función
+$f:\mathbb{R} \to [0,1]$ talque $f(x) = \sum_{i:X(\omega_i)=x}p_i$
+\end{definicion}
+
+\begin{definicion}[Distancia estadística]
+Dadas dos variables aleatoria $X$ e $Y$ definidas sobre $\Omega$, definimos
+la distancia estadística entre ellas como
+$$\Delta(X, Y) = \max_{S\subseteq \Omega}\{X(S)-Y(S)\}$$
+\end{definicion}
+
+\subsection{Indistinguibilidad}
+La noción de indistinguibilidad es una noción fundamental en criptografía
+pues ha permitido definir la seguridad mediante la similitud entre distintos
+eventos.\\
+La indistinguibilidad es una noción
+de similaridad entre familias de variables aleatorias (o conjuntos
+de variables aleatorias) y existen tres tipos de indistinguibilidad.
+
+\begin{definicion}[Indistinguibilidad perfecta]
+Decimos que dos familias de variables aleatorias $U=\{U_x\}_{x\in\{0,1\}^*}$
+y $V=\{V_x\}_{x\in\{0,1\}^*}$ son perfectamente indistinguibles
+si $\Delta(U_x, V_x)) = 0 \qquad \forall x$.
+Denotamos la indistinguibilidad perfecta por escribimos $U_x = V_x$
+\end{definicion}
+
+\begin{definicion}[Indistinguibilidad estadística]
+Decimos que dos familias de variables aleatorias $U=\{U_x\}_{x\in\{0,1\}^*}$ y 
+$V=\{V_x\}_{x\in\{0,1\}^*}$ son estadísticamente indistinguibles
+si $\Delta(U_x, V_x)$ es despreciable en $|x|$. Denotamos la indistinguibilidad estadística
+por $U \approx Y$.
+\end{definicion}
+
+\begin{definicion}[Indistinguibilidad computacional]
+Decimos que dos familias de variables aleatorias $U=\{U_x\}_{x\in\{0,1\}^*}$ y
+$V=\{V_x\}_{x\in\{0,1\}^*}$ son estadísticamente indistinguibles
+para todo algoritmo polinomial aleatorizado $A$ existe una función despreciable
+$\eta$ y un entero $n_0$ talque si $|x| > n_0$
+$|\Pr[A(U_x)=1] - \Pr[A(V_x)=1]| \leq \eta(|x|)$. Denotamos la indistinguibilidad
+computacional por $U \overset{c}{\approx} V$.
+\end{definicion}
+
+\section{Definiciones criptográficas básicas}
+
+\subsection{El problema de Diffie-Hellman decisonal (DDH)}
+El problema DDH \cite{diffie-hellman_me:1976a} es un problema que se considera
+difícil, es decir se conjetura
+que no existe un algoritmo polinomial que lo solucione, para ciertos
+grupos. DDH es una herramienta fundamental en la Criptografía moderna pues
+permite la construcción eficientes primitivas con una variada aplicabilidad.
+
+\begin{definicion}[DDH]
+Sea $G_q$ un grupo cíclo de orden $q$. Decimos que en $G_q$ se cumple DDH
+si las variables aleatorias $(g^\alpha, g^\beta, g^\gamma) \overset{c}{\approx}
+(g^\alpha, g^\beta, g^{\alpha \cdot \beta})$ dado que $\alpha, \beta, \gamma \in_R G_q$.
+\end{definicion}
+
+\subsection{Esquemas de Encriptación}
+Decimos que $\mathcal{E} = (K, E, D)$, con conjunto de textos planos $M$ y conjunto de textos
+cifrados $C$,es un esquema de encriptación simétrico si para todo
+$r \in \{0, 1\}^\kappa$, dado $k = K(\kappa; r)$ , para todo $m\in M$ $D_k(E_k(m))=m$.
+
+Decimos que $\mathcal{E} = (K, E, D)$, con conjunto de textos planos $M$ y conjunto de textos
+cifrados $C$,es un esquema de encriptación asimétrico si para todo
+$r \in \{0, 1\}^\kappa$, dado $(sk, pk) = K(\kappa; r)$ , para todo $m\in M$ $D_{sk}(E_{pk}(m))=m$.
+
+
+\subsection{Indistinguibilidad bajo ataque de texto plano escogido (IND-CPA)}
+Tabién conocida como \textit{seguridad semántica} es una definición de privacidad de un esquema
+critográfico. Apunta a que un esquema de encriptación $\mathcal{E} = (K, E, D)$ es seguro si ningún atacante es capaz de
+dinstinguir entre la encriptación de cualesqueir par de mensajes $m_1, m_2$.
+
+
+\begin{definicion}[Experimento IND-CPA]
+Definimos el experimento IND-CPA parametrizado por un aloritmo $\mathcal{A}$,
+un esquema de encriptación $\mathcal{E}$, parametro de seguridad $\kappa$ y
+un bit $b$, denotado por $\mathrm{EXP}^\mathrm{IND-CPA}_\mathcal{E}(\mathcal{A}, b)$,
+como la variable aleatoria resultante de
+ejecutar el experimento descrito en la figura \ref{fig:ind_cpa}
+\end{definicion}
+
+
+\begin{definicion}[Seguridad IND-CPA]
+Decimos que un esquema de encriptación $\mathcal{E}$ es IND-CPA seguro si
+$$\mathrm{EXP}^\mathrm{IND-CPA}_\mathcal{E}(\mathcal{A}, 1) \approx
+\mathrm{EXP}^\mathrm{IND-CPA}_\mathcal{E}(\mathcal{A}, 0)$$
+\end{definicion}
+
+\begin{figure}
+\begin{centering}
+\framebox{\begin{minipage}[t]{1\columnwidth}
+El experimento IND-CPA  ejecutado con adversario $\mathcal{A}$, esquema de encritación $\mathcal{E} = (K, E, D)$,
+un bit $b \in\{0,1\}$ y parámetro de seguridad $\kappa$ procede como sigue:
+\begin{enumerate}
+    \item Escoger las clave del esquema, $k \overset{R}{\leftarrow} K(\kappa)$.
+    \item Ejecutar al adversario $\mathcal{A}$ y cada vez que escriba $(m_1, m_2)$ retornale $E_k(m_b)$.
+    \item Retornar lo que $\mathcal{A}$ retorne.
+\end{enumerate}
+\end{minipage}}
+\end{centering}
+\caption{El experimento IND-CPA}
+\label{fig:ind_cpa}
+\end{figure}
+
+
+\subsection{Infalsificabilidad ante ataques de mensajes escogidos UF-CMA}
+UF-CMA aplica a esquemas de firmas de mensajes (\textit{Message Authentication Code} o MAC). Un esquema de firmas
+es UF-CMA si ningún adversario es capaz de falsificar la firma de un mensaje 
 
 \subsection{Algunas \textit{Setup assumptions} comunes}
 \subsubsection{String público aleatorio CRS}
 \subsubsection{Interfaz de clave pública PKI}
 
-\section{Definiciones criptográficas básicas}
-\subsection{Indistinguibilidad bajo ataque de texto plano escogido}
-\subsection{UF-CMA}
+
