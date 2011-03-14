@@ -1,33 +1,26 @@
 \chapter{Introducción}
 
 \section{Motivación}
-
-Alicia y Roberto forman un matrimonio de muchos años
-al igual que sus amigos Marcelo y Beatriz. Con el pasos de los años
-ambos matrimonios han ido perdiendo la fuerza y la rutina ha ido socabando
-la pasión que alguna vez existió. Es así como Alicia decidió iniciar una
-aventura con el marido de su amiga Beatriz, Marcelo, y coincidentemente
-Beatriz decidió hacer lo mismo con el marido de su amiga.\\
-Hace algún tiempo Alicia comenzó a tomar un curso básico de computación donde
-ha aprendido a \textit{chatear} y, como Carlos ha caído postrado en la cama por
-enfermedades asociadas a su avanzada edad, ha enseñado a sus amigos a chatear para
-``poder comunicarse sin tener que salir de casa". Pero esto no es más que una fachada
-para encubrir su engaño (y sin querer encubrir el de Beatriz también), pues Alicia
-quiere desea declararse \textit{on-line} con Marcelo y de paso lo mismo hará Beatriz
-con Roberto.\\
-Alicia, temerosa de ser descubierta y con ayuda del curso de computación, se ha dado
-cuenta de que cualquiera podría descubrir su infidelidad viendo cuales son los paquetes
-intercambiados entre el computador de Marcelo y ella. También ha estado pensando paranoicamente
-que Roberto podría estar tomando un curso de \textit{hacker} en la municipalidad y podría
-intentar hacerse pasar por Marcelo e interferir en sus conversaciones privadas. Lo último que
-preocupa a Alicia es la influencia que pueden tener los otros programas que ejecutan el computador
-de ella o el de sus amigos.\\
-Alicia ha determinado que su problema es exactamente el siguiente:\\
-\textit{Desea crear un protocolo  en el que la comunicación es anónima y
-además es imposible que alguien impersone a otro. Adicionalmente Alicia desea que las garantías
-anteriores se mantengan inclusive si el protocolo es ejecutado concurrentemente con otros protocolos}\\ 
-En esta memoria se desarrollará un protocolo criptográfico y se demostrará rigurosamente que cumple con
-las garantías necesaria para solucionar el problema anterior, utilizando herramientas modernas de Criptografía. 
+Para motivar el tema a tratar en este trabajo, presentamos el siguiente problema que
+perfectamente se podria presentar en un escenario real.\\
+El tribunal de la libre competencia (TDLC) desea desarrollar una plataforma que permita
+a las distintas empresas presentar pruebas que inculpen
+a otra empresa en delitos como colusión, monopolio, etc. Para ello pondrá
+a disposición de las empresas un conjunto de servidores a los cuales enviar sus denuncias.\\
+Para no amedrentar a una empresa
+denunciante  es necesario que la comunicación entre la empresa y cada servidor
+sea anónima. Pues de este modo ningún observador podria determinar que una empresa a denunciado
+a otra de cierto delito y tomar represalias.\\
+Por otro lado el TDLC confía más en el testimonio de algunas empresas que en el de otras, ya sea por
+su conducta anterior u otros factores. Por lo tanto desea estar completamente seguro de la identidad
+de una empresa cuando esta empresa presente pruebas usando la plataforma, pues así puede determinar
+un factor de credibilidad en la denuncia.\\
+La plataforma correrá en internet, por lo tanto debe mantener sus propiedades de seguridad inclusive
+si es ejecutada concurrentemente con protocolos maliciosos.\\
+Para desarrollar la plataforma el TDLC ha determiado que su problema es exactamente el siguiente:\\
+\textit{Desea crear un protocolo mediante el cual las empresas se comuniquen con cada uno de los servidores
+de denuncias. La comuniciación entre empresas y servidores debe ser anónima y autentificada, y esto se
+debe cumplir inclusive si el protocolo es ejecutado concurrentemente con otros protocolos.}\\ 
 
 \section{Descripción del problema}
 
@@ -44,12 +37,13 @@ se puedan garantizar matemáticamente las siguientes tres propiedades :
 
 \subsubsection{Anonimato}
 A modo de ejemplo podemos considerar un protocolo ``usual" de comunicación, un protocolo IP simplificado.
-En la figura \ref{tcpip_simple} la figura cada flecha de $A$ a $B$ indica que $A$ envió un me saje a
-$B$. La etiqueta de una flecha de $A$ a $B$ indica el mensaje intercambiados en la ejecución de protocolo.
-Por ejemplo Roberto envió a Alicia el mensaje $(m_{AR}, ip_R, ip_A)$, donde $m_{AR}$ es el contenido
-del mensaje, $ip_R$ es la dirección IP de Roberto y $ip_A$ es la dirección IP de Alicia. Notemos que estos
+En la figura \ref{tcpip_simple} cada flecha de $A$ a $B$ indica que $A$ envió un me saje a
+$B$. La etiqueta de una flecha de $A$ a $B$ indica el mensaje intercambiado en la ejecución de protocolo.
+Por ejemplo Empr-1 envió a Serv-1 el mensaje $(m_{e1s1}, ip_{e1}, ip_{s1})$, donde $m_{e1s1}$ es el contenido
+del mensaje, $ip_{e1}$ es la dirección IP de la Empresa 1 e $ip_{s1}$ es la dirección IP del Servidor 1.
+Notemos que estos
 datos son necesarios para poder \textit{rutear} los mensajes de un participante a otro, pero a la vez 
-revelando a un adversario que Roberto envió un mensaje a Alicia. Por lo tanto podemos decir que
+se revela a un obsevador que Empr-1 envió un mensaje a Serv-1. Por lo tanto podemos decir que
 \textbf{el protocolo IP simplificado no es anónimo} pues \textbf{existe un ataque}.\\
 
 \begin{figure}[hp]
@@ -62,22 +56,23 @@ revelando a un adversario que Roberto envió un mensaje a Alicia. Por lo tanto p
 Para definir el anonimato resulta crucial definir formalmente que es considerado
 un ataque al anonimato, pues un protocolo será anónimo si y solo si no existe ningún ataque.
 En \cite{conf/pet/HeviaM08} se define un ataque con el siguiente juego.
-El adversario determinada dos posibles ejecuciones del protocolo, las cuales difieren en
-qué mensajes serán enviados por quién y qué mensajes fueron recibidos por quién. Entonces
+El observador o adversario determinada dos posibles ejecuciones del protocolo, las cuales difieren en
+qué mensajes serán enviados por quién y qué mensajes serán recibidos por quién. Entonces
 consideraremos que el adversario realiza un ataque si al ejecutar al adversario con cada una
-de las posibles ejecuciones del protocolo, el adversario logra identificar cuál es.
+de las posibles ejecuciones del protocolo, el adversario logra identificar cuál es cuál.
 Por lo tanto un protocolo sera seguro si y solo si cualquier adversario no logra distinguir
 una ejecución de otra.
 
 \subsubsection{Autentificación desmentible}
-En el protocolo de la figura \ref{tcpip_simple} es posible que un adversario (rol que podría ser
-tomado por Marcelo) se haga pasar por Beatriz e intente comunicarse con Alicia, y para ello
-solo es necesario que modifique los mensajes uno de sus mensajes cambiando $ip_M$ por $ip_B$.
+En el protocolo de la figura \ref{tcpip_simple} es posible que un adversario (rol que puede
+asumir una empresa $Empr-2$) se haga pasar por una empresa $Empr-1$ con buena reputación y denuncie
+falsamente a una empresa enemiga $Empr-3$. Para ello
+solo es necesario que modifique uno de sus mensajes cambiando $ip_e2$ por $ip_e1$.
 Por lo tanto decimos que el protocolo no implementa canales autenticados.\\
 Con canales autentificado nos referimos protocolos en los cuales es posible estar seguro,
 con alta probabilidad, de quién es el autor de un mensaje. Sin embargo hay que ser cuidadoso
 con el protocolo de autentificación usado, pues los más conocidos
-(firmas digitales por ejemplo) poseen la propiedad de \textit{non repudiability}. Esto es
+(firmas digitales por ejemplo) poseen la propiedad de \textit{non repudiability}. Esto es,
 que el emisor de un mensaje autentificado no puede negar a ``la comunidad" que el es el autor
 del mensaje. Esto estaría contradiciendo el anonimato, pues el adversario también sería capaz
 de asociar la autoría de un mensaje a el emisor de este.\\
@@ -100,12 +95,31 @@ Cuando el protocolo sí comparte estado con otros protocolo es necesario hacer u
 Informalmente GUC propone una metodología para incluir el estado que un protocolo podría compartir
 con otros.
 
-\subsubsection{Solución propuesta}
-En esta memoria proponemos un protocolo que permite solucionar nuestro problema motivacional
-utilizando técnicas de Anonimato y Autentificación desmentible y demostramos que el protocolo
-resuelve el problema utilizando el \textit{framework} GUC. Es decir el protocolo soluciona
-el problema inclusive si es ejecutado concurrentemente con otros protocolos que pueden compartir
-estado con él.\\
+\section{Objetivos}
+
+\subsection{Objetivo General}
+Diseñar un protocolo criptográfico eficiente que cumpla nociones razonables
+de Anonimato y Autentificación Desmentible. Demostrar matemáticamente su
+seguridad usando herramientas modernas de análisis criptográficas (GUC), y
+estudiar su relación con otras primitivas criptográfias.
+
+\subsection{Objetivos esecíficos}
+
+\begin{enumerate}
+    \item Estudiar conceptos asociados a interacciones desmentibles y las técnicas y
+          primitivas criptográficas asociadas (encriptación y mecanismos de auten-
+          tificación como firmas digitales y esquemas de identificación).
+    \item Estudiar conceptos de anonimato y las técnicas y primitivas criptográficas
+          asociadas.
+    \item Proponer un protocolo que combine ambas nociones.
+    \item Analizar dicho protocolo en términos de efectividad y eficiencia.
+    \item Analizar la efectividad en términos de las garantías de seguridad obtenidas.
+    \item Analizar la eficiencia en términos de los costos en tiempo asociados al
+          protocolo.
+    \item Estudiar su relación con otros protocolos criptográficos.
+\end{enumerate}
+
+
 En la figura \ref{sigmix_simple} se muestra un diagrama para explicar nuestra solución.
 
 \begin{figure}[hp]

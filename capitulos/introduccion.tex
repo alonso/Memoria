@@ -2,14 +2,14 @@
 
 \section{Motivación}
 Para motivar el tema a tratar en este trabajo, presentamos el siguiente problema que
-perfectamente se podria presentar en un escenario real.\\
+perfectamente se podría presentar en un escenario real.\\
 El tribunal de la libre competencia (TDLC) desea desarrollar una plataforma que permita
 a las distintas empresas presentar pruebas que inculpen
 a otra empresa en delitos como colusión, monopolio, etc. Para ello pondrá
 a disposición de las empresas un conjunto de servidores a los cuales enviar sus denuncias.\\
 Para no amedrentar a una empresa
 denunciante  es necesario que la comunicación entre la empresa y cada servidor
-sea anónima. Pues de este modo ningún observador podria determinar que una empresa a denunciado
+sea anónima. Pues de este modo ningún observador podría determinar que una empresa a denunciado
 a otra de cierto delito y tomar represalias.\\
 Por otro lado el TDLC confía más en el testimonio de algunas empresas que en el de otras, ya sea por
 su conducta anterior u otros factores. Por lo tanto desea estar completamente seguro de la identidad
@@ -17,9 +17,9 @@ de una empresa cuando esta empresa presente pruebas usando la plataforma, pues a
 un factor de credibilidad en la denuncia.\\
 La plataforma correrá en internet, por lo tanto debe mantener sus propiedades de seguridad inclusive
 si es ejecutada concurrentemente con protocolos maliciosos.\\
-Para desarrollar la plataforma el TDLC ha determiado que su problema es exactamente el siguiente:\\
+Para desarrollar la plataforma el TDLC ha determinado que su problema es exactamente el siguiente:\\
 \textit{Desea crear un protocolo mediante el cual las empresas se comuniquen con cada uno de los servidores
-de denuncias. La comuniciación entre empresas y servidores debe ser anónima y autentificada, y esto se
+de denuncias. La comunicación entre empresas y servidores debe ser anónima y autentificada, y esto se
 debe cumplir inclusive si el protocolo es ejecutado concurrentemente con otros protocolos.}\\ 
 
 \section{Descripción del problema}
@@ -43,7 +43,7 @@ Por ejemplo Empr-1 envió a Serv-1 el mensaje $(m_{e1s1}, ip_{e1}, ip_{s1})$, do
 del mensaje, $ip_{e1}$ es la dirección IP de la Empresa 1 e $ip_{s1}$ es la dirección IP del Servidor 1.
 Notemos que estos
 datos son necesarios para poder \textit{rutear} los mensajes de un participante a otro, pero a la vez 
-se revela a un obsevador que Empr-1 envió un mensaje a Serv-1. Por lo tanto podemos decir que
+se revela a un observador que Empr-1 envió un mensaje a Serv-1. Por lo tanto podemos decir que
 \textbf{el protocolo IP simplificado no es anónimo} pues \textbf{existe un ataque}.\\
 
 \begin{figure}[hp]
@@ -101,14 +101,14 @@ con otros.
 Diseñar un protocolo criptográfico eficiente que cumpla nociones razonables
 de Anonimato y Autentificación Desmentible. Demostrar matemáticamente su
 seguridad usando herramientas modernas de análisis criptográficas (GUC), y
-estudiar su relación con otras primitivas criptográfias.
+estudiar su relación con otras primitivas criptográficas.
 
-\subsection{Objetivos esecíficos}
+\subsection{Objetivos específicos}
 
 \begin{enumerate}
     \item Estudiar conceptos asociados a interacciones desmentibles y las técnicas y
-          primitivas criptográficas asociadas (encriptación y mecanismos de auten-
-          tificación como firmas digitales y esquemas de identificación).
+          primitivas criptográficas asociadas (encriptación y mecanismos de autentificación
+           como firmas digitales y esquemas de identificación).
     \item Estudiar conceptos de anonimato y las técnicas y primitivas criptográficas
           asociadas.
     \item Proponer un protocolo que combine ambas nociones.

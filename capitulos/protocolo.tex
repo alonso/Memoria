@@ -59,7 +59,7 @@ $$2\cdot\Pr[\mathrm{Exp}_{\pi, \mathcal{A}}^{\mathcal{R}-anon}(\ell) = 1] - 1 = 
 Y 0 es una función despreciable.
 \end{proof}
 
-Una acotación al lema \ref{lema:SA} es que la definicion de anonimato usada no necesariamente es
+Una acotación al lema \ref{lema:SA} es que la definición de anonimato usada no necesariamente es
 valida para protocolos ejecutados en un ambiente concurrente. Sin embargo hacemos las siguientes
 acotaciones.\\
 Primero, si comparamos la funcionalidad $\mathcal{F}_{AAC}$ con otras funcionalidades
@@ -68,7 +68,7 @@ de anonimato \textit{ad-hoc} definidas en la literatura, como la funcionalidad $
 $\mathsf{Anon}$ adicionalmente revela el multiconjunto de mensajes recibidos por cada participante
 $P_j$.\\
 Segundo, afirmamos que nuestra funcionalidad es intuitivamente anónima. En este caso estaríamos
-afirmando que $\mathcal{F}_{AAC}$ es nuestra definción de anonimato.\\
+afirmando que $\mathcal{F}_{AAC}$ es nuestra definición de anonimato.\\
 
 Ahora demostraremos que $\mathcal{F}_{AAC}$ es desmentible
 
@@ -301,7 +301,7 @@ $\bar{\ell}$ talque para todo $\ell >  \bar{\ell}$ se tiene que:
 \right| \geq \frac{1}{p(\ell)}
 \label{eq:guc}
 \end{equation}
-Consideremos al adversario $\mathcal{D}_\textrm{DDH}$ defindo en la figura \ref{adv:ddh}.
+Consideremos al adversario $\mathcal{D}_\textrm{DDH}$ definido en la figura \ref{adv:ddh}.
 
 \begin{figure}
 \framebox{\begin{minipage}[t]{1\columnwidth}
@@ -317,7 +317,7 @@ El adversario $\mathcal{D}_{DDH}(g^\alpha, g^\beta, g^\gamma)$ atacando DDH func
             \tilde{\rho}^{\bar{\mathcal{G}}_{KRK}},
             \tilde{\phi}^{\mathcal{F}_{MN}}))
     $
-    con aletoridad $r$ escogida al azar hasta que este participante $P_i$ honesto envíe un mensaje
+    con aleatoriedad $r$ escogida al azar hasta que este participante $P_i$ honesto envíe un mensaje
     a otro participante honesto $P_j$ y volver a simular
     $
         \mathcal{Z}(
@@ -327,7 +327,7 @@ El adversario $\mathcal{D}_{DDH}(g^\alpha, g^\beta, g^\gamma)$ atacando DDH func
             \tilde{\rho}^{\bar{\mathcal{G}}_{KRK}},
             \tilde{\phi}^{\mathcal{F}_{MN}}))
     $
-    con aleatoridad $r$.
+    con aleatoriedad $r$.
     \item Cuando $\tilde{P}_i$ se registra en $\bar{\mathcal{G}}_{KRK}$ actualizar la clave pública registrada a
           $g^{\alpha}$ y cuando $\tilde{P}_j$ se registra actualizar la clave pública a $g^{\beta}$.
     \item Cuando $\mathcal{Z}$ envía $(\mathtt{Send}, m, j')$ a $P_i$ reemplazar la firma computada por $P_i$

@@ -22,8 +22,8 @@ todo polinomio $p$ existe
 un $n_0$ talque para todo $n > n_0$ se cumple que
 $$\eta(n) < \frac{1}{p(n)}$$
 \end{definicion}
-Las funciones despreciables permiten definir probabilidades ``pequeñas'' cualquier
-variable aleatorias ``algorítmicas'' (es decir corresponden a las salida de un algoritmo).
+Las funciones despreciables permiten definir probabilidades ``pequeñas'' para cualquier
+variable aleatoria ``algorítmica'' (es decir, que corresponden a la salida de un algoritmo).
 La definición busca eliminar el efecto de ejecutar una cantidad polinomial de veces un
 algoritmo (usar el lema de amplificación).
 
@@ -31,7 +31,7 @@ algoritmo (usar el lema de amplificación).
 Decimos que el par $(G,+)$, donde $G$ es un conjunto y
 $+:G^2 \to G$, es un grupo abeliano si se cumplen las siguientes propiedades:
 \begin{enumerate}
-\item (Asocioatividad) $\forall a,b,c \in G$ $(a+b)+c=a+(b+c)$.
+\item (Asociatividad) $\forall a,b,c \in G$ $(a+b)+c=a+(b+c)$.
 \item (Elemento neutro) $\exists 0 \in G$ talque $\forall a \in G$ $a+0 = 0+a = a$.
 \item (Inverso) $\forall a \in G$ $\exists -a \in G$ talque $a+-a = 0$.
 \item (Conmutatividad) $\forall a,b \in G$ $a+b = b+a$.
@@ -75,7 +75,7 @@ cada $\omega \in \Omega$ un número real $x \in \mathbb{R}$.
 \end{definicion}
 
 \begin{definicion}[Distribución]
-Dada una varibale aleatoria, definimos su distribución como la función
+Dada una variable aleatoria, definimos su distribución como la función
 $f:\mathbb{R} \to [0,1]$ talque $f(x) = \sum_{i:X(\omega_i)=x}p_i$
 \end{definicion}
 
@@ -96,8 +96,8 @@ de variables aleatorias) y existen tres tipos de indistinguibilidad.
 \begin{definicion}[Indistinguibilidad perfecta]
 Decimos que dos familias de variables aleatorias $U=\{U_x\}_{x\in\{0,1\}^*}$
 y $V=\{V_x\}_{x\in\{0,1\}^*}$ son perfectamente indistinguibles
-si $\Delta(U_x, V_x)) = 0 \qquad \forall x$.
-Denotamos la indistinguibilidad perfecta por escribimos $U_x = V_x$
+si $\Delta(U_x, V_x) = 0 \qquad \forall x$.
+Denotamos la indistinguibilidad perfecta por $U = V$
 \end{definicion}
 
 \begin{definicion}[Indistinguibilidad estadística]
@@ -118,7 +118,7 @@ computacional por $U \overset{c}{\approx} V$.
 
 \section{Definiciones criptográficas básicas}
 
-\subsection{El problema de Diffie-Hellman decisonal (DDH)}
+\subsection{El problema de Diffie-Hellman decisional (DDH)}
 El problema DDH \cite{diffie-hellman_me:1976a} es un problema que se considera
 difícil, es decir se conjetura
 que no existe un algoritmo polinomial que lo solucione, para ciertos
@@ -126,8 +126,8 @@ grupos. DDH es una herramienta fundamental en la Criptografía moderna pues
 permite la construcción eficientes primitivas con una variada aplicabilidad.
 
 \begin{definicion}[DDH]
-Sea $G_q$ un grupo cíclo de orden $q$. Decimos que en $G_q$ se cumple DDH
-si las variables aleatorias $(g^\alpha, g^\beta, g^\gamma) \overset{c}{\approx}
+Sea $G_q$ un grupo cíclico de orden $q$. Decimos que en $G_q$ se cumple DDH
+si $(g^\alpha, g^\beta, g^\gamma) \overset{c}{\approx}
 (g^\alpha, g^\beta, g^{\alpha \cdot \beta})$ dado que $\alpha, \beta, \gamma \in_R G_q$.
 \end{definicion}
 
@@ -142,14 +142,14 @@ $r \in \{0, 1\}^\kappa$, dado $(sk, pk) = K(\kappa; r)$, para todo $m\in M$ $D_{
 
 
 \subsubsection{Indistinguibilidad bajo ataque de texto plano escogido (IND-CPA)}
-Tabién conocida como \textit{seguridad semántica} es una definición de privacidad de un esquema
-critográfico. Apunta a que un esquema de encriptación $\mathcal{E} = (K, E, D)$ es seguro si ningún atacante es capaz de
-dinstinguir entre la encriptación de cualesqueir par de mensajes $m_1, m_2$.
+También conocida como \textit{seguridad semántica} es una definición de privacidad de un esquema
+criptográfico. Apunta a que un esquema de encriptación $\mathcal{E} = (K, E, D)$ es seguro si ningún atacante es capaz de
+distinguir entre la encriptación de cualesquier par de mensajes $m_1, m_2$.
 
 
 \begin{definicion}[Experimento IND-CPA]
-Definimos el experimento IND-CPA parametrizado por un aloritmo $\mathcal{A}$,
-un esquema de encriptación $\mathcal{E}$, parametro de seguridad $\kappa$ y
+Definimos el experimento IND-CPA parametrizado por un algoritmo $\mathcal{A}$,
+un esquema de encriptación $\mathcal{E}$, parámetro de seguridad $\kappa$ y
 un bit $b$, denotado por $\mathrm{EXP}^\mathrm{IND-CPA}_\mathcal{E}(\mathcal{A}, b)$,
 como la variable aleatoria resultante de
 ejecutar el experimento descrito en la figura \ref{fig:ind_cpa}
@@ -165,7 +165,7 @@ $$\mathrm{EXP}^\mathrm{IND-CPA}_\mathcal{E}(\mathcal{A}, 1) \approx
 \begin{figure}
 \begin{centering}
 \framebox{\begin{minipage}[t]{1\columnwidth}
-El experimento IND-CPA  ejecutado con adversario $\mathcal{A}$, esquema de encritación $\mathcal{E} = (K, E, D)$,
+El experimento IND-CPA  ejecutado con adversario $\mathcal{A}$, esquema de encriptación $\mathcal{E} = (K, E, D)$,
 un bit $b \in\{0,1\}$ y parámetro de seguridad $\kappa$ procede como sigue:
 \begin{enumerate}
     \item Escoger las clave del esquema, $k \overset{R}{\leftarrow} K(\kappa)$.
@@ -194,7 +194,7 @@ es UF-CMA si ningún adversario es capaz de falsificar la firma de un mensaje. F
 con las siguientes definiciones.
 
 \begin{definicion}[Ventaja UF-CMA]
-Definimos la ventaja \textrm{UF-CMA} de un adverario $\mathcal{A}$ con el esquema $\mathcal{MA} = (K, T, V)$
+Definimos la ventaja \textrm{UF-CMA} de un adversario $\mathcal{A}$ con el esquema $\mathcal{MA} = (K, T, V)$
 como:
 $$\mathrm{Adv}^\text{UF-CMA}_{\mathcal{MA},\mathcal{A}}(\kappa) =
 \Pr[\text{UF-CMA}_{\mathcal{MA},\mathcal{A}}(\kappa) = 1]$$
@@ -204,14 +204,14 @@ ejecutar el experimento de la figura \ref{fig:uf-cma}.
 
 \begin{definicion}[Seguridad UF-CMA]
 Decimos que un esquema de autentificación de mensajes $\mathcal{MA}$ es UF-CMA seguro si para todo
-adversario polinomial aleatoriazdo $\mathcal{A}$ existe una función despreciable $\eta$ y un $\kappa_0$
+adversario polinomial aleatorizado $\mathcal{A}$ existe una función despreciable $\eta$ y un $\kappa_0$
 talque para todo $\kappa > \kappa_0$
 $$\mathrm{Adv}^{UF-CMA}_{\mathcal{MA}, \mathcal{A}}(\kappa) \leq \eta(\kappa)$$
 \end{definicion}
 
 \begin{figure}
 \framebox{\begin{minipage}[t]{1\columnwidth}
-El experimento UF-CMA  ejecutado con adversario $\mathcal{A}$, esquema de autetificación de mensajes
+El experimento UF-CMA  ejecutado con adversario $\mathcal{A}$, esquema de autentificación de mensajes
 $\mathcal{MA} = (K, T, V)$ y parámetro de seguridad $\kappa$ procede como sigue:
 \begin{enumerate}
     \item Escoger la clave del esquema, $k \overset{R}{\leftarrow} K(\kappa)$ e inicializar
@@ -226,9 +226,9 @@ $\mathcal{MA} = (K, T, V)$ y parámetro de seguridad $\kappa$ procede como sigue
 \label{fig:uf-cma}
 \end{figure}
 
-\subsection{Supestos de incialización}
-Los supuestos de incialización son necesarios para implementar ciertos protocolos criptográficos
-que de otra forma serían imposible de realizar. Los supuestos de incialización corresponden a funcionalidades
+\subsection{Supuestos de inicialización}
+Los supuestos de inicialización son necesarios para implementar ciertos protocolos criptográficos
+que de otra forma serían imposible de realizar. Los supuestos de inicialización corresponden a funcionalidades
 ejecutadas por una entidad confiable, y en UC son representados por una funcionalidad ideal. A continuación
 listamos dos supuestos de inicialización.
 
@@ -255,7 +255,7 @@ La funcionalidad ideal $\mathcal{F}_{CRS}^D$ parametrizada por una distribución
 
 \subsubsection{Interfaz de clave pública PKI}
 Una interfaz de clave pública o PKI (del inglés \textit{Public Key Interface}) es un supuesto de inicialización
-que permite registrar pares de llaves públicas/provadas en una base de datos confiable y autentificada.\\
+que permite registrar pares de llaves públicas/privadas en una base de datos confiable y autentificada.\\
 En GUC una forma de modelar PKI es con la funcionalidad compartida $\bar{\mathcal{G}}_{KRK}$ definida en la figura
 \ref{fig:krk}. Notamos que $\bar{\mathcal{G}}_{KRK}$ viene parametrizada por un conjunto $\Phi$, que corresponde
 a los protocolos a los cuales les es permitido obtener claves privadas. 

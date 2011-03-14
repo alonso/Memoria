@@ -6,10 +6,10 @@ Para ello se estudiaron tópicos avanzados de Criptografía como UC, GUC, Anonim
 Desmentibilidad y distintas primitivas criptográficas asociadas a dichos tópicos.
 Se definieron rigurosamente las propiedades que debe tener un protocolo para
 resolver el problema planteado.
-Se desarrolló un protocolo para el cual se puede garantizar matematicamente que
+Se desarrolló un protocolo para el cual se puede garantizar matemáticamente que
 satisface las propiedades necesarias para resolver el problema inicial.
 El protocolo desarrollado es eficiente, pues se construye a partir de un protocolo
-que se sabe eficiente por la comunidad \cite{Wikstrom04a} y adicionalmente efectua
+que se sabe eficiente por la comunidad \cite{Wikstrom04a} y adicionalmente efectúa
 una operación que es lineal en el número de participantes del protocolo.\\
 
 \section{Preguntas abiertas}
@@ -35,13 +35,13 @@ El objetivo principal de GUC era modelar protocolos que se pueden componer
 concurrentemente con otros protocolos que posiblemente comparten estado y de los
 cuales nada se puede asumir. Sin embargo en el trabajo de esta memoria nos dimos
 cuenta de que en la literatura, para el caso de PKI y CRS,
-\footnote{En este caso se hace uso de uno funcionalidad compartidad más fuerte
+\footnote{En este caso se hace uso de uno funcionalidad compartida más fuerte
 que CRS conocida como \textit{Augmented Common Random String}}
-\textbf{sí se hacen suposiciones sobre los protocolos con los cuales el protcolo
+\textbf{sí se hacen suposiciones sobre los protocolos con los cuales el protocolo
 analizado} se componen.\\
 Para caso de PKI se asume que los protocolos
 que hacen uso de la funcionalidad ideal $\bar{\mathcal{G}}_{KRK}$ se encuentran
-dentro de un conjunto de prtocolos $\Phi$. En general general $\Phi$ solo
+dentro de un conjunto de protocolos $\Phi$. En general general $\Phi$ solo
 contiene al protocolo analizado, por lo que la situación puede resultar muy
 similar a JUC.\\
 El caso de CRS es algo distinto, pero se puede mostrar que es equivalente. En

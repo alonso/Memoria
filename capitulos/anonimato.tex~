@@ -64,11 +64,15 @@ en bits del total de mensajes enviados por $P_i$ y $f_\#(M)$ corresponde al tama
 de mensajes enviados en el protocolo. Adicionalmente se define $f^T(M) = f(M^T)$ donde $M^T$ denota
 la matriz $M$ transpuesta, y de ese modo $f^T_\cup(M)$ y $f^T_\Sigma(M)$ corresponden a vectores
 donde el elemento $i$-ésimo es un valor calculado sobre los mensajes recibidos por $P_i$.\\
+Adicionalmente en este trabajo definimos una nueva función de filtración de información,
+$f_{\cup\cup}$ que viene dada por:
+$$f_{\cup\cup}(M) = \biguplus_{i=1}^n \biguplus_{i=1}^n m_{i,j}$$
 Cada función da lugar a una relación
 $\mathcal{R}_f = \{(M_1, M_2 | f(M_1)=f(M_2))\}$, adicionalmente denotamos por
 $\mathcal{R}_\star$ a $\mathcal{R}_{f_\star}$.
 En \cite{conf/pet/HeviaM08} se definen diez relaciones dando lugar a diez tipos de anonimato, los
-que se ilustran en la tabla 
+que se ilustran en la tabla y adicionalmente, con la función $f_{\cup\cup}$, definimos un nuevo
+tipo de anonimato que llamamos \textit{Anonimato $f_{\cup\cup}$}.
 \begin{table}
 \begin{center}
 \begin{tabular}{|l|c|}
@@ -87,6 +91,8 @@ Invinculabilidad & $\mathcal{R}_\Sigma \cap \mathcal{R}_\Sigma^T$ \\
 Anonimato del enviador & $\mathcal{R}_\cup$ \\
 \hline
 Anonimato del receptor & $\mathcal{R}_\cup^T$ \\
+\hline
+Anonimato $f_{\cup\cup}$ & $\mathcal{R}_{\cup\cup}$\\
 \hline
 Anonimato del enviador fuerte & $\mathcal{R}_\Sigma$ \\
 \hline
@@ -120,6 +126,11 @@ sigue:
 \label{exp_anon}
 \end{figure}
 
+Notemos que la nueva noción de anonimato es más fuerte que las nociones de anonimato del receptor/enviador.
+En efecto, solo hay que notar que para cualquier par de matrices $f_\cup(M_1) = f_\cup(M_2)$ implica que
+$f_{\cup\cup}(M_1) = f_{\cup\cup}(M_2)$, por lo tanto $\mathcal{R}_\cup \subseteq \mathcal{R}_{\cup\cup}$
+y $\mathcal{R}_\cup^T \subseteq \mathcal{R}_{\cup\cup}$.
+
 \section{Primitivas para Canales Anónimos}
 
 Variadas primitivas útiles para implementar canales anónimos han sido propuestas en la literatura. A continuación
@@ -147,14 +158,15 @@ participantes. En la figura \ref{fig:mix-net} se puede ver un diagrama de una mi
 Las mix-nets se pueden clasificar en dos, según el tipo de operación que cada mixer realiza en los textos
 cifrados: mix-nets reencriptantes y mix-nets desecncriptantes.
 
-\subsubsection{Mix-nets reencriptantes}
+\subsection{Mix-nets reencriptantes}
 
 En las mix-nets reencriptantes los Mixers permutan
 aleatoriamente cada vector de mensajes y re-encriptan los textos planos.
-Consideremos un esquema de encriptación $\mathcal{E} = (K, E, D)$,
+Consideremos un esquema de encriptación asimétrico $\mathcal{E} = (K, E, D)$ y fijemos
+una clave pública $pk$; enotonces
 una re-encriptación
-corresponde a aplicar una función $\rho:C\times R\to C$, con $C$ el
-espacio de textos cifrados, talque para todo $m, r, r', c$ tales que $c =  E_{pk}(m, r)$ y
+corresponde a aplicar una función $\rho_{pk}:C\times R\to C$, con $C$ el
+espacio de textos cifrados, tal que para todo $m, r, r', c$ tales que $c =  E_{pk}(m, r)$ y
 $r \neq r'$:
 
 $$D_{sk}(\rho_{pk}(c, r')) = m \quad \textrm{y además } \rho_{pk}(c, r') \neq c$$
@@ -162,7 +174,7 @@ $$D_{sk}(\rho_{pk}(c, r')) = m \quad \textrm{y además } \rho_{pk}(c, r') \neq c
 En otras palabras la función $\rho$ cambia la aleatoriedad de un texto
 cifrado.
 Al cambiar la aleatoriedad y si  $\mathcal{E}$ es un esquema de encriptación seguro (IND-CPA)
-no es posible para ningún adversario correlacionar las entradas y salidas de un Mixer.
+no es posible para ningún adversario correlacionar las entradas y salidas de un mixer.
 
 Un ejemplo de esquema de encriptación en el cual es posible reencriptar
 los textos cifrados es ElGamal. Se puede implementar un algoritmo de reencriptación para
@@ -189,7 +201,7 @@ $$\rho_{y}(E(m,r),r') = E_{y}(m,r) \cdot E_{y}(1,r') = E_{y}(m,r+r')$$
 
 Una desventaja de un esquema de encriptación que permite re-encriptación
 como ElGamal es que para ocupar $\rho$ es necesario conocer la clave pública
-de quien encriptó el mensaje. En el contexto de una mix-net esto
+de quien encriptó del emisor del mensaje. En el contexto de una mix-net esto
 significaría que cada mixer debería primero obtener la clave de cada
 enviador, lo cual puede resultar impráctico.
 En \cite{GolleEtAl04}
@@ -200,7 +212,7 @@ adjuntan en el texto cifrado lo necesario para homomorficamente cambiar
 la aleatoriedad del texto cifrado. El esquema propuesto en \cite{GolleEtAl04}
 esta compuesto por los algoritmos $(K,E,D,\rho)$ donde
 
-$$K(k)=(x,y)\quad x\in_{R} G_{q},  y=g^{x}$$
+$$K(k)=(x,y),\quad x\in_{R} G_{q},  y=g^{x}$$
 
 
 $$E_{y}(m,(k_{0},k_{1}))=[(g^{k_{0}},y^{k_{0}}\cdot m);(g^{k_{1}},y^{k_{1}})]$$
@@ -209,8 +221,8 @@ $$E_{y}(m,(k_{0},k_{1}))=[(g^{k_{0}},y^{k_{0}}\cdot m);(g^{k_{1}},y^{k_{1}})]$$
 $$D_{x}([(u,v);(\alpha,\beta)])=\frac{v}{u^{x}}$$
 
 
-Notemos que la segunda componente de $E_{y}(m,(k_{0},k_{1}))$ (después
-de ;) es la encriptación de $1$ bajo la clave pública $y$ y aleatoriedad
+Notemos que la segunda componente de $E_{y}(m,(k_{0},k_{1}))$ (esto es $g^{k_1}$ y $y^{k_1}$)
+es la encriptación de $1$ bajo la clave pública $y$ y aleatoriedad
 $k_{1}$, entonces $\rho$ sigue esencialmente igual, salvo que no es necesario
 conocer la clave pública. En efecto
 
@@ -283,6 +295,7 @@ definida en la figura \ref{func:F_MN}, en el modelo $\mathcal{F}_{KG}$-híbrido.
 El protocolo de \cite{Wikstrom04a} UC-realiza a la funcionalidad ideal $\mathcal{F}_{MN}$
 en el modelo $\mathcal{F}_{KG}$-híbrido con respecto a adversarios estáticos y bajo DDH en un grupo
 $G_q$.
+\label{teo:mn}
 \end{teorema}
 
 Notamos que con la modificación, si bien se generaliza a la mixet de \cite{Wikstrom04a}, el teorema anterior
@@ -318,27 +331,6 @@ $P_{1}, \ldots, P_{N}$, y adversario ideal $\mathcal{S}$:
 \label{func:F_MN}
 \end{figure}
 
-\subsection{Broadcast Networks}
-
-Una Broadcast Network es una red en la que es posible que cada participante
-envíe texto plano a todos los demás participantes. De este modo es
-posible obtener anonimato pues un adversario tendría que adivinar
-quien es el receptor de un mensaje para cada broadcast.
-
-Una forma de implementar broadcast es modificando TOR. En TOR cada
-participante escoge un {}``ruteo'' $\mathcal{R}\subseteq\{d_{1},\ldots d_{N}\}$
-para su texto plano. Cada $d_{i}$ permite enviar un mensaje al router
-$i$. Para {}``rutear'' un mensaje $m$ hasta el router $N$, cada
-participante computa y envía a $d_{1}$
-
-\[
-E_{pk_{1}}(d_{2}||E_{pk_{2}}(d_{3}||E_{pk_{3}}(\ldots d_{N}||E_{pk_{N}}(m)\ldots)))\]
-
-
-Cada router elimina una capa de encriptación, obtiene la próxima dirección
-donde enrutar y el mensaje a enviar.
-
-
 \subsection{Anonimous Broadcast o DC-nets}
 
 A diferencia de las mixnets, las DC-nets, propuestas por Chaum en
@@ -346,9 +338,10 @@ A diferencia de las mixnets, las DC-nets, propuestas por Chaum en
 la existencia de otros participantes mas que los enviadores y receptores,
 por el contrario en las mixnets se necesita que los mixer manipulen
 los textos cifrados antes de que puedan ser leídos por los receptores.
-Cada enviador $P_{i}$ publica un vector de textos cifrados $c_{i}=((\delta_{1}(m_{i},r_{i})\cdot c'_{i,1},\ldots,\delta_{m}(m,r_{i})\text{·}c'_{i,n})$
-con $r_{i}\in0^{\ell_{i}}10^{m-\ell_{i}}$ con
-
+Cada enviador $P_{i}$ publica un vector de textos cifrados
+$c_{i}=((\delta_{1}(m_{i},r_{i})\cdot c'_{i,1},\ldots,\delta_{m}(m,r_{i})\text{·}c'_{i,n})$
+con $r_{i}\in0^{\ell_{i}}10^{m-\ell_{i}}$, $\ell_i \in \{1, \ldots m\}$ distinto para cada
+$i$ y:
 \[
 \delta_{k}(m,r)=\begin{cases}
 m & r[k]=1\\
