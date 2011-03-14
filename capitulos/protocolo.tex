@@ -20,22 +20,22 @@ adversario $\mathcal{S}$, parametrizada por un grupo $G_q$ y $n \in \mathbb{N}$ 
 como sigue:
 \begin{enumerate}
     \item Inicializar$\Gamma \leftarrow \emptyset$, $M \leftarrow \emptyset$ y $k \leftarrow 0$.
-    \item Si $(\tilde{P}_i, \mathtt{Send}, m_i, j)$ es recibido desde $\mathcal{C_I}$ y  mientras
+    \item Si $(\tilde{P}_i, \mathtt{Send}, m_{i,j}, j)$ es recibido desde $\mathcal{C_I}$ y mientras
           $k < n$:
     \begin{enumerate}
-        \item Si $P_i$ o $P_j$ no están registrados o $m_i \notin G_q$ enviar $(\tilde{P}_i, \perp)$
+        \item Si $P_i$ ó $P_j$ no están registrados en $\bar{\mathcal{G}}_{KRK}$ o $m_i \notin G_q$
+              enviar $(\tilde{P}_i, \perp)$ a $\mathcal{C_I}$.
+        \item  y hacer $\Gamma \leftarrow \Gamma \cup \{(m_i, i, j)\}$,
+              $M \leftarrow M \cup \{m_{i,j}\}$ y $k \leftarrow k + 1$.
+        \item Si $\tilde{P}_j$ es corrupto enviar $(\mathcal{S}, \tilde{P}_i, \tilde{P}_j,
+              \mathtt{Corruptsend}, m_{i,j})$
+              a $\mathcal{C_I}$. En caso contrario enviar $(\mathcal{S}, P_i, \mathtt{Send})$
               a $\mathcal{C_I}$.
-        \item Si $P_i$ o $P_j$ son corruptos enviar $(\mathcal{S}, \mathtt{Sign}, m_i, i, j)$ y hacer
-              $k \leftarrow k + 1$.
-        \item Si $P_i$ y $P_j$ son honestos entonces escoger $r \overset{R}{\leftarrow} G_q$,
-              $\sigma_{i,j} \leftarrow \mathrm{MAC}_r(m)$, enviar $(\mathcal{S}, P_i, \mathtt{Send})$
-              a $\mathcal{C_I}$ y hacer $\Gamma \leftarrow \Gamma \cup \{(m_i, i, j, \sigma_{i,j})\}$,
-              $M \leftarrow M \cup \{(m_i, \sigma_{i,j})\}$ y $k \leftarrow k + 1$.
     \end{enumerate}
     \item Una vez que $k = n$, para cada $j \in \{1, \ldots, N\}$ sea el multiconjunto
-          $M_j = \{(m_i, i)|,(m_i, i, j, \sigma_{i,j}) \in \Gamma\}$ y
-          enviar $(\tilde{P}_j, \mathtt{Messages}, M_j)$ a $\mathcal{C_I}$ y
-          $(\mathcal{S}, \mathtt{Messages}, \tilde{P}_j, M_j)$ a $\mathcal{C_I}$.
+          $M_j = \{(m_i, i)|,(m_i, i, j) \in \Gamma\}$ y
+          enviar $(\tilde{P}_j, \mathtt{Messages}, M_j)$ y
+          $(\mathcal{S}, \mathtt{Messages}, M)$ a $\mathcal{C_I}$.
 \end{enumerate}
 \end{minipage}}
 \end{centering}
@@ -47,22 +47,33 @@ La funcionalidad de la figura \ref{func:F_AAC} es anónima según la definición
 en el capítulo \ref{sect:AC} demostrando el siguiente lema.
 
 \begin{lema}
-La funcionalidad $\mathcal{F}_{AAC}$ es Anónima para el enviador.
+La funcionalidad $\mathcal{F}_{AAC}$ es Anónima $f_{\cup\cup}$.
 \label{lema:SA}
 \end{lema}
 
 \begin{proof}
-\textit{(Lema \ref{lema:SA})}//
-La demostración es directa notando que para cualquier par de matrices $M_1, M_2 \in \mathcal{R}_\cup$ las
-vista del adversario son la misma. Por lo tanto para todo $\ell$
+\textit{(Lema \ref{lema:SA})}
+La demostración es directa notando que para cualquier par de matrices $M_1, M_2 \in \mathcal{R}_{\cup\cup}$ las
+vistas del adversario son la misma, pues el conjunto de mensajes intercambiados es el mismo. Por lo tanto para todo $\ell$
 $$2\cdot\Pr[\mathrm{Exp}_{\pi, \mathcal{A}}^{\mathcal{R}-anon}(\ell) = 1] - 1 = 0$$
 Y 0 es una función despreciable.
 \end{proof}
 
-Ahora demostramos que $\mathcal{F}_{CAA}$ es desmentible
+Una acotación al lema \ref{lema:SA} es que la definicion de anonimato usada no necesariamente es
+valida para protocolos ejecutados en un ambiente concurrente. Sin embargo hacemos las siguientes
+acotaciones.\\
+Primero, si comparamos la funcionalidad $\mathcal{F}_{AAC}$ con otras funcionalidades
+de anonimato \textit{ad-hoc} definidas en la literatura, como la funcionalidad $\mathsf{Anon}$ de
+\cite{IshaiEtAl06}, notamos que $\mathcal{F}_{AAC}$ es estrictamente mas fuerte. En efecto
+$\mathsf{Anon}$ adicionalmente revela el multiconjunto de mensajes recibidos por cada participante
+$P_j$.\\
+Segundo, afirmamos que nuestra funcionalidad es intuitivamente anónima. En este caso estaríamos
+afirmando que $\mathcal{F}_{AAC}$ es nuestra definción de anonimato.\\
+
+Ahora demostraremos que $\mathcal{F}_{AAC}$ es desmentible
 
 \begin{lema}
-La función $\mathcal{F}_{CAA}$ es desmentible.
+La función $\mathcal{F}_{AAC}$ es desmentible.
 \label{lema:den}
 \end{lema}
 
@@ -99,21 +110,21 @@ que dicha noción puede ser alcanzada por un protocolo que satisface los siguien
 De este modo, para implementar canales anónimos autentificados, usamos una versión modificada del protocolo de
 autentificación desmentible GUC-seguro con respecto a adversarios estáticos de \cite{conf/tcc/DodisKSW09}. Notamos
 que en \cite{conf/tcc/DodisKSW09} se usa un protocolo de firmado desmentible que nos es útil para satisfacer
-los puntos 1, 2 y 4 mencionados anteriormente. El proceso de firma es hecho a través de una
+los puntos 1, 2 y 3 mencionados anteriormente. El proceso de firma es hecho a través de una
 firma que depende no solo del contenido del mensaje y la identidad del enviador, si no que adicionalmente depende
 en la identidad del destinatario. Así, solo le es permitido al receptor verificar la autenticidad del par
 $(m, \sigma)$. El punto 4 es satisfecho usando la mixnet propuesta por Wikstr\"om descrita en la figura
 \ref{func:F_MN}.
 El protocolo SIGMIX es ejecutado en el modelo $\mathcal{F}_{MN},\bar{\mathcal{G}}_{KRK}$-híbrido
 con adversarios estáticos. La funcionalidad compartida \textit{Key registration with knowledge}
-$\bar{\mathcal{G}}_{KRK}$ de \cite{conf/tcc/DodisKSW09} descrita en la figura \ref{func:g_krk}
+$\bar{\mathcal{G}}_{KRK}$ de \cite{conf/tcc/DodisKSW09} descrita en la figura \ref{fig:krk}
 provee un PKI para cualquier protocolo que es ejecutado concurrentemente con el protocolo SIGMIX. Remarcamos
 que cualquier protocolo que usa $\bar{\mathcal{G}}_{KRK}$ puede compartir el par clave pública y privada
 $(sk,pk)$ con SIGMIX, siempre y cuando no revelen la clave privada a terceros.
 Por otro lado consideramos a la funcionalidad $\mathcal{F}_{MN}$ como una funcionalidad ideal tradicional de UC,
 esto significa que cada instancia de $\mathcal{F}_{MN}$ es local a cada protocolo que la llama.\\ 
 Para proceder con SIGMIX cada enviador $P_i$ firma un mensaje $m_i$ a $P_j$ con una función MAC que es
-UF-CMA (sección \ref{uf-cma}). La clave con que MAC es usada es la clave secreta $k_{i,j}$ compartida
+UF-CMA (sección \ref{sect:uf-cma}). La clave con que MAC es usada es la clave secreta $k_{i,j}$ compartida
 entre $P_i$ y $P_j$. La clave $k_{i,j}$ es calculada por $P_i$ y $P_j$ como sigue. Sean $G_q$ un grupo
 cíclico de orden $q$ donde DDH se cumple, y sea $g$ un generador para $G_q$. Supongamos que $P_i$ y $P_j$ tienen
 registrados los pares de claves publicas/privadas $(x_i, y_i=g^{x_i})$ y $(x_j, y_j=g^{x_j})$ respectivamente,
@@ -139,7 +150,7 @@ en el modelo $\mathcal{F}^\kappa_{MN}, \bar{\mathcal{G}}_{KRK}-hybrid$ con $\kap
 %          $y_i \leftarrow g^{x_i}$. Hand $(\mathtt{register}, x_i)$ to $\bar{\mathcal{G}_{KRK}}$.
 %\end{enumerate}
 
-Enviador $P_i$. Cada enviador $P_i$ procede como sigue:
+\textbf{Enviador $P_i$}: Cada enviador $P_i$ procede como sigue:
 \begin{enumerate}
     \item Esperar a recibir la entrada $(\mathtt{Send}, P_j, m_{i,j})$.
     \item Enviar $(\mathtt{Retrieve}, P_j)$ a $\bar{\mathcal{G}}_{KRK}$ y sea $y_j$ la respuesta.
@@ -150,7 +161,7 @@ Enviador $P_i$. Cada enviador $P_i$ procede como sigue:
     \item Retornar $(\mathtt{Sent}, P_j, m_{i,j})$
 \end{enumerate}
 
-Destinatario $P_j$. Cada destinatario $P_j$ procede como sigue:
+\textbf{Destinatario $P_j$}: Cada destinatario $P_j$ procede como sigue:
 \begin{enumerate}
     \item Esperar a recibir la entrada $(\mathtt{Output}, L)$ de $\mathcal{F}_{MN}$.
     \item Sean $y_1, \ldots, y_N$ las claves publicas de todos los participantes del protocolo.
@@ -162,7 +173,7 @@ Destinatario $P_j$. Cada destinatario $P_j$ procede como sigue:
     \item Retornar $(\mathtt{Messages}, M_j)$.
 \end{enumerate}
 
-Mixer $M_i$. Cada Mixer $M_i$ envía $(\mathcal{F}_{MN}, \mathtt{Run})$ a $\mathcal{C_I}$.
+\textbf{Mixer $M_i$}: Cada Mixer $M_i$ envía $(\mathcal{F}_{MN}, \mathtt{Run})$ a $\mathcal{C_I}$.
 
 \end{minipage}}
 \caption{El protocolo SIGMIX}
@@ -175,7 +186,7 @@ La seguridad del protocolo SIGMIX viene garantizada por el teorema \ref{teo:sigm
 \begin{lema} 
 El protocolo SIGMIX GUC-emula a la funcionalidad ideal $\mathcal{F}_{AAC}$ en el modelo
 $\mathcal{F}_{MN}, \bar{\mathcal{G}}_{KRK}$-híbrido con respecto a adversarios
-estáticos que corrompen a lo mas $k/2 -1$ mixers.
+estáticos que corrompen a lo más $k/2 -1$ mixers.
 \label{lema:sigmix}
 \end{lema}
 
@@ -185,16 +196,16 @@ La demostración procede de la siguiente forma. Para cada adversario real $\math
 un adversario ideal $\mathcal{S^A}$ que ataca $\mathcal{F}_{AAC}$. Si existe un adversario
 $\mathcal{A}$ y un ambiente $\mathcal{Z}$ que es capaz de distinguir
 $\mathcal{H}(\mathcal{S},
-             \tilde{\pi}^{\mathcal{F}_{AAC}},
-             \tilde{\rho}^{\bar{\mathcal{G}}_{KRK}})$
+             \{\tilde{P}_i\}_1^{\mathcal{F}_{AAC}},
+             \{\tilde{P}_i\}_2^{\bar{\mathcal{G}}_{KRK}})$
 de una ejecución de
 $\mathcal{H}(\mathcal{A},
              \textrm{SIGMIX}, 
-             \tilde{\rho}^{\bar{\mathcal{G}}_{KRK}},
-             \tilde{\phi}^{\mathcal{F}_{MN}})$,
+             \{\tilde{P}_i\}_1^{\bar{\mathcal{G}}_{KRK}},
+             \{\tilde{P}_i\}_2^{\mathcal{F}_{MN}})$,
 entonces podemos contradecir DDH sobre $G_q$ o la seguridad de MAC.
 Sea $I_\mathcal{A} \subseteq \{1, \ldots , N \}$ el conjunto de índices de los participantes que
-son corrompidos por $\mathcal{A}$. El adversario ideal $\mathcal{S^A}$ esta descrito en la figura
+son corruptos por $\mathcal{A}$. El adversario ideal $\mathcal{S^A}$ esta descrito en la figura
 \ref{adv_S_A}, y simula una ejecución de SIGMIX solo con acceso a $\mathcal{F}_{AAC}$. Como los
 valores de los mensajes enviados honestamente (tanto el enviador como el destinatario son honestos)
 permanecen desconocidos para $\mathcal{S^A}$ hasta que todos los mensajes son enviados, $\mathcal{S^A}$
@@ -202,11 +213,11 @@ engaña a la simulación interna de $\mathcal{A}$ haciendo que $\mathcal{F}_{MN}
 que los mensajes fueron enviados siendo que esto no es realmente así. Finalmente, cuando el conjunto de
 mensajes honestamente enviados le hes revelado a $\mathcal{S}$, hace que los participantes honestos
 de SIGMIX envíen ``silenciosamente'' sus mensajes a $\mathcal{F}_{MN}$. Es es para $\mathcal{A}$ 
-indistinguible de una ejecución donde un adversario \textbf{irreal} $\mathcal{S}'^{\mathcal{A}}$
+indistinguible de una ejecución donde un adversario \textbf{hipotético} $\mathcal{S}'^{\mathcal{A}}$
 adivina los mensajes enviados por $\mathcal{Z}$ a cada participante honesto, puesto que la vista
 de $\mathcal{A}$ es la misma en ambos casos.\\
-El adversario $\mathcal{S^A}$ corrompe a los mismo Mixers que $\mathcal{A}$ corrompe, que
-corresponde a los Mixers $M_i$ $i \in I^M_\mathcal{A}$, y los simula
+El adversario $\mathcal{S^A}$ corrompe a los mismos mixers que $\mathcal{A}$ corrompe, que
+corresponden a los mixers $M_i$ $i \in I^M_\mathcal{A}$, y los simula
 copiando la forma en que $\mathcal{A}$ los ejecuta. Los Mixers honestos son ejecutados
 honestamente.\\
 
@@ -237,12 +248,9 @@ Simulación de participantes corruptos $\tilde{P}_i$ $i \in I_\mathcal{A}$:
 \item Si $P_i$ $i \in I_\mathcal{A}$ envía $m||\sigma$ a $\mathcal{F}_{MN}$ y
       $\sigma = \textrm{MAC}_{y_j^{x_l}}(m)$ para alguna clave pública registrada $y_j$ $j \in \{1, \ldots, N\}$
       y alguna clave secreta registrada $x_l$ $l \in I_\mathcal{A}$, entonces enviar
-      $(\mathtt{Send}, m, j)$ a $\tilde{P}_l$, esperar por $(\mathtt{Sign}, m, l, j)$ de $\mathcal{C_I}$ y
-      enviar $(0, \mathtt{Signature}, m, l, j, \sigma)$ a $\mathcal{C_I}$. Si $\sigma \neq \textrm{MAC}_{y_j^{x_l}}(m)$
+      $(\mathtt{Send}, m, j)$ a $\tilde{P}_l$. Si $\sigma \neq \textrm{MAC}_{y_j^{x_l}}(m)$
       para toda clave pública registrada $y_j$ $j \in \{1, \ldots, N\}$ y toda clave privada registrada $x_l$
       $l \in I_\mathcal{A}$ no hacer nada.
-\item Si $P_i$ envía $(\mathtt{Register}, x_i)$ a la funcionalidad simulada $\bar{\mathcal{G}}_{KRK}$, entonces
-      enviar $(\mathtt{Register}, x_i)$ a $\tilde{P}_i$.
 \end{enumerate}
 
 Simulación de participantes honestos $P_i$ $i \notin I_\mathcal{A}$:
@@ -251,12 +259,14 @@ Simulación de participantes honestos $P_i$ $i \notin I_\mathcal{A}$:
     \item Si $(\tilde{P}_i, \mathtt{Send})$ es recibido de $\mathcal{C_I}$
           hacer que $\mathcal{Z}'$ envíe $(\mathtt{Register})$ a $P_i$ y hacer que $\mathcal{F}_{MN}$ envíe
           $(\mathcal{S}_{\mathcal{F}_{MN}}, \tilde{P}_i, \mathtt{Send})$ a su copia de $\mathcal{C_I}$.
-    \item Si $(\mathtt{Sign}, m, i, j)$ es recibido de $\mathcal{C_I}$ recuperar $x_j$ e $y_i$ de
-          $\bar{\mathcal{G}}_{KRK}$ (no la simulada). Sea $\sigma_{i,j} \leftarrow \mathrm{MAC}_{y_i^{x_j}}(m)$,
+    \item Si $(\tilde{P}_i, \tilde{P}_j, \mathtt{Corruptsend}, m_{i,j})$ es
+          recibido de $\mathcal{C_I}$ recuperar $x_j$ e $y_i$ de
+          $\bar{\mathcal{G}}_{KRK}$ (no la simulada). Sea $\sigma_{i,j} \leftarrow
+          \mathrm{MAC}_{y_i^{x_j}}(m_{i,j})$,
           hacer que $\mathcal{Z}'$ envíe $(\mathtt{Register})$ a $P_i$ y que luego envíe $(\mathtt{Send}, m, j)$ a
-          $P_i$. Finalmente enviar $(0, \mathtt{Signature}, m, i, j, \sigma_{i,j})$ a $\mathcal{C_I}$
-    \item Si $(\mathtt{Messages}, P_j, M)$ es recibido desde $\mathcal{C_I}$ entonces para cada $(m, \sigma) \in M$
-          escoger $i \overset{R}{\leftarrow} \{1, \ldots, N\} \setminus I_\mathcal{A}$, hacer que $\mathcal{Z}'$
+          $P_i$.
+    \item Si $(\mathtt{Messages}, M)$ es recibido desde $\mathcal{C_I}$ entonces para cada $m \in M$
+          escoger $i,j \overset{R}{\leftarrow} \{1, \ldots, N\} \setminus I_\mathcal{A}$, hacer que $\mathcal{Z}'$
           envíe $(\mathtt{Send}, m, j)$ a $P_i$ y eliminar el mensaje $(\mathcal{S}, P_i, \mathtt{Send})$ que
           $\mathcal{F}_{MN}$ envía a su copia de $\mathcal{C_I}$ (similarmente $\mathcal{S^A}$ puede solo adjuntar
           $M$ a la lista $L$ de $\mathcal{F}_{MN}$).
@@ -271,14 +281,14 @@ $\mathrm{Real(\ell)} = \mathcal{Z}(
                     \mathcal{H}(
                         \mathcal{A},
                         \mathrm{SIGMIX},
-                        \tilde{\rho}^{\bar{\mathcal{G}}_{KRK}},
-                        \tilde{\phi}^{\mathcal{F}_{MN}}))$
+                        \{\tilde{P}_i\}_1^{\bar{\mathcal{G}}_{KRK}},
+                        \{\tilde{P}_i\}_2^{\mathcal{F}_{MN}}))$
 y
 $\mathrm{Ideal(\ell)} = \mathcal{Z}(
                     \mathcal{H}(
                         \mathcal{S^A},
-                        \tilde{\pi}^{\mathcal{F}_{AAC}},
-                        \tilde{\rho}^{\bar{\mathcal{G}}_{KRK}}))$, donde $\ell$ es el parámetro de seguridad
+                        \{\tilde{P}_i\}_1^{\mathcal{F}_{AAC}},$\\$
+                        \{\tilde{P}_i\}_2^{\bar{\mathcal{G}}_{KRK}}))$, donde $\ell$ es el parámetro de seguridad
 conque se ejecutan los grafos de ITMs.
 Supongamos que existe un ambiente $\mathcal{Z}$, un adversario $\mathcal{A}$, un polinomio $p$ y entero
 $\bar{\ell}$ talque para todo $\ell >  \bar{\ell}$ se tiene que:
@@ -291,7 +301,7 @@ $\bar{\ell}$ talque para todo $\ell >  \bar{\ell}$ se tiene que:
 \right| \geq \frac{1}{p(\ell)}
 \label{eq:guc}
 \end{equation}
-Entonces definimos en la figura \ref{adv:ddh} el adversario $\mathcal{D}_\textrm{DDH}$.
+Consideremos al adversario $\mathcal{D}_\textrm{DDH}$ defindo en la figura \ref{adv:ddh}.
 
 \begin{figure}
 \framebox{\begin{minipage}[t]{1\columnwidth}
@@ -307,7 +317,7 @@ El adversario $\mathcal{D}_{DDH}(g^\alpha, g^\beta, g^\gamma)$ atacando DDH func
             \tilde{\rho}^{\bar{\mathcal{G}}_{KRK}},
             \tilde{\phi}^{\mathcal{F}_{MN}}))
     $
-    con aletoridad $r$ escogida al azar hasta que este seguro que un participante $P_i$ honesto envíaa un mensaje
+    con aletoridad $r$ escogida al azar hasta que este participante $P_i$ honesto envíe un mensaje
     a otro participante honesto $P_j$ y volver a simular
     $
         \mathcal{Z}(
@@ -319,7 +329,7 @@ El adversario $\mathcal{D}_{DDH}(g^\alpha, g^\beta, g^\gamma)$ atacando DDH func
     $
     con aleatoridad $r$.
     \item Cuando $\tilde{P}_i$ se registra en $\bar{\mathcal{G}}_{KRK}$ actualizar la clave pública registrada a
-          $g^{\alpha}$ y cuando $\tilde{P}_j$ se registra actualizar la clave pública a $g^{beta}$.
+          $g^{\alpha}$ y cuando $\tilde{P}_j$ se registra actualizar la clave pública a $g^{\beta}$.
     \item Cuando $\mathcal{Z}$ envía $(\mathtt{Send}, m, j')$ a $P_i$ reemplazar la firma computada por $P_i$
           por $\mathrm{MAC}_{y_j^{\alpha}}(m)$ para cada $j' \in \{1, \ldots, N\}\setminus{j}$ y
           $\mathrm{MAC}_{g^{\gamma}}(m)$ para $j' = j$.
@@ -338,64 +348,123 @@ El adversario $\mathcal{D}_{DDH}(g^\alpha, g^\beta, g^\gamma)$ atacando DDH func
 \label{adv:ddh}
 \end{figure}
 
-Notemos que como en el experimento $\alpha \in_{R} G_q$ y $\beta \in_{R} G_q$, entonces es indistinguible para
-el ambiente las modificaciones echas por $\mathcal{D}_{DDH}$. Luego
+Notemos que como en el experimento $\alpha \in_{R} G_q$ y $\beta \in_{R} G_q$, entonces para el ambiente
+son indistinguibles las modificaciones echas por $\mathcal{D}_{DDH}$. Luego
 \begin{equation}
-\Pr[\mathrm{Real} = 1] = \Pr[\mathcal{D}_{DDH} = 1|\gamma = \alpha\beta]
+\Pr[\mathrm{Real}(\ell) = 1] = \Pr[\mathcal{D}_{DDH} = 1|\gamma = \alpha\beta]
 \label{eq:ddh_1}
 \end{equation}\\
 Ahora, la única posible diferencia entre ejecutar $\mathcal{D}_{DDH}$ cuando $\gamma \in_R G_q$ y ejecutar
 $
 \mathcal{Z}(
     \mathcal{H}(
-        \mathcal{S^A},
-        \tilde{\pi}^{\mathcal{F}_{AAC}},
-        \tilde{\rho}^{\bar{\mathcal{G}}_{KRK}}))
+        \mathcal{S^A},$\\$
+        \{\tilde{P}_i\}_1^{\mathcal{F}_{AAC}},
+        \{\tilde{P}_i\}^{\bar{\mathcal{G}}_{KRK}}))
 $
-es la salida de los participantes honestos. Pero si existe un participante honesto con índice $j$ talque
-$M_j^\mathrm{Real} \neq M_j^\mathrm{Ideal}$, entonces existe un par $(m, l) \in M_j^\mathrm{Real}$. Y se debe
-tener que $(m, l) \notin M_j^\mathrm{Ideal}$ porque los mismo mensajes son enviados en Real e Ideal, a excepción
-de aquellos mensajes eliminados por $\mathcal{S^A}$ en el paso 1 de la simulación de participantes corruptos.
-Lo anterior significa que el adversario ha creado una firma $\sigma \neq \mathrm{MAC}_{y_i^{x_l}}(m)$ para
-todo $l \in I_\mathcal{A}$, y como fue aceptada por $P_j$ se debe cumplir que
-$\sigma = \mathrm{MAC}_{g^{\gamma r_i r_j}}(m)$ para algún $i \notin I_\mathcal{A}$. Esto contradice
-que MAC es UF-CMA, luego:
+es la salida de los participantes honestos. Definimos un adversario $\mathcal{D}_{UF-CMA}$ en la figura
+\ref{adv:uf-cma} de modo tal que si existe un participante honesto con salida distinta en ambos casos,
+$\mathcal{D}_{UF-CMA}$ puede
+falsificar una firma de MAC.
+
+\begin{figure}
+\framebox{\begin{minipage}[t]{1\columnwidth}
+El adversario $\mathcal{D}_\mathrm{UF-CMA}$ atacando MAC funciona como sigue:\\
+
+\begin{enumerate}
+    \item Simular
+    $
+        \mathcal{Z}(
+        \mathcal{H}(
+            \mathcal{A},
+            \mathrm{SIGMIX},
+            \tilde{\rho}^{\bar{\mathcal{G}}_{KRK}},
+            \tilde{\phi}^{\mathcal{F}_{MN}}))
+    $
+    y
+    $
+        \mathcal{Z}(
+        \mathcal{H}(
+            \mathcal{S^A},
+            \tilde{P}_1,
+            \ldots,
+            \tilde{P}_N,
+            \mathcal{F}_{AAC},
+            \{\tilde{P_i}\}_1^{\bar{\mathcal{G}}_{KRK}},
+            \{\tilde{P_i}\}_2^{\mathcal{F}_{MN}}))
+    $.
+    \item Para cada $j \in \{1, \ldots, N\}$, sean $M_j^{Real}$ los mensajes recibidos por
+          $P_j$ en la primera simulación y $M_j^{Ideal}$ los recibidos por $\tilde{P}_j$ en
+          la segunda simulación. Si existe un $m \in M_j^{real}$ y $m \notin M_j^{Ideal}$,
+          buscar el par $m||\sigma$ en la lista $L$ de $\mathcal{F}_{MN}$ en la primera simulación.
+    \item Retornar el par $(m, \sigma)$
+\end{enumerate}
+\end{minipage}}
+\caption{El adversario UF-CMA para MAC}
+\label{adv:uf-cma}
+\end{figure}
+
+Condicionamos $\Pr[\mathrm{Ideal}(\ell) = 1]$ sobre el evento
+$\mathcal{U}=\text{UF-CMA}_{\mathrm{MAC},\mathcal{D}_{UF-CMA}}(\ell)$
+$$
+\Pr[\mathrm{Ideal}(\ell) = 1] =
+\Pr[\mathrm{Ideal}(\ell) = 1|\mathcal{U} = 0]
+    \Pr[\mathrm{U}=0]
++
+\Pr[\mathrm{Ideal}(\ell) = 1|\mathrm{U} = 1]
+    \Pr[\mathrm{U}=1]
+$$
+$$
+\Pr[\mathrm{Ideal}(\ell) = 1] =
+\Pr[\mathrm{Ideal}(\ell) = 1|\mathcal{U} = 0]
+    \mathrm{Adv}^{UF-CMA}_{\mathrm{MAC},\mathcal{A}}(\ell)
++
+\Pr[\mathrm{Ideal}(\ell) = 1|\mathcal{U}=1]
+    (1-\mathrm{Adv}^{UF-CMA}_{\mathrm{MAC},\mathcal{A}}(\ell))
+$$
+Como MAC es UF-CMA entonces $\mathrm{Adv}^{UF-CMA}_{\mathcal{MA}, \mathcal{A}}(\ell) < \eta(\ell)$,
+con $\eta$ una función despreciable. Reemplazando en la ecuación anterior
+$$
+\Pr[\mathrm{Ideal}(\ell) = 1] =
+    \Pr[\mathrm{Ideal}(\ell) = 1|\text{UF-CMA}_{\mathrm{MAC},\mathcal{A}}(\ell) = 0]+
+    \delta\cdot \eta(\ell)
+$$
+y $\delta$ viene dado por
+$\delta = 
+    \Pr[\mathrm{Ideal}(\ell) = 1|\mathcal{U} = 1] -
+    \Pr[\mathrm{Ideal}(\ell) = 1|\mathcal{U} = 0]$,
+por lo que $-1 \leq \delta \leq 1$ y podemos escribir.
+
 \begin{equation}
-\Pr[\mathrm{Ideal} = 1] \approx \Pr[\mathcal{D}_{DDH} = 1|\gamma \in_R G_q]
+\Pr[\mathrm{Ideal}(\ell) = 1]
+\approx
+\Pr[\mathrm{Ideal}(\ell) = 1|\text{UF-CMA}_{\mathrm{MAC},\mathcal{A}}(\ell) = 0]
+\label{eq:uf-cma}
+\end{equation}
+
+En el caso en que $\mathcal{U} = 0$ los mensajes recibidos por los receptores son los mismos
+en Ideal y Real, por lo tanto al la simulación de $\mathcal{S^A}$ es idéntica a la simulación
+que hace $\mathcal{D}_{DDH}$ cuando $\gamma \in_R G_q$. Es decir
+
+\begin{equation}
+\Pr[\mathrm{Ideal} = 1|\mathcal{U} = 0] \approx \Pr[\mathcal{D}_{DDH} = 1|\gamma \in_R G_q]
 \label{eq:ddh_2}
 \end{equation}
-Reemplazando las ecuaciones \ref{eq:ddh_1} y \ref{eq:ddh_2} en \ref{eq:guc} contradecimos que DDH se cumple en $G_q$.
-Por lo tanto el teorema se tiene.
+
+Combinando las ecuaciones \ref{eq:ddh_1}, \ref{eq:ddh_2}, \ref{eq:uf-cma y} \ref{eq:guc}
+contradecimos que DDH se cumple en $G_q$. Por lo tanto el teorema se tiene.
 \end{proof}
+
+Notamos que el modo híbrido donde es ejecutado SIGMIX puede ser simplificado.
 
 \begin{teorema}
 El protocolo SIGMIX GUC-emula a la funcionalidad $\mathcal{F}_{AAC}$ en el modo $\mathcal{F}_{KG},
-\bar{\mathcal{G}}_KRK$
+\bar{\mathcal{G}}_{KRK}$
 \label{teo:sigmix}
 \end{teorema}
 
 \begin{proof}
 \textit{(Teorema \ref{teo:sigmix})}\\
-Trivial usando el lema \ref{lema:sigmix}, el teorema \ref{teo:mn} y el teorema de composición (teorema
+Directo usando el lema \ref{lema:sigmix}, el teorema \ref{teo:mn} y el teorema de composición (teorema
 \ref{teo:composicion})
-\end{proof}
-
-\begin{teorema}
-El protocolo SIGMIX es anónimo para el destinatario.
-\label{teo:anon}
-\end{teorema}
-
-\begin{proof}
-\textit{(Teorema \ref{teo:anon})}\\
-Idea. Usar el adversario $\mathcal{A}_{Anon}$ para que $\mathcal{Z}$ testee si esta con SIGMIX o $\mathcal{F}_{CAA}$
-\end{proof}
-
-\begin{teorema}
-El protocolo SIGMIX es desmentible.
-\label{teo:den}
-\end{teorema}
-
-\begin{proof}
-\textit{(Teorema \ref{teo:den})}\\
-Idea. Def de den es transformación sintáctica de UC.
 \end{proof}

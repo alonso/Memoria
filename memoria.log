@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.8.19)  10 MAR 2011 09:37
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.8.19)  14 MAR 2011 02:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -561,9 +561,6 @@ LaTeX Warning: Label `corolario:uc-realizacion' multiply defined.
 
 LaTeX Warning: Label `fig:mundo_real_euc' multiply defined.
 
-
-LaTeX Warning: Label `teo:den' multiply defined.
-
 )
 \openout1 = `memoria.aux'.
 
@@ -673,7 +670,7 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 155.
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-<escudocolor.pdf, id=171, 264.99pt x 521.95pt>
+<escudocolor.pdf, id=191, 264.99pt x 521.95pt>
 File: escudocolor.pdf Graphic file (type pdf)
  <use escudocolor.pdf>
 Overfull \vbox (25.27463pt too high) detected at line 155
@@ -726,7 +723,7 @@ Package spanish Warning: Replacing `OT1/cmr/bx/sc' by
  (./capitulos/introduccion.tex
 Cap\'{\i }tulo 1.
 
-Underfull \hbox (badness 10000) in paragraph at lines 5--29
+Underfull \hbox (badness 10000) in paragraph at lines 4--24
 
  []
 
@@ -734,156 +731,185 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.29 
-      [1
+l.25 \section
+             {Descripción del problema} [1
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 44--52
+Underfull \hbox (badness 10000) in paragraph at lines 39--48
 
  []
 
-<figs/tcpip_simple.pdf, id=311, 843.15pt x 444.66125pt>
+<figs/tcpip_simple.pdf, id=350, 911.405pt x 444.66125pt>
 File: figs/tcpip_simple.pdf Graphic file (type pdf)
 
 <use figs/tcpip_simple.pdf> [2] [3]
-<figs/sigmix_simple.pdf, id=334, 685.56125pt x 639.38875pt>
+<figs/sigmix_simple.pdf, id=373, 685.56125pt x 639.38875pt>
 File: figs/sigmix_simple.pdf Graphic file (type pdf)
 
 <use figs/sigmix_simple.pdf>) (./capitulos/marco_teorico.tex [4] [5 <./figs/tcp
 ip_simple.pdf> <./figs/sigmix_simple.pdf>]
 Cap\'{\i }tulo 2.
-) (./capitulos/modelo_criptografico.tex [6
+[6
 
-]
-Cap\'{\i }tulo 3.
-
-Underfull \hbox (badness 10000) in paragraph at lines 3--10
-
- []
-
-[7
-
-] [8]
-Underfull \hbox (badness 10000) in paragraph at lines 64--88
-
+] [7]
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 175--177
+[][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 93--103
+Underfull \hbox (badness 10000) in paragraph at lines 175--177
 
+ []
+
+[8]
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 224--225
+[][] 
  []
 
 [9]
-Overfull \hbox (15.4665pt too wide) in paragraph at lines 105--107
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 250--251
+[][] 
+ []
+
+
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 281--282
+[][] 
+ []
+
+) (./capitulos/modelo_criptografico.tex [10] [11]
+Cap\'{\i }tulo 3.
+[12
+
+] [13]
+Underfull \hbox (badness 10000) in paragraph at lines 95--100
+
+ []
+
+[14]
+Underfull \hbox (badness 10000) in paragraph at lines 105--115
+
+ []
+
+
+Overfull \hbox (15.4665pt too wide) in paragraph at lines 117--119
 []\OT1/cmr/m/n/12 Si la fun-ci^^Son de con-trol $\OML/cmm/m/it/12 C$ \OT1/cmr/m
 /n/12 apli-ca-da a to-da la se-cuen-cia de in-struc-ciones \OT1/cmtt/m/n/12 esc
 ritura-externa
  []
 
-[10]
-Underfull \hbox (badness 10000) in paragraph at lines 130--136
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 142--148
 
  []
 
-[11]
-Underfull \hbox (badness 1286) in paragraph at lines 229--229
+[16]
+Underfull \hbox (badness 1286) in paragraph at lines 241--241
 []\OT1/cmr/m/n/12 Cada vez que un par-tic-i-pante o sub-par-tic-i-pante es-crib
 e eje-cu-ta la in-struc-ci^^Son
  []
 
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 229--231
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 241--243
 [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 229--231
+Underfull \hbox (badness 10000) in paragraph at lines 241--243
 
  []
 
 
-Overfull \hbox (11.90318pt too wide) in paragraph at lines 235--237
+Overfull \hbox (11.90318pt too wide) in paragraph at lines 247--249
 []\OT1/cmr/m/n/12 Denotamos la sal-i-da de la eje-cu-ci^^Son de un pro-to-co-lo
  $\OML/cmm/m/it/12 ^^Y$ \OT1/cmr/m/n/12 en UC por $[][] = [][]$ 
  []
 
-<figs/mundo_real.pdf, id=421, 746.79pt x 586.19pt>
+<figs/mundo_real.pdf, id=532, 746.79pt x 586.19pt>
 File: figs/mundo_real.pdf Graphic file (type pdf)
  <use figs/mundo_real.pdf>
-[12] [13 <./figs/mundo_real.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 283--300
+[17] [18 <./figs/mundo_real.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 295--312
 
  []
 
-[14] [15] <figs/mundo_ideal.pdf, id=465, 824.07875pt x 584.1825pt>
+[19] [20] <figs/mundo_ideal.pdf, id=575, 824.07875pt x 584.1825pt>
 File: figs/mundo_ideal.pdf Graphic file (type pdf)
 
 <use figs/mundo_ideal.pdf>
-Underfull \hbox (badness 10000) in paragraph at lines 380--382
+Underfull \hbox (badness 10000) in paragraph at lines 392--394
 
  []
 
-<figs/dolev_yao.pdf, id=468, 1139.25626pt x 399.4925pt>
+[21 <./figs/mundo_ideal.pdf>]
+<figs/dolev_yao.pdf, id=588, 1139.25626pt x 399.4925pt>
 File: figs/dolev_yao.pdf Graphic file (type pdf)
 
-<use figs/dolev_yao.pdf> [16 <./figs/mundo_ideal.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 419--453
+<use figs/dolev_yao.pdf>
+Underfull \hbox (badness 10000) in paragraph at lines 434--471
 
  []
 
-[17]
-Overfull \hbox (24.90489pt too wide) in paragraph at lines 458--474
+[22 <./figs/dolev_yao.pdf>] [23]
+Overfull \hbox (24.90489pt too wide) in paragraph at lines 474--490
 \OT1/cmr/m/n/12 Denotamos la sal-i-da de la eje-cu-ci^^Son de un pro-to-co-lo $
 \OML/cmm/m/it/12 ^^Y$ \OT1/cmr/m/n/12 en GUC por $[][] = [][]$. 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 458--474
+Underfull \hbox (badness 10000) in paragraph at lines 474--490
 
  []
 
-[18] <figs/mundo_real_guc.pdf, id=500, 990.70125pt x 680.5425pt>
+<figs/mundo_real_guc.pdf, id=610, 990.70125pt x 680.5425pt>
 File: figs/mundo_real_guc.pdf Graphic file (type pdf)
 
-<use figs/mundo_real_guc.pdf>
-Underfull \hbox (badness 10000) in paragraph at lines 500--504
+<use figs/mundo_real_guc.pdf> [24 <./figs/mundo_real_guc.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 515--519
 
  []
 
 
-Overfull \hbox (4.66751pt too wide) in paragraph at lines 512--514
-[][]\OT1/cmr/bx/sc/12 Definici^^Son 19 \OT1/cmr/m/n/12 (Pro-to-co-lo $[]$-subro
+Overfull \hbox (4.66751pt too wide) in paragraph at lines 527--529
+[][]\OT1/cmr/bx/sc/12 Definici^^Son 37 \OT1/cmr/m/n/12 (Pro-to-co-lo $[]$-subro
 utine re-spect-ing)\OT1/cmr/bx/sc/12 . []\OT1/cmr/m/it/12 Dec-i-mos que un pro-
 to-co-lo es $[]$-subroutine
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 516--521
+Underfull \hbox (badness 10000) in paragraph at lines 531--536
 
  []
 
-<figs/mundo_real_euc.pdf, id=501, 990.70125pt x 586.19pt>
+<figs/mundo_real_euc.pdf, id=619, 990.70125pt x 586.19pt>
 File: figs/mundo_real_euc.pdf Graphic file (type pdf)
 
-<use figs/mundo_real_euc.pdf> [19] [20 <./figs/dolev_yao.pdf> <./figs/mundo_rea
-l_guc.pdf>] <figs/mundo_ideal_guc.pdf, id=519, 817.0525pt x 581.17125pt>
+<use figs/mundo_real_euc.pdf> [25]
+<figs/mundo_ideal_guc.pdf, id=629, 817.0525pt x 581.17125pt>
 File: figs/mundo_ideal_guc.pdf Graphic file (type pdf)
 
 <use figs/mundo_ideal_guc.pdf>
-Underfull \hbox (badness 10000) in paragraph at lines 555--558
+Underfull \hbox (badness 10000) in paragraph at lines 570--573
 
  []
 
-[21 <./figs/mundo_real_euc.pdf>]
-Overfull \hbox (5.48463pt too wide) in paragraph at lines 585--593
-[][]\OT1/cmr/bx/sc/12 Definici^^Son 21 \OT1/cmr/m/n/12 (grafo de ITMs)\OT1/cmr/
+<figs/mundo_real_wik.pdf, id=635, 759.83875pt x 590.205pt>
+File: figs/mundo_real_wik.pdf Graphic file (type pdf)
+
+<use figs/mundo_real_wik.pdf>
+<figs/mundo_irreal_wik.pdf, id=636, 768.8725pt x 599.23875pt>
+File: figs/mundo_irreal_wik.pdf Graphic file (type pdf)
+
+<use figs/mundo_irreal_wik.pdf>
+Overfull \hbox (5.48463pt too wide) in paragraph at lines 623--631
+[][]\OT1/cmr/bx/sc/12 Definici^^Son 39 \OT1/cmr/m/n/12 (grafo de ITMs)\OT1/cmr/
 bx/sc/12 . []\OT1/cmr/m/it/12 Un grafo de ITMs en un con-jun-to v^^Sertices $\O
 ML/cmm/m/it/12 V \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 P[]; [] ;
  P[]\OMS/cmsy/m/n/12 g ^^Z
  []
 
-[22]
-Overfull \hbox (12.79054pt too wide) in paragraph at lines 626--633
+[26] [27 <./figs/mundo_real_euc.pdf> <./figs/mundo_ideal_guc.pdf>] [28 <./figs/
+mundo_real_wik.pdf> <./figs/mundo_irreal_wik.pdf>]
+Overfull \hbox (12.79054pt too wide) in paragraph at lines 664--671
 \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 r[]; m[]\OT1/cmr/m/n/12 )$ \OT1/cmr/m/it/12 e
 s guarda-do en el reg-istro eti-que-ta-do con $\OT1/cmr/m/n/12 (\OML/cmm/m/it/1
 2 ^^\[]\OT1/cmr/m/n/12 )$\OT1/cmr/m/it/12 . Luego $\OT1/cmr/m/n/12 ((\OML/cmm/m
@@ -893,73 +919,66 @@ it/12 ; ^^\[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; [] ; \OT1/cmr/m/n/12 (\OML/cmm
 m/it/12 ; ^^\[]\OT1/cmr/m/n/12 ))$
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 652--655
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 666--671
+[29]
+Underfull \hbox (badness 10000) in paragraph at lines 690--693
 
  []
 
-[23]) (./capitulos/desmentibilidad.tex [24] [25 <./figs/mundo_ideal_guc.pdf>]
+
+Underfull \hbox (badness 10000) in paragraph at lines 704--709
+
+ []
+
+[30]) (./capitulos/desmentibilidad.tex [31]
 Cap\'{\i }tulo 4.
-[26
+[32
 
 ]
-LaTeX Font Info:    Try loading font information for U+euf on input line 38.
+LaTeX Font Info:    Try loading font information for U+euf on input line 39.
  (/usr/share/texmf-texlive/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2009/06/22 v3.00 Euler Fraktur
-) [27])
-(./capitulos/anonimato.tex [28]
+) [33])
+(./capitulos/anonimato.tex [34]
 Cap\'{\i }tulo 5.
-[29
+[35
 
-]
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 117--119
+] [36]
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 123--125
 [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 117--119
+Underfull \hbox (badness 10000) in paragraph at lines 123--125
 
  []
 
-[30] [31]
-Underfull \hbox (badness 10000) in paragraph at lines 129--138
+
+Underfull \hbox (badness 10000) in paragraph at lines 140--149
 
  []
 
-<figs/mixnet.pdf, id=623, 968.61874pt x 426.59375pt>
+[37] <figs/mixnet.pdf, id=744, 968.61874pt x 426.59375pt>
 File: figs/mixnet.pdf Graphic file (type pdf)
- <use figs/mixnet.pdf>
-Overfull \hbox (7.73601pt too wide) in paragraph at lines 152--159
-\OT1/cmr/m/n/12 sajes y re-encriptan los tex-tos planos. Con-sid-er-e-mos un es
--que-ma de en-criptaci^^Son $\OMS/cmsy/m/n/12 E \OT1/cmr/m/n/12 = (\OML/cmm/m/i
-t/12 K; E; D\OT1/cmr/m/n/12 )$,
- []
 
-[32 <./figs/mixnet.pdf>] [33] [34]
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 315--317
+<use figs/mixnet.pdf> [38 <./figs/mixnet.pdf>] [39] [40]
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 328--330
 [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 315--317
+Underfull \hbox (badness 10000) in paragraph at lines 328--330
 
  []
 
-[35]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 349.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 342.
 
- (/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
+(/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 349.
- [36])
-(./capitulos/protocolo.tex [37]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 342.
+ [41])
+(./capitulos/protocolo.tex [42]
 Cap\'{\i }tulo 6.
 
 Underfull \hbox (badness 1005) in paragraph at lines 40--40
@@ -978,95 +997,117 @@ Underfull \hbox (badness 10000) in paragraph at lines 40--42
 
  []
 
-[38
 
-] [39]
+Underfull \hbox (badness 10000) in paragraph at lines 62--72
 
-LaTeX Warning: Reference `func:g_krk' on page 40 undefined on input line 109.
+ []
 
+[43
 
-LaTeX Warning: Reference `uf-cma' on page 40 undefined on input line 116.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 167--167
+] [44]
+Underfull \hbox (badness 10000) in paragraph at lines 178--178
 
  []
 
 
-Overfull \hbox (10.71661pt too wide) in paragraph at lines 167--168
+Overfull \hbox (10.71661pt too wide) in paragraph at lines 178--179
 [][] 
  []
 
-[40]
-Underfull \hbox (badness 10000) in paragraph at lines 183--212
-
- []
-
-[41]
-Underfull \hbox (badness 10000) in paragraph at lines 264--264
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 264--264
-
+[45] [46]
+Overfull \hbox (12.39053pt too wide) in paragraph at lines 194--223
+\OT1/cmr/m/n/12 de dis-tin-guir $\OMS/cmsy/m/n/12 H\OT1/cmr/m/n/12 (\OMS/cmsy/m
+/n/12 S\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 f[]g[]\OML/cmm/m/it/12 ; \OMS/cmsy/m
+/n/12 f[]g[]\OT1/cmr/m/n/12 )$ de una eje-cu-ci^^Son de $\OMS/cmsy/m/n/12 H\OT1
+/cmr/m/n/12 (\OMS/cmsy/m/n/12 A\OML/cmm/m/it/12 ; []; \OMS/cmsy/m/n/12 f[]g[]\O
+ML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 f[]g[]\OT1/cmr/m/n/12 )$,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 264--264
+Underfull \hbox (badness 10000) in paragraph at lines 194--223
 
  []
 
 
-Underfull \hbox (badness 1221) in paragraph at lines 264--264
-[]\OT1/cmr/m/n/12 Si $\OML/cmm/m/it/12 P[]$ \OT1/cmr/m/n/12 env^^S^^Pa $([]\OML
-/cmm/m/it/12 ; x[]\OT1/cmr/m/n/12 )$ a la fun-cional-i-dad sim-u-la-da $[]$, en
--tonces en-viar
+Underfull \hbox (badness 10000) in paragraph at lines 274--274
+
  []
 
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 264--265
+Underfull \hbox (badness 10000) in paragraph at lines 274--274
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 274--274
+
+ []
+
+
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 274--275
 [][] 
  []
 
 
-Overfull \hbox (13.77087pt too wide) in paragraph at lines 269--285
+Overfull \hbox (17.35883pt too wide) in paragraph at lines 279--295
 []\OT1/cmr/m/n/12 Definimos $[] = \OMS/cmsy/m/n/12 Z\OT1/cmr/m/n/12 (\OMS/cmsy/
-m/n/12 H\OT1/cmr/m/n/12 (\OMS/cmsy/m/n/12 A\OML/cmm/m/it/12 ; []; []; []\OT1/cm
-r/m/n/12 ))$ y $[] = \OMS/cmsy/m/n/12 Z\OT1/cmr/m/n/12 (\OMS/cmsy/m/n/12 H\OT1/
-cmr/m/n/12 ([]\OML/cmm/m/it/12 ; []; []\OT1/cmr/m/n/12 ))$,
+m/n/12 H\OT1/cmr/m/n/12 (\OMS/cmsy/m/n/12 A\OML/cmm/m/it/12 ; []; \OMS/cmsy/m/n
+/12 f[]g[]\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 f[]g[]\OT1/cmr/m/n/12 ))$ y $[] =
+ \OMS/cmsy/m/n/12 Z\OT1/cmr/m/n/12 (\OMS/cmsy/m/n/12 H\OT1/cmr/m/n/12 ([]\OML/c
+mm/m/it/12 ; \OMS/cmsy/m/n/12 f[]g[]\OML/cmm/m/it/12 ;$ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 336--336
+Underfull \hbox (badness 10000) in paragraph at lines 346--346
 
  []
 
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 336--337
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 346--347
 [][] 
  []
 
 
-Overfull \hbox (65.76854pt too wide) in paragraph at lines 346--363
-\OT1/cmr/m/n/12 Ahora, la ^^Sunica posi-ble difer-en-cia en-tre eje-cu-tar $\OM
-S/cmsy/m/n/12 D[]$ \OT1/cmr/m/n/12 cuan-do $\OML/cmm/m/it/12 ^^M \OMS/cmsy/m/n/
-12 2[] \OML/cmm/m/it/12 G[]$ \OT1/cmr/m/n/12 y eje-cu-tar $\OMS/cmsy/m/n/12 Z\O
-T1/cmr/m/n/12 (\OMS/cmsy/m/n/12 H\OT1/cmr/m/n/12 ([]\OML/cmm/m/it/12 ; []; []\O
-T1/cmr/m/n/12 ))$
+Underfull \hbox (badness 10000) in paragraph at lines 402--402
+
  []
 
 
-Overfull \hbox (13.81343pt too wide) in paragraph at lines 372--375
+Overfull \hbox (29.67612pt too wide) in paragraph at lines 402--402
+[]\OT1/cmr/m/n/12 Simular $\OMS/cmsy/m/n/12 Z\OT1/cmr/m/n/12 (\OMS/cmsy/m/n/12 
+H\OT1/cmr/m/n/12 (\OMS/cmsy/m/n/12 A\OML/cmm/m/it/12 ; []; []; []\OT1/cmr/m/n/1
+2 ))$ y $\OMS/cmsy/m/n/12 Z\OT1/cmr/m/n/12 (\OMS/cmsy/m/n/12 H\OT1/cmr/m/n/12 (
+[]\OML/cmm/m/it/12 ; []; [] ; []; \OMS/cmsy/m/n/12 F[]\OML/cmm/m/it/12 ; \OMS/c
+msy/m/n/12 f[]g[]\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 f[]g[]\OT1/cmr/m/n/12 ))$.
+ 
+ []
+
+
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 402--403
+[][] 
+ []
+
+
+Overfull \hbox (40.69426pt too wide) detected at line 424
+[]\OT1/cmr/m/n/12 [[](\OML/cmm/m/it/12 `\OT1/cmr/m/n/12 ) = 1] = [][[](\OML/cmm
+/m/it/12 `\OT1/cmr/m/n/12 ) = 1\OMS/cmsy/m/n/12 jU \OT1/cmr/m/n/12 = 0][][](\OM
+L/cmm/m/it/12 `\OT1/cmr/m/n/12 ) + [][[](\OML/cmm/m/it/12 `\OT1/cmr/m/n/12 ) = 
+1\OMS/cmsy/m/n/12 jU \OT1/cmr/m/n/12 = 1](1 \OMS/cmsy/m/n/12 ^^@ [][]\OT1/cmr/m
+/n/12 (\OML/cmm/m/it/12 `\OT1/cmr/m/n/12 ))
+ []
+
+[47] [48] [49]
+
+LaTeX Warning: Reference `eq:uf-cma y' on page 50 undefined on input line 454.
+
+
+Overfull \hbox (8.09778pt too wide) in paragraph at lines 461--464
 [][]\OT1/cmr/bx/sc/12 Teorema 7. []\OT1/cmr/m/it/12 El pro-to-co-lo SIG-MIX GUC
 -emula a la fun-cional-i-dad $\OMS/cmsy/m/n/12 F[]$ \OT1/cmr/m/it/12 en el mo-d
-o $\OMS/cmsy/m/n/12 F[]\OML/cmm/m/it/12 ; []RK$
+o $\OMS/cmsy/m/n/12 F[]\OML/cmm/m/it/12 ; []$
  []
 
-
-LaTeX Warning: Reference `teo:mn' on page 42 undefined on input line 379.
-
-) (./capitulos/conclusiones.tex [42] [43] [44]
+) (./capitulos/conclusiones.tex [50]
 Cap\'{\i }tulo 7.
 
 Underfull \hbox (badness 10000) in paragraph at lines 3--14
@@ -1078,12 +1119,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 23--32
 
  []
 
-[45
+[51
 
-]) [46] (./memoria.bbl [47
+]) [52] (./memoria.bbl [53
 
 
-]) [48] (./memoria.aux)
+]) [54] (./memoria.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -1095,13 +1136,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 10676 strings out of 495061
- 151703 string characters out of 1182621
- 275545 words of memory out of 3000000
- 13333 multiletter control sequences out of 15000+50000
- 17364 words of font info for 68 fonts, out of 3000000 for 9000
+ 10774 strings out of 495061
+ 153067 string characters out of 1182621
+ 277545 words of memory out of 3000000
+ 13367 multiletter control sequences out of 15000+50000
+ 19176 words of font info for 74 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 44i,13n,58p,335b,646s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,13n,58p,335b,619s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
 re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texmf-tex
 live/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texmf-texlive/font
@@ -1116,17 +1157,19 @@ blic/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfont
 s/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr6.pf
 b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share
 /texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-texliv
-e/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/typ
-e1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-texlive/fonts/type1/public/am
-sfonts/cm/cmsy7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cm
-sy8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb></u
-sr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/te
-xmf-texlive/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texmf-texlive
-/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/share/texmf-texlive/fonts/t
-ype1/public/amsfonts/symbols/msbm10.pfb>
-Output written on memoria.pdf (54 pages, 722320 bytes).
+e/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texmf-texlive/fonts/typ
+e1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/a
+msfonts/cm/cmsy6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/c
+msy7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy8.pfb></u
+sr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/te
+xmf-texlive/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-texlive
+/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texmf-texlive/fonts/type1
+/public/amsfonts/cm/cmtt12.pfb></usr/share/texmf-texlive/fonts/type1/public/ams
+fonts/euler/eufm10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/sy
+mbols/msbm10.pfb>
+Output written on memoria.pdf (60 pages, 815911 bytes).
 PDF statistics:
- 936 PDF objects out of 1000 (max. 8388607)
- 282 named destinations out of 1000 (max. 500000)
- 387 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1084 PDF objects out of 1200 (max. 8388607)
+ 341 named destinations out of 1000 (max. 500000)
+ 437 words of extra memory for PDF output out of 10000 (max. 10000000)
 

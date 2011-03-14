@@ -1,8 +1,5 @@
 \begin{thebibliography}{10}
 
-\bibitem{mnCompleto}
-Paper completo wikstrom.
-
 \bibitem{CanettiEtAl97}
 Canetti, Dwork, Naor, and Ostrovsky.
 \newblock Deniable encryption.
@@ -32,6 +29,11 @@ R.~Canetti.
 \newblock Universally composable signature, certification, and authentication.
 \newblock In {\em CSFW}, page 219. IEEE Computer Society, 2004.
 
+\bibitem{cryptoeprint:2006:465}
+R.~Canetti.
+\newblock Security and composition of cryptographic protocols: A tutorial.
+\newblock Cryptology ePrint Archive, Report 2006/465, 2006.
+
 \bibitem{conf/tcc/CanettiDPW07}
 R.~Canetti, Y.~Dodis, R.~Pass, and S.~Walfish.
 \newblock Universally composable security with global setup.
@@ -49,6 +51,12 @@ D.~Chaum.
 \newblock The dining cryptographers problem: Unconditional sender and recipient
   untraceability.
 \newblock {\em J. Cryptology}, 1(1):65--75, 1988.
+
+\bibitem{diffie-hellman_me:1976a}
+W.~Diffie and M.~E. Hellman.
+\newblock New directions in cryptography.
+\newblock {\em {IEEE} Transactions on Information Theory}, 22(5):644--654,
+  1976.
 
 \bibitem{conf/tcc/DodisKSW09}
 Y.~Dodis, J.~Katz, A.~Smith, and S.~Walfish.
@@ -74,6 +82,12 @@ A.~Hevia and D.~Micciancio.
   Technologies}, volume 5134 of {\em Lecture Notes in Computer Science}, pages
   24--43. Springer, 2008.
 
+\bibitem{IshaiEtAl06}
+Ishai, Kushilevitz, Ostrovsky, and Sahai.
+\newblock Cryptography from anonymity.
+\newblock In {\em FOCS: IEEE Symposium on Foundations of Computer Science
+  (FOCS)}, 2006.
+
 \bibitem{Pass03}
 Pass.
 \newblock On deniability in the common reference string and random oracle
@@ -90,6 +104,11 @@ S.~Walfish.
 \newblock {\em Enhanced security models for network protocols}.
 \newblock PhD thesis, New York, NY, USA, 2008.
 \newblock AAI3310580.
+
+\bibitem{mnCompleto}
+Wikstrom.
+\newblock A universally composable mix-net.
+\newblock In {\em Versión completa obtenida directamente del autor.}, 2004.
 
 \bibitem{Wikstrom04a}
 Wikstrom.

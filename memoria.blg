@@ -3,54 +3,50 @@ The top-level auxiliary file: memoria.aux
 The style file: abbrv.bst
 Database file #1: biblio.bib
 Warning--I'm ignoring conf/tcc/DodisKSW09's extra "booktitle" field
---line 251 of file biblio.bib
+--line 275 of file biblio.bib
 A bad cross reference---entry "conf/csfw/Canetti04"
 refers to entry "conf/csfw/2004", which doesn't exist
 Warning--I didn't find a database entry for "conf/csfw/2004"
-Warning--to sort, need author or key in mnCompleto
-Warning--empty author in mnCompleto
-Warning--empty booktitle in mnCompleto
-Warning--empty year in mnCompleto
 Warning--empty school in Walfish:2008:ESM:1467461
-You've used 18 entries,
+You've used 21 entries,
             2118 wiz_defined-function locations,
-            618 strings with 6525 characters,
-and the built_in function-call counts, 5948 in all, are:
-= -- 576
-> -- 245
+            633 strings with 6968 characters,
+and the built_in function-call counts, 6877 in all, are:
+= -- 665
+> -- 294
 < -- 9
-+ -- 100
-- -- 78
-* -- 388
-:= -- 958
-add.period$ -- 58
-call.type$ -- 18
-change.case$ -- 90
++ -- 120
+- -- 94
+* -- 437
+:= -- 1125
+add.period$ -- 69
+call.type$ -- 21
+change.case$ -- 107
 chr.to.int$ -- 0
-cite$ -- 23
-duplicate$ -- 261
-empty$ -- 512
-format.name$ -- 78
-if$ -- 1277
+cite$ -- 22
+duplicate$ -- 294
+empty$ -- 590
+format.name$ -- 94
+if$ -- 1470
 int.to.chr$ -- 0
-int.to.str$ -- 18
-missing$ -- 16
-newline$ -- 93
-num.names$ -- 40
-pop$ -- 113
+int.to.str$ -- 21
+missing$ -- 18
+newline$ -- 110
+num.names$ -- 48
+pop$ -- 132
 preamble$ -- 1
-purify$ -- 73
+purify$ -- 87
 quote$ -- 0
-skip$ -- 179
+skip$ -- 202
 stack$ -- 0
-substring$ -- 306
-swap$ -- 73
+substring$ -- 347
+swap$ -- 78
 text.length$ -- 9
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 72
-warning$ -- 5
-while$ -- 58
-width$ -- 20
-write$ -- 201
+type$ -- 84
+warning$ -- 1
+while$ -- 68
+width$ -- 23
+write$ -- 237
 (There was 1 error message)

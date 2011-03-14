@@ -7,20 +7,26 @@
 \BOOKMARK [2][-]{subsection.1.3.1}{Objetivo General}{section.1.3}
 \BOOKMARK [2][-]{subsection.1.3.2}{Objetivos esec\355ficos}{section.1.3}
 \BOOKMARK [0][-]{chapter.2}{Marco Te\363rico}{}
-\BOOKMARK [1][-]{section.2.1}{Indistinguibilidad}{chapter.2}
-\BOOKMARK [2][-]{subsection.2.1.1}{Algunas Setup assumptions comunes}{section.2.1}
-\BOOKMARK [1][-]{section.2.2}{Definiciones criptogr\341ficas b\341sicas}{chapter.2}
-\BOOKMARK [2][-]{subsection.2.2.1}{Indistinguibilidad bajo ataque de texto plano escogido}{section.2.2}
-\BOOKMARK [2][-]{subsection.2.2.2}{UF-CMA}{section.2.2}
+\BOOKMARK [1][-]{section.2.1}{Definiciones b\341sicas}{chapter.2}
+\BOOKMARK [1][-]{section.2.2}{Probabilidades discretas}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.2.1}{Indistinguibilidad}{section.2.2}
+\BOOKMARK [1][-]{section.2.3}{Definiciones criptogr\341ficas b\341sicas}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.3.1}{El problema de Diffie-Hellman decisonal \(DDH\)}{section.2.3}
+\BOOKMARK [2][-]{subsection.2.3.2}{Esquemas de Encriptaci\363n}{section.2.3}
+\BOOKMARK [2][-]{subsection.2.3.3}{Esquemas de autentificaci\363n de mensajes}{section.2.3}
+\BOOKMARK [2][-]{subsection.2.3.4}{Supestos de incializaci\363n}{section.2.3}
 \BOOKMARK [0][-]{chapter.3}{Modelo Criptogr\341fico}{}
 \BOOKMARK [1][-]{section.3.1}{Universal Composability framework \(UC\)}{chapter.3}
-\BOOKMARK [2][-]{subsection.3.1.1}{Sistemas de M\341quinas de Turing Interactivas}{section.3.1}
-\BOOKMARK [2][-]{subsection.3.1.2}{Ejecuci\363n de un protocolo}{section.3.1}
-\BOOKMARK [2][-]{subsection.3.1.3}{Teorema de composici\363n}{section.3.1}
-\BOOKMARK [2][-]{subsection.3.1.4}{Funcionalidades Ideales}{section.3.1}
-\BOOKMARK [2][-]{subsection.3.1.5}{Modelos de corrupci\363n}{section.3.1}
+\BOOKMARK [2][-]{subsection.3.1.1}{Descripci\363n general}{section.3.1}
+\BOOKMARK [2][-]{subsection.3.1.2}{Sistemas de M\341quinas de Turing Interactivas}{section.3.1}
+\BOOKMARK [2][-]{subsection.3.1.3}{Ejecuci\363n de un protocolo}{section.3.1}
+\BOOKMARK [2][-]{subsection.3.1.4}{Teorema de composici\363n}{section.3.1}
+\BOOKMARK [2][-]{subsection.3.1.5}{Funcionalidades Ideales}{section.3.1}
+\BOOKMARK [2][-]{subsection.3.1.6}{Modelos de corrupci\363n}{section.3.1}
 \BOOKMARK [1][-]{section.3.2}{Generalized Universal Composabillity}{chapter.3}
-\BOOKMARK [2][-]{subsection.3.2.1}{Ejecuci\363n de un protocolo}{section.3.2}
+\BOOKMARK [2][-]{subsection.3.2.1}{Descripci\363n general}{section.3.2}
+\BOOKMARK [2][-]{subsection.3.2.2}{Ejecuci\363n de un protocolo en GUC}{section.3.2}
+\BOOKMARK [2][-]{subsection.3.2.3}{Ejecuci\363n en EUC}{section.3.2}
 \BOOKMARK [1][-]{section.3.3}{Una notaci\363n m\341s simple para \(G\)UC}{chapter.3}
 \BOOKMARK [0][-]{chapter.4}{Desmentibilidad}{}
 \BOOKMARK [1][-]{section.4.1}{Desmentibilidad online}{chapter.4}
@@ -30,8 +36,7 @@
 \BOOKMARK [2][-]{subsection.5.2.1}{Redes de Mezcla o Mix-nets}{section.5.2}
 \BOOKMARK [2][-]{subsection.5.2.2}{Mix-nets reencriptantes}{section.5.2}
 \BOOKMARK [2][-]{subsection.5.2.3}{Mixnet con desencriptaci\363n}{section.5.2}
-\BOOKMARK [2][-]{subsection.5.2.4}{Broadcast Networks}{section.5.2}
-\BOOKMARK [2][-]{subsection.5.2.5}{Anonimous Broadcast o DC-nets}{section.5.2}
+\BOOKMARK [2][-]{subsection.5.2.4}{Anonimous Broadcast o DC-nets}{section.5.2}
 \BOOKMARK [0][-]{chapter.6}{El protocolo}{}
 \BOOKMARK [1][-]{section.6.1}{Canales An\363nimos Autentificados}{chapter.6}
 \BOOKMARK [1][-]{section.6.2}{El protocolo SIGMIX}{chapter.6}
@@ -39,4 +44,4 @@
 \BOOKMARK [1][-]{section.7.1}{Preguntas abiertas}{chapter.7}
 \BOOKMARK [2][-]{subsection.7.1.1}{Mixnet GUC-segura}{section.7.1}
 \BOOKMARK [2][-]{subsection.7.1.2}{Una modelaci\363n m\341s exacta de la componibilidad en GUC}{section.7.1}
-\BOOKMARK [0][-]{section*.34}{Referencias}{}
+\BOOKMARK [0][-]{section*.41}{Referencias}{}

@@ -7,9 +7,16 @@ es una generalización del \textit{framework Universal Composability}
 pero GUC adicionalmente modela protocolos concurrentes que comparten estado entre si.
 Primero revisaremos el framework UC pues GUC se construye a partir de UC con pequeñas,
 pero muy significativas, modificaciones.\\
+A modo de recomendación instamos al lector que desea tener una visión general de UC y GUC
+leer las secciones \ref{sect:dg_uc}, \ref{sect:dg_guc} y \ref{sect:simple_uc}. Las demás
+secciones ahondan en detalles útiles para revisar en detalle los resultados de este trabajo,
+pero quizás engorrosos para tener una primera ideal general de estos.
 
 \section{Universal Composability framework (UC)}
 \label{sect:uc}
+\subsection{Descripción general}
+\label{sect:dg_uc}
+
 UC es una metodología para modelar modularmente protocolos criptográficos que son ejecutados en redes
 del ``mundo real" (por ejemplo internet). El espíritu de UC es diseñar un protocolo y luego abstraer la
 seguridad que uno espera de él en un protocolo ideal, ejecutado en condiciones especiales que garantizan
@@ -17,14 +24,15 @@ su seguridad. Luego se debe demostrar que ejecutar el protocolo real y ejecutar 
 esencialmente lo mismo, por lo tanto el protocolo real es tan seguro como el protocolo ideal.\\
 Los protocolos reales pueden ser ejecutados concurrentemente con muchos otros protocolos
 y también pueden ser ejecutados distribuidos entre varios participantes.
-Como en el mundo real el protocolo puede ser monitoreado por terceros y algunos participantes pueden salirse
-arbitrareamente del protocolo atentando con la seguridad. Todo el posible mal comportamiento es ejecutado por una sola
+El protocolo puede ser monitoreado por terceros y algunos participantes pueden salirse
+arbitrariamente del protocolo atentando con la seguridad. En UC, todo el posible mal comportamiento es
+ejecutado por una sola
 máquina, el Adversario (real) $\mathcal{A}$. En una ejecución del protocolo el adversario puede espiar y
 manipular todos los mensajes intercambiados, también puede manejar la distribución de mensajes a su antojo,
 y además puede \textit{corromper} participantes del protocolo y ejecutar código arbitrario en ellos.\\
 Por otro lado están los protocolos ideales, llamados \textit{funcionalidades ideales} denotadas por 
-$\mathcal{F}$. Las funcionalidades ideales son ejecutadas en un mundo ideal, donde es una entidad confiable
-la encargada de ejecutar su código. En el mundo ideal existe un adversario ideal o \textit{simulador}
+$\mathcal{F}$. Las funcionalidades ideales son ejecutada por una entidad confiable
+e incorruptible. Para las funcionalidades ideales también existe un adversario ideal o \textit{simulador}
 $\mathcal{S}$, pero este no puede espiar ni controlar la comunicación más de lo que la funcionalidad ideal
 permite.\\
 La configuración en la que el protocolo real es ejecutado con el adversario real es conocida como \textit{mundo
@@ -39,6 +47,8 @@ adversario ideal) que tiene el mismo efecto que la estrategia adversarial real (
 de ninguna diferencia entre la ejecución del protocolo real y el protocolo ideal).\\
 Para definir formalmente las nociones intuitivas descritas anteriormente es necesario introducir un modelo de
 cálculo conocido como \textit{Máquina de Turing Interactiva} (desde ahora ITM), más precisamente sistemas de ITM.
+Las definiciones que vienen a continuación sigue, salvo pequeñas modificaciones, a la definiciones dadas po Canetti
+en \cite{cryptoeprint:2006:465}.
 
 \subsection{Sistemas de Máquinas de Turing Interactivas}
 
@@ -75,11 +85,13 @@ La cinta de salida contendrá la salida de $M$ una vez que haya terminado.\\
 La cinta de bits aleatorios contiene suficientes bits aleatorios para que $M$ pueda realizar sus cálculos.\\
 La cinta de trabajo es la usual cinta de trabajo de las Máquinas de Turing.\\
 La cinta de activación tiene el valor 0 si la $M$ no esta activada y 1 si lo esta. La secuencia de
-configuraciones de una ejecución de $M$
+configuraciones
 \footnote{Una configuración corresponde a un objeto que determina completamente un instante
 en la computación de una MT. Podemos ver la ejecución de una MT como una secuencia de configuraciones, donde la
 primera configuración corresponde a la MT en su estado inicial y la(s) cinta(s) con la(s) entrada(s), y la
 configuración final corresponde a la MT en un estado final.}
+de una ejecución de $M$
+
 esta compuesta por subsecuencias en las
 que en cada configuración la $M$ esta activada. A dichas subsecuencias se les conoce como \textit{secuencias
 de activación}.\\
@@ -401,7 +413,7 @@ que el teorema de composición se sigue teniendo para cualquier clase de adversa
 para cualquier modelo de corrupción.
 A continuación listamos dos modelos de corrupción.
 
-\subsubsection{Adversarios dinámicos}
+\subsubsection{Adversarios estáticos}
 En este caso el conjunto de participantes a los que corrompe el adversario esta fijo a priori, por
 lo tanto no pueden depender de los distintos valores que se van obteniendo en la ejecución del
 protocolo. En este caso se puede asumir que el adversario corrompe a los participantes del
@@ -416,22 +428,28 @@ pueden irse haciendo conforme avanza el protocolo.
 
 
 \section{Generalized Universal Composabillity}
+\subsection{Descripción general}
+\label{sect:dg_guc}
+
 Como vimos en la sección \ref{sect:uc}, para poder aplicar el teorema de composición (teorema
 \ref{teo:composicion}) es necesario que el protocolo sea \textit{subroutine respecting}.
 Esto es, el protocolo y todas sus subrutinas no deben intercambiar entradas o salidas con otros
-protocolos externos a la sesión. Así, el protocolo analizado es independiente de de cualquier
+protocolos externos a la sesión. Así, el protocolo analizado es independiente de cualquier
 otro protocolo por lo que su comportamiento entrada/salida y los mensajes intercambiados en su
 ejecución también son independientes. Sin embargo puede resultar poco realista en ciertas ocasiones.\\
 Una escenario donde no es realista asumir que un protocolo es subroutine respecting es donde
-es necesario asumir la existencia de funcionalidades ideales sin estar UC-realizadas por algún
-protocolo, lo que se conoce como una \textit{setup assumptions}. Esto es necesario cuando se desea
+es necesario asumir la existencia de funcionalidades ideales existenetes a priori, las cuales no son
+C-realizadas por un protocolo. A esto se le conoce conoce como \textit{Supuestos de inicialización}
+o \textit{setup assumption}.
+Esto es necesario cuando se desea
 desarrollar un protocolo que UC-realice cierta funcionalidad, que se sabe irrealizable sin una setup
-assumption. Por ejemplo consideremos el caso de ZKP, es sabido que es imposible UC-realizar
+assumption. Por ejemplo consideremos el caso de \textit{Zero Knowledge Proofs} (o \textit{Pruebas de
+Nula divulgación} y desde ahora ZKP), es sabido que es imposible UC-realizar
 ZKP (UC-realizar la funcionalidad ideal $\mathcal{F}_{ZK}^\mathcal{R}$ para alguna relación binaria
-$\mathcal{R}$) sin \textit{setup assumptions} como por ejemplo el uso de un ``string público
+$\mathcal{R}$) sin setup assumptions como por ejemplo el uso de un ``string público
 aleatorio'' (CRS) (del inglés \textit{common random string}) cuando la mayoría de los participantes
-son corruptos. $\mathcal{F}_{CRS}$ \cite{CanKusLin06}.\\
-En UC, CRS es modelado como una funcionalidad ideal $\mathcal{F}_{CRS}$ que hace público un string
+son corruptos \cite{CanKusLin06}.\\
+En UC, el CRS es modelado como una funcionalidad ideal $\mathcal{F}_{CRS}$ que hace público un string
 aleatorio. Ciertamente $\mathcal{F}_{CRS}$ no puede ser UC-realizado por ningún protocolo, pues
 en ese caso sería posible UC-realizar $\mathcal{F}_{ZK}^\mathcal{R}$. Para obtener la funcionalidad ideal
 $\mathcal{F}_{CRS}$ en el mundo real es necesario que $\mathcal{F}_{CRS}$ sea ejecutado por un participante
@@ -451,9 +469,7 @@ usado para UC-realizar ZKP, el protocolo perdería la propiedad de \textit{denia
 de obtener en ZKP. Más aún, en \cite{journals/tcs/YaoYZ09} se muestra que inclusive esto puede llevar
 a la perdida de la correctitud del protocolo.\\
 
-\subsection{Ejecución de un protocolo}
-
-\subsubsection{Ejecución en GUC}
+\subsection{Ejecución de un protocolo en GUC}
 
 En GUC se define una ejecución de $\pi$ donde el ambiente no esta limitado a ejecutar solo ITIs con el código del
 protocolo analizado (a excepción del adversario) y SID fijo, ya que un protocolo en GUC es ejecutado con el
@@ -489,13 +505,12 @@ $$\mathrm{GEXEC}_{\mathcal{Z}, \mathcal{A}, \mathcal{\pi}}
 \mathrm{GEXEC}_{\mathcal{Z}, \mathcal{A}, \mathcal{\rho}}$$
 \end{definicion}
 
-\subsubsection{Ejecución en EUC}
+\subsection{Ejecución en EUC}
 Un ambiente que ejecuta un conjunto arbitrario de protocolos puede resultar complejo de manipular en las
 pruebas de seguridad, y resulta más cómodo trabajar con un modelo más simple aunque no menos expresivo.
-En efecto es posible obtener un modelo equivalente a GUC que considera a un  solo un ambiente  con acceso
-al protocolo y las interacciones de este con los demás protocolos. En este modelo, llamado EUC (del inglés
-\textit{Externalized-subroutine UC}), el ambiente solo puede ejecutar una instancia del protocolo más una
-\textit{funcionalidad compartida}.
+En efecto es posible obtener un modelo equivalente a GUC, llamado EUC (del inglés
+\textit{Externalized-subroutine UC}), en el cual el ambiente solo puede ejecutar una instancia del
+protocolo más una \textit{funcionalidad compartida}.
 
 Las funcionalidades compartidas permiten al ambiente simular internamente la ejecución concurrente de
 otros protocolos. Denotadas por la barra superior $\bar{}$, son idénticas que una funcionalidad
@@ -503,7 +518,7 @@ ideal, salvo que aceptan input de cualquier ITI independiente de su SID. Su cint
 el string $\#||\perp$, donde $\#$ es un SID distinto a todos los otros SID.\\
 
 En EUC un protocolo $\pi$ puede no ser subroutine respecting, pero sí debe ser
-$\bar{\mathcal{G}}$\textit{subroutine respecting}, donde $\bar{\mathcal{G}}$ es una funcionalidad compartida.
+$\bar{\mathcal{G}}$\textit{-subroutine respecting}, donde $\bar{\mathcal{G}}$ es una funcionalidad compartida.
 Al ser $\pi$ $\bar{\mathcal{G}}$-subroutine respecting solo puede comunicarse a través de $\bar{\mathcal{G}}$,
 lo cual no resulta extraño pues en general los protocolos criptográficos comparten estado de forma encapsulable
 en una funcionalidad (por ejemplo CRS o PKI).
@@ -531,7 +546,7 @@ Definimos la EUC-emulación como sigue.
 \begin{definicion}[EUC-emulación]
 Decimos que un protocolo $\pi$ EUC-emula con funcionalidad compartida $\bar{\mathcal{G}}$ a otro protocolo
 $\rho$ si para todo ambiente $\mathcal{Z}$ y para todo adversario real $\mathcal{A}$ existe un adversario
-ideal $\mathcal{S}$ talque:
+ideal $\mathcal{S}$
 $$\mathrm{EEXEC}_{\mathcal{Z}, \mathcal{A}, \mathcal{\pi}}^{\bar{\mathcal{G}}}
 \approx
 \mathrm{EEXEC}_{\mathcal{Z}, \mathcal{S}, \mathcal{\rho}}^{\bar{\mathcal{G}}}$$
@@ -572,14 +587,37 @@ $\pi^{\rho/\mathrm{IDEAL}_\mathcal{F}}$ GUC-emula a $\pi$.
 \end{corolario}
 
 \section{Una notación más simple para (G)UC}
+\label{sect:simple_uc}
+
 Revisaremos la notación ocupada en \cite{mnCompleto} pues simplifica el análisis de protocolos en el caso
 en que el número de participantes puede estar fijo a priori. En \cite{mnCompleto} Wikstr\"om introduce una
 nueva máquina a UC, llamada el modelo de comunicación. El modelo de comunicación esta a cargo de todos los
-aspectos de la comunicación entre ITIs en UC. Esta notación simplifica la definición de qué puede hacer el
-adversario en una ejecución, de hecho lo único que diferencia al adversario real del adversario 
-ideal es el modelo de comunicación. La introducción del modelo de comunicación también hace innecesario
-el uso de SIDs, pues los modelos de comunicación son locales a cada instancia de un protocolo.\\
+aspectos de la comunicación entre ITIs en UC. En el mundo real el modelo de comunicación real $\mathcal{C}$
+delega todo el \textit{ruteo} de mensajes al adversario. Por otro lado, en el mundo ideal el modelo de
+comunicación ideal $\mathcal{C_I}$ solo permite al adversario determinar el retraso (inclusive infinito retraso)
+con que cada mensaje es entregado de una funcionalidad ideal a un participante.\\
+Esta notación simplifica la definición de qué puede hacer el
+adversario en una ejecución, en efecto permite definir el mundo real el mundo ideal cambiando solo el modelo
+de comunicación. La introducción del modelo de comunicación también hace innecesario
+el uso de SIDs, pues los modelos de comunicación son locales a cada instancia de un protocolo.
+En las figuras \ref{fig:real_wik} \ref{fig:ideal_wik}
+se puede apreciar la confiuración de una ejecución con modelo de comunicación para el mundo real e ideal
+respectivamente.\\
 Denotamos por $\textrm{ITM}$ el conjunto de todas las ITMs.
+
+\begin{figure}[hp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figs/mundo_real_wik}
+    \caption{Ejecución del protocolo $\pi$ con modelo de comunicación real $\mathcal{C}$.}
+    \label{fig:real_wik}
+\end{figure}
+
+\begin{figure}[hp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figs/mundo_irreal_wik}
+    \caption{Ejecución del protocolo $\textrm{IDEAL}_\mathcal{F}$ con modelo de comunicación ideal $\mathcal{C_I}$.}
+    \label{fig:ideal_wik}
+\end{figure}
 
 \begin{definicion}[grafo de ITMs]
 Un grafo de ITMs en un conjunto vértices $V = \{P_1, \ldots, P_t\} \subset \textrm{ITM}$ con un conjunto
@@ -616,7 +654,7 @@ pero no puede leer ni modificar los contenidos de la comunicación entre partici
 y la funcionalidad ideal.
 
 \begin{definicion}
-Un modelo de compunción ideal $\mathcal{C_I}$ es una ITM con un link $l_{P_i}$ a 
+Un modelo de comunicación ideal $\mathcal{C_I}$ es una ITM con un link $l_{P_i}$ a 
 $P_i$ para $i = 1, \ldots, k$,
 y links $l_\mathcal{F}$ y $l_\mathcal{S}$ a una funcionalidad ideal $\mathcal{F}$
 y a un adversario ideal $\mathcal{S}$ respectivamente. Su código se define como sigue.
@@ -638,11 +676,11 @@ y a un adversario ideal $\mathcal{S}$ respectivamente. Su código se define como
 \end{enumerate}
 \end{definicion}
 
-El modelo ideal es equivalente a una ejecución del protocolo $\textrm{IDELA}_{\mathcal{F}}$
+El modelo ideal es equivalente a una ejecución del protocolo $\textrm{IDEAL}_{\mathcal{F}}$
 
 \begin{definicion}
 El modelo ideal es definido como la función $\mathcal{I}:\textrm{ITM}^2 \times
-\tilde{\textrm{ITM}}^* \to \textrm{ITMG}$, donde $\mathcal{I}: (\mathcal{F}, \mathcal{S}
+\tilde{\textrm{ITM}}^* \to \textrm{ITMG}$, donde $\mathcal{I}: (\mathcal{F}, \mathcal{S},
 \tilde{P}_1, \ldots, \tilde{P}_k) \mapsto (V, E)$ viene dado por:
 $$V = \{\mathcal{C_I}, \mathcal{F}, \mathcal{S}, \tilde{P}_1, \ldots, \tilde{P}_k\}$$
 $$E = \{(\mathcal{S}, \mathcal{C_I}), (\mathcal{C_I}, \mathcal{F})\} \cup
@@ -665,7 +703,7 @@ $$E = \{(\mathcal{A}, \mathcal{C})\}\cup\bigcup_{i=1}^k\{(P_i, \mathcal{C})\}$$
 
 Sea $(V, E) = \mathcal{I}(\mathcal{F}, \mathcal{S}, \tilde{P}_1, \ldots, \tilde{P}_k)$.
 Entonces $\mathcal{Z}(\mathcal{I}(\mathcal{F}, \mathcal{S}, \tilde{P}_1, \ldots,
-\tilde{P}_k))$ para denotar al gafo de ITMs $(V', E')$ definido por $V' = V \cup \{\mathcal{Z}\}$,
+\tilde{P}_k))$ para denotar al grafo de ITMs $(V', E')$ definido por $V' = V \cup \{\mathcal{Z}\}$,
 y $E' = E \cup \{(\mathcal{Z}, \mathcal{S})\} \bigcup_{i=1}^k \{(\mathcal{Z}, \tilde{P}_i)\}$.
 Usamos la misma notación para el modelo real.\\
 
@@ -676,8 +714,8 @@ Sean
 $(V, E) = \mathcal{R}(\mathcal{A}, \pi)$, $\pi = (P_1, \ldots, P_k)$.
 Sean $(V_j, E_j) =
 \mathcal{I}(\mathcal{S}_j,
-            \tilde{\pi}^{\mathcal{F}_j}_j)$,
-$\tilde{\pi}_j = (\tilde{P}_{j, 1}, \ldots, \tilde{P}_{j, k})$ para $j = 1, \ldots, t$,
+            \{\tilde{P}_i \}_j^{\mathcal{F}_j})$,
+$\{\tilde{P}_i\}_j = (\tilde{P}_{j, 1}, \ldots, \tilde{P}_{j, k})$ para $j = 1, \ldots, t$,
 y $(V_j, E_j) = \mathcal{R}(\mathcal{S}_j,\pi_j)$,
 $\pi_j = (P_{j, 1}, \ldots, P_{j, k})$ for $j = t+1, \ldots, s$.\\
 Denotamos por
@@ -687,9 +725,9 @@ $\mathcal{H}(
         \ldots,
         \mathcal{S}_t},
     \pi^{
-        \tilde{\pi}_1^{\mathcal{F}_1},
+        \{\tilde{P}_i\}_1^{\mathcal{F}_1},
         \ldots,
-        \tilde{\pi}_t^{\mathcal{F}_t},
+        \{\tilde{P}_i\}_t^{\mathcal{F}_t},
         \pi_{t+1},
         \ldots,
         \pi_s})$
@@ -714,9 +752,9 @@ $\mathcal{Z}(
             \ldots,
             \mathcal{S}_t},
         \pi^{
-            \tilde{\pi}_1^{\mathcal{F}_1},
+            \{\tilde{P}_i\}_1^{\mathcal{F}_1},
             \ldots,
-            \tilde{\pi}_t^{\mathcal{F}_t},
+            \{\tilde{P}_i\}_t^{\mathcal{F}_t},
             \pi_{t+1},
             \ldots,
             \pi_s}))$
@@ -747,9 +785,9 @@ Usando esta notación, el teorema de composición se escribe como sigue.
 \begin{teorema}
 Supongamos que
 $\pi^{
-    \tilde{\pi}_1^{\mathcal{F}_1},
+    \{\tilde{P}_i\}_1^{\mathcal{F}_1},
     \ldots,
-    \tilde{\pi}_t^{\mathcal{F}_t}}$
+    \{\tilde{P}_i\}_t^{\mathcal{F}_t}}$
 es un protocolo que UC-realiza a la funcionalidad ideal $\tilde{\pi}^{\mathcal{F}}$. Sea $\rho^\pi$
 un protocolo subroutine respecting. Entonces el protocolo
 $\rho^{\pi/\mathcal{F}}$ en el modelo $\mathcal{F}$-híbrido UC-emula al protocolo $\rho^\pi$
@@ -760,12 +798,12 @@ definido por
 $\mathcal{H}(
     \mathcal{A}^{\mathcal{S}_1, \ldots, \mathcal{S}_t},
     \pi^{
-        \tilde{\pi}_1^{\mathcal{F}_1},
+        \{\tilde{P}_i\}_1^{\mathcal{F}_1},
         \ldots,
-        \tilde{\pi}_r^{\mathcal{F}_r},
-        \tilde{\pi}_{r+1}^{\bar{\mathcal{G}}_{r+1}},
+        \{\tilde{P}_i\}_r^{\mathcal{F}_r},
+        \{\tilde{P}_i\}_{r+1}^{\bar{\mathcal{G}}_{r+1}},
         \ldots,
-        \tilde{\pi}_t^{\bar{\mathcal{G}}_t},
+        \{\tilde{P}_i\}_t^{\bar{\mathcal{G}}_t},
         \pi_{t+1},
         \ldots,
         \pi_s}))$,

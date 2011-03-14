@@ -7,7 +7,7 @@ Variadas modificaciones, generalizaciones e implementaciones han sido propuestas
 como por ejemplo en \cite{journals/joc/RaimondoG09}. Aquí consideraremos y adaptaremos la definición
 hecha por Dodis, Katz, Smith y Walfish en \cite{conf/tcc/DodisKSW09}, dado que esa definición
 es la que aplica a una configuración concurrente y distribuida como la necesaria en este trabajo.\\
-Intuitivamente decimos que un protocolo es Desmentible si nadie puede probar a otro que una sesión
+Intuitivamente decimos que un protocolo es desmentible si nadie puede probar a otro que una sesión
 del protocolo, es decir un grupo específico de participantes con identidades públicas definidas,
 se esta llevando a cabo o alguna vez se llevó a cabo. En \cite{conf/tcc/DodisKSW09} se muestra que
 para el caso de la autentificación la desmentibilidad se puede obtener considerando un juez que
@@ -15,7 +15,8 @@ en forma \textit{online} debe decidir con quién esta hablando: un informante qu
 una sesión real del protocolo de autentificación, o un desinformante que no tiene acceso a la sesión
 real del protocolo pero aún así quiere convencer al juez que la sesión se esta llevando a cabo.
 El protocolo se dirá entonces que es un protocolo de autentificación desmentible online si
-para todo juez y para todo informante existe un desinformante talque el juez no puede distinguir
+para todo juez y para todo informante existe un desinformante tal
+que el juez no puede distinguir
 si habla con el informante o el desinformante. En la versión completa de \cite{conf/tcc/DodisKSW09}
 se demuestra se demuestra que esta noción es equivalente a GUC-realizar la funcionalidad ideal
 $\mathcal{F}_{AUTH}$. Dodis y compañía señalan que en GUC un protocolo que realiza una funcionalidad
@@ -45,10 +46,10 @@ $(V_\mathcal{F}, E_\mathcal{F}) =
         \tilde{P}_1,
         \ldots,
         \tilde{P}_n,
-        \tilde{\pi}^{\bar{\mathcal{G}}}))$.
+        \{\tilde{P_i}\}^{\bar{\mathcal{G}}}))$.
 Definimos el mundo real como el grafo de ITMs $\mathfrak{R} = (V, E)$ donde:
 $$V = \{\mathcal{J}, \bar{\mathcal{G}}\} \cup V_\mathcal{F}$$
-$$E = \{(\mathcal{J}, \mathfrak{I})\} \cup E_\mathcal{D}$$
+$$E = \{(\mathcal{J}, \mathfrak{I})\} \cup E_\mathcal{F}$$
 Denotamos por $\mathrm{Real}_{\mathcal{F}, \mathcal{J}, \mathfrak{I}}^{Den}$ a la variable aleatoria
 que describe la salida de $\mathcal{J}$ al ejecutarse el grafo de ITMs $\mathfrak{R}$
 \end{definicion}
@@ -78,31 +79,31 @@ $$\mathrm{Real}_{\mathcal{F}, \mathcal{J}, \mathfrak{I}}^{Den} \approx
 \end{definicion}
 
 Notamos que el experimento $\mathrm{Real}_{\mathcal{F}, \mathcal{J}, \mathfrak{I}}^{Den}$ es una transformación
-sintáctica de la ejecución en UC de la funcionalidad ideal $\mathcal{F}$.
+sintáctica de la ejecución en UC de la funcionalidad ideal $\mathcal{F}$, como lo demuestra el siguiente teorema.
 
 \begin{teorema}
 Para toda funcionalidad $\mathcal{F}$ ejecutada en el modelo $\bar{\mathcal{G}}$-híbrido se tiene que para
 todo juez $\mathcal{J}$ y todo informante $\mathfrak{I}$ existe un ambiente $\mathcal{Z}$ talque
 $$\mathrm{Real}_{\mathcal{F}, \mathcal{J}, \mathfrak{I}}^{Den} \approx
-\mathcal{H}(
+\mathcal{Z}(\mathcal{H}(
         \mathcal{F},
         \mathcal{D},
         \tilde{P}_1,
         \ldots,
         \tilde{P}_n,
-        \tilde{\pi}^{\bar{\mathcal{G}}}))
+        \{\tilde{P}_i\}^{\bar{\mathcal{G}}}))
 $$
 y también para todo ambiente $\mathcal{Z}$ existe un juez $\mathcal{J}$ y un informante $\mathfrak{I}$
 tales que
 
 $$\mathrm{Real}_{\mathcal{F}, \mathcal{J}, \mathfrak{I}}^{Den} \approx
-\mathcal{H}(
+\mathcal{Z}(\mathcal{H}(
         \mathcal{F},
         \mathcal{D},
         \tilde{P}_1,
         \ldots,
         \tilde{P}_n,
-        \tilde{\pi}^{\bar{\mathcal{G}}}))
+        \{\tilde{P}_i\}^{\bar{\mathcal{G}}}))
 $$
 
 \label{teo:den}
@@ -117,4 +118,17 @@ y el adversario dummy $\mathcal{D}$, el juez $\mathcal{J}$ es capaz de simular i
 ambiente $\mathcal{Z}$
 pues $\mathfrak{I}$ le provee una interfaz con vista idéntica a la vista de $\mathcal{Z}$. Lo que nos
 permite probar la primera afirmación del teorema.
+\end{proof}
+
+Como corolario del teorema \ref{teo:den} tenemos el siguiente resultado
+\begin{corolario}
+Sea $\pi$ protocolo que GUC-emula a una funcionalidad
+ideal $\mathcal{F}$ desmentible. Entonces $\pi$ es desmentible.
+\label{cor:den}
+\end{corolario}
+
+\begin{proof}
+La demostración es directa dado que el experimento real para $\pi$ es identico a ejecutarlo en GUC.
+Como $\pi$ GUC-emula a $\mathcal{F}$ existe un simulador que simula a $\pi$ con $\mathcal{F}$, el cual
+puede ser usado para simular $\pi$ con el desinformate que existe para $\mathcal{F}$.
 \end{proof}

@@ -4,22 +4,29 @@
 \contentsline {figure}{\numberline {1.1}{\ignorespaces Protocolo simple de comunicaci\IeC {\'o}n\relax }}{5}{figure.caption.8}
 \contentsline {figure}{\numberline {1.2}{\ignorespaces Soluci\IeC {\'o}n propuesta\relax }}{5}{figure.caption.11}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces El experimento IND-CPA\relax }}{9}{figure.caption.13}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces El experimento UF-CMA\relax }}{9}{figure.caption.15}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces La funcionalidad ideal $\mathcal {F}_{CRS}$\relax }}{10}{figure.caption.17}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces La funcionalidad compartida $\mathaccentV {bar}016{\mathcal {G}}_{KRK}$\relax }}{11}{figure.caption.19}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces La funci\IeC {\'o}n de control $C^{\pi , \mathcal {A}}_\mathrm {EXEC}$\relax }}{13}{figure.caption.14}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Ejecuci\IeC {\'o}n de un protocolo en UC\relax }}{13}{figure.caption.15}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Ejecuci\IeC {\'o}n del protocolo $\mathrm {IDEAL}_\mathcal {F}$ en UC\relax }}{16}{figure.caption.16}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces An\IeC {\'a}lisis modularizado de un protocolo\relax }}{20}{figure.caption.17}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Ejecuci\IeC {\'o}n del protocolo $\pi $ en GUC\relax }}{20}{figure.caption.21}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Ejecuci\IeC {\'o}n del protocolo $\pi $ en EUC\relax }}{21}{figure.caption.23}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Ejecuci\IeC {\'o}n del protocolo $\textrm {IDEAL}_\mathcal {F}$ en EUC\relax }}{25}{figure.caption.24}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces La funci\IeC {\'o}n de control $C^{\pi , \mathcal {A}}_\mathrm {EXEC}$\relax }}{18}{figure.caption.20}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Ejecuci\IeC {\'o}n de un protocolo en UC\relax }}{18}{figure.caption.21}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Ejecuci\IeC {\'o}n del protocolo $\mathrm {IDEAL}_\mathcal {F}$ en UC\relax }}{21}{figure.caption.22}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces An\IeC {\'a}lisis modularizado de un protocolo\relax }}{22}{figure.caption.23}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Ejecuci\IeC {\'o}n del protocolo $\pi $ en GUC\relax }}{24}{figure.caption.26}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Ejecuci\IeC {\'o}n del protocolo $\pi $ en EUC\relax }}{27}{figure.caption.27}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Ejecuci\IeC {\'o}n del protocolo $\textrm {IDEAL}_\mathcal {F}$ en EUC\relax }}{27}{figure.caption.28}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Ejecuci\IeC {\'o}n del protocolo $\pi $ con modelo de comunicaci\IeC {\'o}n real $\mathcal {C}$.\relax }}{28}{figure.caption.29}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Ejecuci\IeC {\'o}n del protocolo $\textrm {IDEAL}_\mathcal {F}$ con modelo de comunicaci\IeC {\'o}n ideal $\mathcal {C_I}$.\relax }}{28}{figure.caption.30}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces El experimento $\mathrm {Exp}_{\pi , \mathcal {A}}^{\mathcal {R}-anon}$\relax }}{31}{figure.caption.26}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Diagrama de una mix-net\relax }}{32}{figure.caption.27}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces La funcionalidad ideal $\mathcal {F}_{MN}$\relax }}{36}{figure.caption.29}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces El experimento $\mathrm {Exp}_{\pi , \mathcal {A}}^{\mathcal {R}-anon}$\relax }}{37}{figure.caption.32}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Diagrama de una mix-net\relax }}{38}{figure.caption.33}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces La funcionalidad ideal $\mathcal {F}_{MN}$\relax }}{42}{figure.caption.35}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces La funcionalidad ideal $\mathcal {F}_{AAC}$\relax }}{39}{figure.caption.30}
-\contentsline {figure}{\numberline {6.2}{\ignorespaces El protocolo SIGMIX\relax }}{41}{figure.caption.31}
-\contentsline {figure}{\numberline {6.3}{\ignorespaces El adversario ideal $\mathcal {S^A}$\relax }}{43}{figure.caption.32}
-\contentsline {figure}{\numberline {6.4}{\ignorespaces El adversario para DDH sobre $G_q$ $\mathcal {D}_\textrm {DDH}$\relax }}{44}{figure.caption.33}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces La funcionalidad ideal $\mathcal {F}_{AAC}$\relax }}{44}{figure.caption.36}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces El protocolo SIGMIX\relax }}{46}{figure.caption.37}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces El adversario ideal $\mathcal {S^A}$\relax }}{48}{figure.caption.38}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces El adversario para DDH sobre $G_q$ $\mathcal {D}_\textrm {DDH}$\relax }}{49}{figure.caption.39}
+\contentsline {figure}{\numberline {6.5}{\ignorespaces El adversario UF-CMA para MAC\relax }}{49}{figure.caption.40}
 \addvspace {10\p@ }

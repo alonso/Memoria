@@ -134,14 +134,14 @@ si las variables aleatorias $(g^\alpha, g^\beta, g^\gamma) \overset{c}{\approx}
 \subsection{Esquemas de Encriptación}
 Decimos que $\mathcal{E} = (K, E, D)$, con conjunto de textos planos $M$ y conjunto de textos
 cifrados $C$,es un esquema de encriptación simétrico si para todo
-$r \in \{0, 1\}^\kappa$, dado $k = K(\kappa; r)$ , para todo $m\in M$ $D_k(E_k(m))=m$.
+$r \in \{0, 1\}^\kappa$, dado $k = K(\kappa; r)$, para todo $m\in M$ $D_k(E_k(m))=m$.
 
 Decimos que $\mathcal{E} = (K, E, D)$, con conjunto de textos planos $M$ y conjunto de textos
 cifrados $C$,es un esquema de encriptación asimétrico si para todo
-$r \in \{0, 1\}^\kappa$, dado $(sk, pk) = K(\kappa; r)$ , para todo $m\in M$ $D_{sk}(E_{pk}(m))=m$.
+$r \in \{0, 1\}^\kappa$, dado $(sk, pk) = K(\kappa; r)$, para todo $m\in M$ $D_{sk}(E_{pk}(m))=m$.
 
 
-\subsection{Indistinguibilidad bajo ataque de texto plano escogido (IND-CPA)}
+\subsubsection{Indistinguibilidad bajo ataque de texto plano escogido (IND-CPA)}
 Tabién conocida como \textit{seguridad semántica} es una definición de privacidad de un esquema
 critográfico. Apunta a que un esquema de encriptación $\mathcal{E} = (K, E, D)$ es seguro si ningún atacante es capaz de
 dinstinguir entre la encriptación de cualesqueir par de mensajes $m_1, m_2$.
@@ -178,13 +178,108 @@ un bit $b \in\{0,1\}$ y parámetro de seguridad $\kappa$ procede como sigue:
 \label{fig:ind_cpa}
 \end{figure}
 
+\subsection{Esquemas de autentificación de mensajes}
+\label{sect:uf-cma}
+Decimos que $\mathcal{MA}=(K,T,V)$, con $M$ el conjunto de mensajes $\{0,1\}^\kappa$ el conjunto de claves,
+es un esquema de autentificación de
+mensajes si $K$ es un algoritmo de generación de claves y para todo $m \in M$ y todo
+$k \in \{0,1\}^\kappa$ se tiene que $v(m, T_k(m)) = 1$.
 
-\subsection{Infalsificabilidad ante ataques de mensajes escogidos UF-CMA}
-UF-CMA aplica a esquemas de firmas de mensajes (\textit{Message Authentication Code} o MAC). Un esquema de firmas
-es UF-CMA si ningún adversario es capaz de falsificar la firma de un mensaje 
+\subsubsection{Infalsificabilidad ante ataques de mensajes escogidos UF-CMA}
+UF-CMA es una noción de seguridad que aplica a esquemas de autentificación de mensajes
+\footnote{A veces, si $\mathcal{MA} = (K, T, V)$ y $T$ corresponde a un algoritmo MAC,
+con MAC nos referimos indistintamente al algoritmo $T$ y al esquema $\mathcal{MA}$.}.
+Un esquema de firmas
+es UF-CMA si ningún adversario es capaz de falsificar la firma de un mensaje. Formalizamos esta noción
+con las siguientes definiciones.
 
-\subsection{Algunas \textit{Setup assumptions} comunes}
+\begin{definicion}[Ventaja UF-CMA]
+Definimos la ventaja \textrm{UF-CMA} de un adverario $\mathcal{A}$ con el esquema $\mathcal{MA} = (K, T, V)$
+como:
+$$\mathrm{Adv}^\text{UF-CMA}_{\mathcal{MA},\mathcal{A}}(\kappa) =
+\Pr[\text{UF-CMA}_{\mathcal{MA},\mathcal{A}}(\kappa) = 1]$$
+donde $\text{UF-CMA}_{\mathcal{MA},\mathcal{A}}(\kappa)$ es la variable aleatoria obtenida al
+ejecutar el experimento de la figura \ref{fig:uf-cma}.
+\end{definicion}
+
+\begin{definicion}[Seguridad UF-CMA]
+Decimos que un esquema de autentificación de mensajes $\mathcal{MA}$ es UF-CMA seguro si para todo
+adversario polinomial aleatoriazdo $\mathcal{A}$ existe una función despreciable $\eta$ y un $\kappa_0$
+talque para todo $\kappa > \kappa_0$
+$$\mathrm{Adv}^{UF-CMA}_{\mathcal{MA}, \mathcal{A}}(\kappa) \leq \eta(\kappa)$$
+\end{definicion}
+
+\begin{figure}
+\framebox{\begin{minipage}[t]{1\columnwidth}
+El experimento UF-CMA  ejecutado con adversario $\mathcal{A}$, esquema de autetificación de mensajes
+$\mathcal{MA} = (K, T, V)$ y parámetro de seguridad $\kappa$ procede como sigue:
+\begin{enumerate}
+    \item Escoger la clave del esquema, $k \overset{R}{\leftarrow} K(\kappa)$ e inicializar
+          $\Gamma \leftarrow \emptyset$.
+    \item Ejecutar al adversario $\mathcal{A}$ y cada vez que escriba $m$ retornale $T_k(m)$ y
+          actualizar $\Gamma \leftarrow \Gamma \cup \{m\}$.
+    \item Cuando $\mathcal{A}$ escriba $(m, t)$, si $m \notin \Gamma$ y $T_k(m) = t$ retornar 1
+          y 0 de lo contrario.
+\end{enumerate}
+\end{minipage}}
+\caption{El experimento UF-CMA}
+\label{fig:uf-cma}
+\end{figure}
+
+\subsection{Supestos de incialización}
+Los supuestos de incialización son necesarios para implementar ciertos protocolos criptográficos
+que de otra forma serían imposible de realizar. Los supuestos de incialización corresponden a funcionalidades
+ejecutadas por una entidad confiable, y en UC son representados por una funcionalidad ideal. A continuación
+listamos dos supuestos de inicialización.
+
+
 \subsubsection{String público aleatorio CRS}
-\subsubsection{Interfaz de clave pública PKI}
+También conocido como string público de referencia, corresponde a una entidad confiable que publica un string
+con una distribución fija. En general se considera que la distribución del string es una uniforme.\\
+En UC se modela CRS con la funcionalidad ideal $\mathcal{F}_{CRS}$ descrita en la figura \ref{fig:crs}i
 
+\begin{figure}
+\framebox{\begin{minipage}[t]{1\columnwidth}
+La funcionalidad ideal $\mathcal{F}_{CRS}^D$ parametrizada por una distribución $D$ procede como sigue:
+\begin{enumerate}
+    \item Si recibe $(\mathtt{CRS})$ de $P$, verificar que $P\in\mathcal{P}$, donde $\mathcal{P}$ es un conjunto
+          de identidades, si $P \notin \mathcal{P}$ ignorar a $P$.
+    \item Si no hay un valor $r$ registrado escoger y registrar $r \overset{R}{\leftarrow} D$.
+    \item Enviar $(\mathtt{CRS}, r)$ a $P$.
+\end{enumerate}
+\end{minipage}}
+\caption{La funcionalidad ideal $\mathcal{F}_{CRS}$}
+\label{fig:crs}
+\end{figure}
+
+
+\subsubsection{Interfaz de clave pública PKI}
+Una interfaz de clave pública o PKI (del inglés \textit{Public Key Interface}) es un supuesto de inicialización
+que permite registrar pares de llaves públicas/provadas en una base de datos confiable y autentificada.\\
+En GUC una forma de modelar PKI es con la funcionalidad compartida $\bar{\mathcal{G}}_{KRK}$ definida en la figura
+\ref{fig:krk}. Notamos que $\bar{\mathcal{G}}_{KRK}$ viene parametrizada por un conjunto $\Phi$, que corresponde
+a los protocolos a los cuales les es permitido obtener claves privadas. 
+
+\begin{figure}
+\framebox{\begin{minipage}[t]{1\columnwidth}
+La funcionalidad compartida $\bar{\mathcal{G}}_{KRK}$ parametrizada por una conjunto de protocolos permitidos
+$\Phi$, un algoritmo de generación de claves $\mathtt{Gen}$ y parámetro de seguridad $\kappa$,
+procede como sigue:
+\begin{enumerate}
+    \item Si recibe un mensaje $(\mathtt{register})$ de un participante honesto $P_i$ que aún no se ha registrado
+          escoger $r \overset{R}{\leftarrow} \{0,1\}^\kappa$, luego calcular
+          $(pk_i, sk_i) \leftarrow \mathtt{Gen}^\kappa (r)$ y guardar la tupla $(P_i, pk_i, sk_i)$.
+    \item Si recibe un mensaje $(\mathtt{register}, r)$ de un participante corrupto $P_i$ que aún no se ha registrado
+          calcular
+          $(pk_i, sk_i) \leftarrow \mathtt{Gen}^\kappa (r)$ y guardar la tupla $(P_i, pk_i, sk_i)$.
+    \item Si recibe un mensaje $(\mathtt{retrieve}, P_i)$ de $P_j$, si existe una tupla registrada
+          $(P_i, pk_i, sk_i)$ retornar $(P_i, pk_i)$. De lo contrario retornar $(P_i, \perp)$.
+    \item Si recibe un mensaje $(\mathtt{retrievesecret}, P_i)$ de $P_j$, si $i = j$, $P_j$ es corrupto
+          esta corriendo un código en $\Phi$ y existe una tupla registrada
+          $(P_i, pk_i, sk_i)$ retornar $(P_i, sk_i)$. De lo contrario retornar $(P_i, \perp)$.
+\end{enumerate}
+\end{minipage}}
+\caption{La funcionalidad compartida $\bar{\mathcal{G}}_{KRK}$}
+\label{fig:krk}
+\end{figure}
 
