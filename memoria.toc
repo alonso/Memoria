@@ -10,18 +10,18 @@
 \contentsline {subsubsection}{Componibilidad}{3}{section*.10}
 \contentsline {section}{\numberline {1.3}Objetivos}{4}{section.1.3}
 \contentsline {subsection}{\numberline {1.3.1}Objetivo General}{4}{subsection.1.3.1}
-\contentsline {subsection}{\numberline {1.3.2}Objetivos esec\IeC {\'\i }ficos}{4}{subsection.1.3.2}
+\contentsline {subsection}{\numberline {1.3.2}Objetivos espec\IeC {\'\i }ficos}{4}{subsection.1.3.2}
 \contentsline {chapter}{\numberline {2}Marco Te\IeC {\'o}rico}{6}{chapter.2}
 \contentsline {section}{\numberline {2.1}Definiciones b\IeC {\'a}sicas}{6}{section.2.1}
 \contentsline {section}{\numberline {2.2}Probabilidades discretas}{7}{section.2.2}
 \contentsline {subsection}{\numberline {2.2.1}Indistinguibilidad}{7}{subsection.2.2.1}
 \contentsline {section}{\numberline {2.3}Definiciones criptogr\IeC {\'a}ficas b\IeC {\'a}sicas}{8}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}El problema de Diffie-Hellman decisonal (DDH)}{8}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.1}El problema de Diffie-Hellman decisional (DDH)}{8}{subsection.2.3.1}
 \contentsline {subsection}{\numberline {2.3.2}Esquemas de Encriptaci\IeC {\'o}n}{8}{subsection.2.3.2}
 \contentsline {subsubsection}{Indistinguibilidad bajo ataque de texto plano escogido (IND-CPA)}{8}{section*.12}
-\contentsline {subsection}{\numberline {2.3.3}Esquemas de autentificaci\IeC {\'o}n de mensajes}{8}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.3}Esquemas de autentificaci\IeC {\'o}n de mensajes}{9}{subsection.2.3.3}
 \contentsline {subsubsection}{Infalsificabilidad ante ataques de mensajes escogidos UF-CMA}{9}{section*.14}
-\contentsline {subsection}{\numberline {2.3.4}Supestos de incializaci\IeC {\'o}n}{10}{subsection.2.3.4}
+\contentsline {subsection}{\numberline {2.3.4}Supuestos de inicializaci\IeC {\'o}n}{9}{subsection.2.3.4}
 \contentsline {subsubsection}{String p\IeC {\'u}blico aleatorio CRS}{10}{section*.16}
 \contentsline {subsubsection}{Interfaz de clave p\IeC {\'u}blica PKI}{10}{section*.18}
 \contentsline {chapter}{\numberline {3}Modelo Criptogr\IeC {\'a}fico}{12}{chapter.3}

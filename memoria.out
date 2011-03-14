@@ -5,16 +5,16 @@
 \BOOKMARK [1][-]{section.1.2}{Descripci\363n del problema}{chapter.1}
 \BOOKMARK [1][-]{section.1.3}{Objetivos}{chapter.1}
 \BOOKMARK [2][-]{subsection.1.3.1}{Objetivo General}{section.1.3}
-\BOOKMARK [2][-]{subsection.1.3.2}{Objetivos esec\355ficos}{section.1.3}
+\BOOKMARK [2][-]{subsection.1.3.2}{Objetivos espec\355ficos}{section.1.3}
 \BOOKMARK [0][-]{chapter.2}{Marco Te\363rico}{}
 \BOOKMARK [1][-]{section.2.1}{Definiciones b\341sicas}{chapter.2}
 \BOOKMARK [1][-]{section.2.2}{Probabilidades discretas}{chapter.2}
 \BOOKMARK [2][-]{subsection.2.2.1}{Indistinguibilidad}{section.2.2}
 \BOOKMARK [1][-]{section.2.3}{Definiciones criptogr\341ficas b\341sicas}{chapter.2}
-\BOOKMARK [2][-]{subsection.2.3.1}{El problema de Diffie-Hellman decisonal \(DDH\)}{section.2.3}
+\BOOKMARK [2][-]{subsection.2.3.1}{El problema de Diffie-Hellman decisional \(DDH\)}{section.2.3}
 \BOOKMARK [2][-]{subsection.2.3.2}{Esquemas de Encriptaci\363n}{section.2.3}
 \BOOKMARK [2][-]{subsection.2.3.3}{Esquemas de autentificaci\363n de mensajes}{section.2.3}
-\BOOKMARK [2][-]{subsection.2.3.4}{Supestos de incializaci\363n}{section.2.3}
+\BOOKMARK [2][-]{subsection.2.3.4}{Supuestos de inicializaci\363n}{section.2.3}
 \BOOKMARK [0][-]{chapter.3}{Modelo Criptogr\341fico}{}
 \BOOKMARK [1][-]{section.3.1}{Universal Composability framework \(UC\)}{chapter.3}
 \BOOKMARK [2][-]{subsection.3.1.1}{Descripci\363n general}{section.3.1}
