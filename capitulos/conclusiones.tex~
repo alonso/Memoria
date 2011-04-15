@@ -1,0 +1,60 @@
+\chapter{Conclusiones}
+
+En este trabajo se planteó el problema de comunicación anónima autentificada y se
+demostró constructivamente que existe un protocolo que resuelve dicho problema.
+Para ello se estudiaron tópicos avanzados de Criptografía como UC, GUC, Anonimato,
+Desmentibilidad y distintas primitivas criptográficas asociadas a dichos tópicos.
+Se definieron rigurosamente las propiedades que debe tener un protocolo para
+resolver el problema planteado.
+Se desarrolló un protocolo para el cual se puede garantizar matematicamente que
+satisface las propiedades necesarias para resolver el problema inicial.
+El protocolo desarrollado es eficiente, pues se construye a partir de un protocolo
+que se sabe eficiente por la comunidad \cite{Wikstrom04a} y adicionalmente efectua
+una operación que es lineal en el número de participantes del protocolo.\\
+
+\section{Preguntas abiertas}
+
+Adicionalmente, del trabajo realizado se desprenden las siguientes preguntas que han
+quedado abiertas, pues escapan a los alcances de este trabajo. Sin embargo 
+su sola formulación debe ser considerada un resultado de este trabajo, pues
+estas preguntas proponen interesantes líneas de investigación.
+
+\subsection{Mixnet GUC-segura}
+El protocolo SIGMIX se construye a partir de una mixnet que en \cite{Wikstrom04a}
+se demuestra UC-segura. Sin embargo, dado que para poder UC-realizar la mixnet
+es necesario ocupar una setup assumption $\mathcal{F}_{KG}$, es válido preguntarse
+si el protocolo de \cite{Wikstrom04a} sigue siendo seguro cuando $\mathcal{F}_{KG}$
+es una funcionalidad compartida. En caso negativo es necesario preguntarse si existe
+algún protocolo seguro para una mixnet con la setup assumption $\mathcal{F}_{KG}$.
+Finalmente, si todos los esfuerzos han fracasado es necesario preguntarse si existe
+una setup assumption compartida razonable con la cual se pueda GUC-realizar una
+mixnet.\\
+
+\subsection{Una modelación más exacta de la componibilidad en GUC}
+El objetivo principal de GUC era modelar protocolos que se pueden componer
+concurrentemente con otros protocolos que posiblemente comparten estado y de los
+cuales nada se puede asumir. Sin embargo en el trabajo de esta memoria nos dimos
+cuenta de que en la literatura, para el caso de PKI y CRS,
+\footnote{En este caso se hace uso de uno funcionalidad compartidad más fuerte
+que CRS conocida como \textit{Augmented Common Random String}}
+\textbf{sí se hacen suposiciones sobre los protocolos con los cuales el protcolo
+analizado} se componen.\\
+Para caso de PKI se asume que los protocolos
+que hacen uso de la funcionalidad ideal $\bar{\mathcal{G}}_{KRK}$ se encuentran
+dentro de un conjunto de prtocolos $\Phi$. En general general $\Phi$ solo
+contiene al protocolo analizado, por lo que la situación puede resultar muy
+similar a JUC.\\
+El caso de CRS es algo distinto, pero se puede mostrar que es equivalente. En
+efecto, a la funcionalidad ideal que modela CRS se le especifica que debe
+distinguir entre los participantes honestos y no honestos. Si bien en
+\cite{Walfish:2008:ESM:1467461} notan que asumir esto es irreal, afirman que en
+la práctica los participantes deben tener cuidado con no revelar cierto valor
+secreto. Lo anterior no es más que una limitación a los protocolos que puede
+ejecutar cada participante, pues $\Phi$ correspondería a protocolo que no revelan
+el valor antes mencionado.\\
+Adicionalmente, que solo protocolos en un conjunto $\Phi$
+pueden acceder a la funcionalidad compartida no es posible de formalizar en EUC.
+Si bien es posible de formalizar en GUC, es posible pensar en un modelo más general
+donde $\Phi$ no depende de propiedades estáticas de los protocolos si no que de
+propiedades dinámicas. Lo anterior no es formalizable en GUC, y para ellos es necesario
+hacer ciertas modificaciones a GUC
