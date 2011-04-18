@@ -1,7 +1,7 @@
 %TODO Habrá un nombre mejor?
 \chapter{Marco Teórico}
 
-En este capítulos hacemos distintas definiciones básicas útiles
+En este capítulo hacemos distintas definiciones básicas útiles
 para este trabajo.
 
 \section{Definiciones básicas}
@@ -12,37 +12,53 @@ Decimos que $\omega$ es un string si $\omega \in \{0,1\}^*$.
 
 \begin{definicion}[Largo de un string]
 Para un string $\omega$ denotamos por $|\omega|$ al entero $k$
-talque $k$ es el número de caracteres de $|\omega|$.
+tal que $k$ es el número de caracteres de $|\omega|$.
 \end{definicion}
 
 \begin{definicion}[Función despreciable]
-Decimos que una función $\eta: \mathbb{N} \to \mathbb{N}$ es despreciables
+Decimos que una función $\eta: \mathbb{N} \to \mathbb{N}$ es despreciable
 si crece más lento que el inverso de cualquier polinomio. Es decir, para
 todo polinomio $p$ existe
 un $n_0$ talque para todo $n > n_0$ se cumple que
 $$\eta(n) < \frac{1}{p(n)}$$
 \end{definicion}
 Las funciones despreciables permiten definir probabilidades ``pequeñas'' para cualquier
-variable aleatoria ``algorítmica'' (es decir, que corresponden a la salida de un algoritmo).
-La definición busca eliminar el efecto de ejecutar una cantidad polinomial de veces un
-algoritmo (usar el lema de amplificación).
+variable aleatoria ``algorítmica''. Es decir, variables aleatorias que corresponden a la
+salida de un algoritmo.\\
+Una forma de ver la utilidad de las funciones despreciables es la siguiente. Consideremos
+el caso en que queremos determinar si un lenguaje $L$ es \textit{difícil}, esto es, para
+cualquier algoritmo de tiempo polinomial determinar si $x \in L$ es difícil.
+Diremos que un algorimo $A$ tiene éxito si $A(x) = 1$ cuando $x \in L$ y $A(x) = 0$
+si no.
+Si la probabilidad de éxito de un algoritmo $A$ de tiempo polinomial es depreciable, es imposible usar
+$A$ como bloque de otro algoritmo de tiempo polinomial para obtener una mejor probabilidad de éxito.
+Por el contrario, si la probabilidad de éxito de un algoritmo polinomial $A$ es pequeña pero no despreciable,
+entonces es posible construir un algoritmo $B$ de tiempo polinomial cuya probabilidad de éxito es
+$1-2^n$. 
+\footnote{$B$ ejecuta $A$ como caja negra $t(n)$ veces y responde 1 si la mayoria
+de las veces $A$ responde 1, y 0 en caso contrario. Es posible demostrar que existe un polinomio $q$ tal
+que si $t(n) = q(n)$ la probabilidad de éxito de $B$ es $1-2^n$.}
+De este modo podemos decir que $L$ es difícil si la probabilidad de éxito es depreciable para cualquier
+algoritmo $A$; equivalentemente podemos decir que $L$ es fácil si existe un algoritmo $A$ con ventaja no
+despreciable. Notemos que para el caso en que $L$ es fácil, la probabilidad de éxito del algoritmo $A$
+puede ser muy pequeña, pero puede ser \textit{amplificada} hasta $1-2^n$, probabilidad para nada pequeña.
 
 \begin{definicion}[Grupo Abeliano]
 Decimos que el par $(G,+)$, donde $G$ es un conjunto y
-$+:G^2 \to G$, es un grupo abeliano si se cumplen las siguientes propiedades:
+$+:G^2 \to G$, es un Grupo Abeliano si se cumplen las siguientes propiedades:
 \begin{enumerate}
 \item (Asociatividad) $\forall a,b,c \in G$ $(a+b)+c=a+(b+c)$.
-\item (Elemento neutro) $\exists 0 \in G$ talque $\forall a \in G$ $a+0 = 0+a = a$.
-\item (Inverso) $\forall a \in G$ $\exists -a \in G$ talque $a+-a = 0$.
+\item (Elemento neutro) $\exists 0 \in G$ tal que $\forall a \in G$ $a+0 = 0+a = a$.
+\item (Inverso) $\forall a \in G$ $\exists -a \in G$ tal que $a+-a = 0$.
 \item (Conmutatividad) $\forall a,b \in G$ $a+b = b+a$.
 \end{enumerate}
 \end{definicion}
 
-En general cuando decimos que $G$ es un grupo nos referimos a que es un grupo abeliano.
+En general, cuando decimos que $G$ es un grupo nos referimos a que es un Grupo Abeliano.
 
 \begin{definicion}[Generador]
 Decimos que $g\in G$ es un generador de $G$ si el conjunto generado por $g$ 
-$\langle g \rangle = \{g^n|n\in\mathbb{N}\}$ es igual a $G$
+$\langle g \rangle = \{g^n|n\in\mathbb{N}\}$ es igual a $G$.
 \end{definicion}
 
 \begin{definicion}[Grupo cíclico]
@@ -57,16 +73,16 @@ $g$ de $G$ y $|G| = q$.
 Una espacio de probabilidades finito es un conjunto finito
 $\Omega = \{\omega_1, \ldots, \omega_{|\Omega|}\}$ con un conjunto
 de números $p_1, \ldots, p_{|\Omega|} \in [0,1]$ tales que
-$\sum_{i=1}^{|\Omega|}p_i=1$
+$\sum_{i=1}^{|\Omega|}p_i=1$.
 \end{definicion}
 
 A menos que se especifique lo contrario, asumimos que la distribución
 de $\Omega$ es uniforme, es decir $p_i = \frac{1}{|\Omega|}$. Al experimento
-de escoger un $\omega$ en $\Omega$ al azar denotamos por $\omega \in_R \Omega$.
+de escoger un $\omega$ en $\Omega$ al azar lo denotamos por $\omega \in_R \Omega$.
 
 \begin{definicion}[Evento]
 Decimos que $A$ es un evento de $\Omega$ si $A \subseteq \Omega$. Denotamos
-por $\Pr[A] = \sum_{\omega_i \in A}p_i$  a la probabilidad de $A$
+por $\Pr[A] = \sum_{\omega_i \in A}p_i$  a la probabilidad de $A$.
 \end{definicion}
 
 \begin{definicion}[Variable aleatoria]
@@ -76,13 +92,13 @@ cada $\omega \in \Omega$ un número real $x \in \mathbb{R}$.
 
 \begin{definicion}[Distribución]
 Dada una variable aleatoria, definimos su distribución como la función
-$f:\mathbb{R} \to [0,1]$ talque $f(x) = \sum_{i:X(\omega_i)=x}p_i$
+$f:\mathbb{R} \to [0,1]$ tal que $f(x) = \sum_{i:X(\omega_i)=x}p_i$.
 \end{definicion}
 
 \begin{definicion}[Distancia estadística]
-Dadas dos variables aleatoria $X$ e $Y$ definidas sobre $\Omega$, definimos
+Dadas dos variables aleatorias $X$ e $Y$ definidas sobre $\Omega$, definimos
 la distancia estadística entre ellas como
-$$\Delta(X, Y) = \max_{S\subseteq \Omega}\{X(S)-Y(S)\}$$
+$$\Delta(X, Y) = \max_{S\subseteq \Omega}\{X(S)-Y(S)\}$$.
 \end{definicion}
 
 \subsection{Indistinguibilidad}
@@ -96,8 +112,8 @@ de variables aleatorias) y existen tres tipos de indistinguibilidad.
 \begin{definicion}[Indistinguibilidad perfecta]
 Decimos que dos familias de variables aleatorias $U=\{U_x\}_{x\in\{0,1\}^*}$
 y $V=\{V_x\}_{x\in\{0,1\}^*}$ son perfectamente indistinguibles
-si $\Delta(U_x, V_x) = 0 \qquad \forall x$.
-Denotamos la indistinguibilidad perfecta por $U = V$
+si para todo $x$ $\Delta(U_x, V_x) = 0$.
+Denotamos la indistinguibilidad perfecta por $U = V$.
 \end{definicion}
 
 \begin{definicion}[Indistinguibilidad estadística]
@@ -109,7 +125,7 @@ por $U \approx Y$.
 
 \begin{definicion}[Indistinguibilidad computacional]
 Decimos que dos familias de variables aleatorias $U=\{U_x\}_{x\in\{0,1\}^*}$ y
-$V=\{V_x\}_{x\in\{0,1\}^*}$ son estadísticamente indistinguibles
+$V=\{V_x\}_{x\in\{0,1\}^*}$ son computacionalmente indistinguibles si
 para todo algoritmo polinomial aleatorizado $A$ existe una función despreciable
 $\eta$ y un entero $n_0$ talque si $|x| > n_0$
 $|\Pr[A(U_x)=1] - \Pr[A(V_x)=1]| \leq \eta(|x|)$. Denotamos la indistinguibilidad
@@ -121,45 +137,71 @@ computacional por $U \overset{c}{\approx} V$.
 \subsection{El problema de Diffie-Hellman decisional (DDH)}
 El problema DDH \cite{diffie-hellman_me:1976a} es un problema que se considera
 difícil, es decir se conjetura
-que no existe un algoritmo polinomial que lo solucione, para ciertos
+que no existe un algoritmo a tiempo polinomial que lo solucione para ciertos
 grupos. DDH es una herramienta fundamental en la Criptografía moderna pues
-permite la construcción eficientes primitivas con una variada aplicabilidad.
+permite la construcción eficiente de primitivas con una variada aplicabilidad.
 
 \begin{definicion}[DDH]
-Sea $G_q$ un grupo cíclico de orden $q$. Decimos que en $G_q$ se cumple DDH
-si $(g^\alpha, g^\beta, g^\gamma) \overset{c}{\approx}
+Sea $G_q$ un grupo cíclico de orden $q$ y $g$ un generador de $G_q$. Decimos que en $G_q$ se
+cumple DDH si $(g^\alpha, g^\beta, g^\gamma) \overset{c}{\approx}
 (g^\alpha, g^\beta, g^{\alpha \cdot \beta})$ dado que $\alpha, \beta, \gamma \in_R G_q$.
 \end{definicion}
 
 \subsection{Esquemas de Encriptación}
-Decimos que $\mathcal{E} = (K, E, D)$, con conjunto de textos planos $M$ y conjunto de textos
-cifrados $C$,es un esquema de encriptación simétrico si para todo
-$r \in \{0, 1\}^\kappa$, dado $k = K(\kappa; r)$, para todo $m\in M$ $D_k(E_k(m))=m$.
+Sea $\mathcal{E} = (K, E, D)$, donde $K:\strings\times\strings \to \strings$ es el
+algoritmo de generación de claves; $E: M\times \strings \to C$ es el algoritmo de encriptación;
+$D: C \times \strings \to M$ es el algoritmo de desencriptación; $M$ es el conjunto de textos
+planos; y $C$ es el conjunto de textos cifrados. Decimos que $\mathcal{e}$ es un esquema de
+encriptación simétrico si para todo string aleatorio
+$r \in \{0, 1\}^\kappa$ con $\kappa$ el parámetro de seguridad, dado $k = K(\kappa; r)$
+(es decir para toda clave generada al azar), todo texto plano $m\in M$ puede ser recuperado
+correctamente, esto es $D_k(E_k(m))=m$.\\
 
-Decimos que $\mathcal{E} = (K, E, D)$, con conjunto de textos planos $M$ y conjunto de textos
-cifrados $C$,es un esquema de encriptación asimétrico si para todo
-$r \in \{0, 1\}^\kappa$, dado $(sk, pk) = K(\kappa; r)$, para todo $m\in M$ $D_{sk}(E_{pk}(m))=m$.
+Decimos que $\mathcal{E}$ es un esquema de encriptación asimétrico si para todo
+$r \in \{0, 1\}^\kappa$, dado $(sk, pk) = K(\kappa; r)$, para todo texto plano $m\in M$
+$D_{sk}(E_{pk}(m))=m$. $pk$ es la clave pública (todos los participantes la conocen) y $sk$
+es la clave privada (solo un participante la conoce).
 
 
 \subsubsection{Indistinguibilidad bajo ataque de texto plano escogido (IND-CPA)}
 También conocida como \textit{seguridad semántica} es una definición de privacidad de un esquema
-criptográfico. Apunta a que un esquema de encriptación $\mathcal{E} = (K, E, D)$ es seguro si ningún atacante es capaz de
-distinguir entre la encriptación de cualesquier par de mensajes $m_1, m_2$.
+criptográfico. Apunta a que un esquema de encriptación $\mathcal{E} = (K, E, D)$ es seguro si ningún
+atacante es capaz de distinguir entre la encriptación de cualesquier par de mensajes $m_1, m_2$.
 
 
 \begin{definicion}[Experimento IND-CPA]
-Definimos el experimento IND-CPA parametrizado por un algoritmo $\mathcal{A}$,
-un esquema de encriptación $\mathcal{E}$, parámetro de seguridad $\kappa$ y
-un bit $b$, denotado por $\mathrm{EXP}^\mathrm{IND-CPA}_\mathcal{E}(\mathcal{A}, b)$,
+Sea $\mathcal{A}$ un algoritmo, $\mathcal{E}$ un esquema de encriptación, $\kappa$ el parámetro de
+seguridad y $b$ un bit. ,
+Definimos el experimento IND-CPA, denotado por $\mathrm{EXP}^\mathrm{IND-CPA}_\mathcal{E}(\mathcal{A}, b, \kappa)$,
 como la variable aleatoria resultante de
-ejecutar el experimento descrito en la figura \ref{fig:ind_cpa}
+ejecutar el experimento descrito en la Figura \ref{fig:ind_cpa}
 \end{definicion}
 
+En el experimento IND-CPA basicamente se genera una clave al azar y se le permite a un adversario $A$
+hacer preguntas a un \textit{oráculo} que responde el texto cifrado correspondiente a la encriptación de uno
+(fijo) de los textos planos pasados como argumentos al oráculo. El objetivo de $A$ es determinar el bit $b$,
+es decir, cúal de los argumentos es el que encripta el oráculo. Notemos que $A$ puede obtener encriptaciones
+de los textos planos que desee, haciendo preguntas de la forma $(m,m)$. De ahí el nombre \textit{texto plano
+escogido}, pues se le permite al adversario obtener las encriptaciones de textos planos escogidos por él.
+
+\begin{definicion}
+Definimos la ventaja IND-CPA de $\mathcal{A}$, denotada por $\advindcpa{\encscm}{\adv}{\kappa}$,
+como sigue
+$$
+\advindcpa{\encscm}{\adv}{\kappa} =
+\abs
+{
+    \mathrm{EXP}^\mathrm{IND-CPA}_\mathcal{E}(\mathcal{A}, b, \kappa)
+    -
+    \mathrm{EXP}^\mathrm{IND-CPA}_\mathcal{E}(\mathcal{A}, b, \kappa)
+}.
+$$
+\end{definicion}
 
 \begin{definicion}[Seguridad IND-CPA]
 Decimos que un esquema de encriptación $\mathcal{E}$ es IND-CPA seguro si
-$$\mathrm{EXP}^\mathrm{IND-CPA}_\mathcal{E}(\mathcal{A}, 1) \approx
-\mathrm{EXP}^\mathrm{IND-CPA}_\mathcal{E}(\mathcal{A}, 0)$$
+para todo adversario $\adv$ $\advindcpa{\encscm}{\adv}{\kappa}$ es una función
+despreciable en $\kappa$.
 \end{definicion}
 
 \begin{figure}
