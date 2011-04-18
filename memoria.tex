@@ -29,9 +29,9 @@
 %colorlinks=true, resalta los links con colores
 \usepackage[pdftex,pdfborderstyle={/S/U/W 0}, 
 pdftitle={Memoria}, 
-pdfauthor={Felipe Lema}, 
-pdfsubject={Emulación}, pdfkeywords={p2p, kaillera, emulación},
-pdfcreator={Felipe Lema}]{hyperref}
+pdfauthor={Alonso Gonzalez}, 
+pdfsubject={Criptografía}, pdfkeywords={criptografía, anonimato, autentificación},
+pdfcreator={Alonso González}]{hyperref}
 
 %%%%%%%%%%%%%%%%%%%%%%
 %% Cite Package
@@ -116,6 +116,15 @@ pdfcreator={Felipe Lema}]{hyperref}
 \newcommand{\kai}{\textit{Kaillera}\xspace}
 \newcommand{\fba}{\texttt{fba}\xspace}
 
+\newcommand{\bits}{\{0,1\}}
+\newcommand{\strings}{\bits^*}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\paren}[1]{\left( #1 \right)}
+
+\newcommand{\encscm}{\mathcal{E}}
+\newcommand{\adv}{\mathcal{A}}
+\newcommand{\advindcpa}[3]{\mathrm{Adv}^\mathrm{IND-CPA}_{#1,#2}(#3)}
+
 
 %%%%%%%%%%%%%%%%%%%%
 %Definicion de variables de la portada
@@ -127,7 +136,7 @@ pdfcreator={Felipe Lema}]{hyperref}
 \facultad{Facultad de Ciencias Físicas y Matemáticas}
 \departamento{Departamento de Ciencias de la Computación}
 %% C. Titulo
-\title{Autenticación Desmentible en Canales Anónimos}
+\title{Autentificación Desmentible en Canales Anónimos}
 %% D. Proposito titulacion
 \trabajoygrado{Presentación del Tema de Memoria para optar al título de Ingeniero Civil en Computación}
 %% E. Autor
@@ -135,7 +144,7 @@ pdfcreator={Felipe Lema}]{hyperref}
 %% F. Profesores guia, co-guia e integrantes, los 3 primeros son obligatorios
 \profguia{Alejandro Hevia Angulo} %profesor guia
 \profcoguia{Gonzalo Navarro Badino} %profesor co-guia
-\profint{Rodrigo Paredes Moradela} %profesor integrante
+\profint{Rodrigo Paredes Moraleda} %profesor integrante
 %\profinta{Sr. ZZ ZZ ZZ} %profesor integrante 2, generalemente no es necesario
 %\profintb{Sr. ZZZ ZZZ ZZZ} %profesor integrante 3, generalmente no es necesario
 %% G. Lugar y fecha
